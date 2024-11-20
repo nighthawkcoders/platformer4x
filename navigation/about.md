@@ -4,13 +4,13 @@ title: About Us
 permalink: /about/
 ---
 
-Creators of Platformer 4.0x
-Akhil - Scrum Master / dev
-William - Assistent Scrum Master / dev
-Shay -intergrater / dev
-Zoe - Dev
-Leila - Dev
-Kian - Dev
-Jeongjun - Dev
+Creators of Platformer 4.0x <br>
+Akhil - Scrum Master / dev <br>
+William - Assistent Scrum Master / dev <br>
+Shay -intergrater / dev <br>
+Zoe - Dev <br>
+Leila - Dev <br>
+Kian - Dev <br>
+Jeongjun - Dev <br>
 
 
