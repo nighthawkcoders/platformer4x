@@ -4,4 +4,4 @@ title: About Us
 permalink: /about/
 ---
 
-Creators of Platformer 3.0
+Creators of Platformer 4.0
