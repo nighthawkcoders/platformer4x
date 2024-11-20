@@ -5,16 +5,12 @@ layout: post
 title:  Parallax Lesson
 description: Describing parallax and other features
 ---
-<style>
-    .post-content p, .post-content li {
-        color: #b1b1b1;
-    }
-</style>
+
 ## What is motion parallax?
 
 Motion parallax describes a psychological phenomenon in which we perceive that farther away objects seem to move slower than close objects.
 
-![Alt text](https://www.researchgate.net/publication/299401615/figure/fig2/AS:349707269361671@1460388118826/Motion-parallax-When-an-observer-passes-through-a-scene-when-driving-a-car-it-moves.png)
+[See Illustration](https://www.researchgate.net/publication/299401615/figure/fig2/AS:349707269361671@1460388118826/Motion-parallax-When-an-observer-passes-through-a-scene-when-driving-a-car-it-moves.png)
 
 If you were in a car, looking out of the window, you might notice that nearby trees or buildings seem to move quickly, while mountains in the distance hardly move at all.
 
