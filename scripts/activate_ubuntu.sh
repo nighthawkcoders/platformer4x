@@ -10,20 +10,22 @@
 # Start a terminal for commands
 $ mdkir vscode
 cd vscode
-git clone https://github.com/nighthawkcoders/platformer3x.git
-cd ~/vscode/platformer3x/scripts
+git clone https://github.com/nighthawkcoders/portfolio_2025.git
+cd ~/vscode/portfolio_2025/scripts
 ./activate_ubuntu.sh
 
 # Run the head command, leave this terminal open ...
 #    the head command shows remaining instructions  ...
 #    find this spot and continue on
-head -34 ~/vscode/platformer3x/scripts/activate_ubuntu.sh
+head -34 ~/vscode/portfolio_2025/scripts/activate_ubuntu.sh
 
 # Start a new terminal ...
 #    the "new" terminal is the command terminal ...
 #    the "original" terminal shows commands ...
 #    type commands in "new" terminal
-cd ~/vscode/platformer3x
+cd ~/vscode/portfolio_2025
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 bundle install
 make
@@ -39,4 +41,4 @@ GITHUB_LOCATION=${1:-$(pwd)}
 #### Setup CompSci / GitHub Pages Tool Requirements
 $GITHUB_LOCATION/setup_ubuntu.sh
 #### Show instructions
-head -34 $GITHUB_LOCATION/activate_ubuntu.sh
+head -36 $GITHUB_LOCATION/activate_ubuntu.sh
