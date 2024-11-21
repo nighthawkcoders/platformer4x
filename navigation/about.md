@@ -7,7 +7,6 @@ permalink: /about/
 Creators of Platformer 4.0
 
 ### Ethan Wong/Assistant Scrum Manager
-eo[few[]]
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
     <a href="https://ethanwong2008.github.io/ethan_2027/" style="text-decoration: none;">
