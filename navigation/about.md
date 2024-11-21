@@ -11,6 +11,7 @@ I like dogs and cheez👍<br>
 Shay -intergrater / dev <br>
 Zoe - Dev <br>
 Leila - Dev <br>
+I have 2 cats out of 100 so far...
 Kian - Dev <br>
 Jeongjun - Dev <br>
 
