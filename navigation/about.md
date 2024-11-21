@@ -4,4 +4,4 @@ title: About Us
 permalink: /about/
 ---
 
-Creators of Platformer 4.0
+Avantika integrator
