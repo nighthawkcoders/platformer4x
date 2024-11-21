@@ -15,7 +15,7 @@ Assistant Scrum Master for the LEAAAAM development team. Github: [aaryavlal](htt
 ### Matthew “skibidi jamacia” Borg: Scrummer 
 Scrummed, of LEAAAAM development team. Github: [MaTThewB0rg](https://github.com/MaTThewB0rg)
 
-### Ethan “golf wang” Fu - Scrummer
+### Ethan “golf wang” Fu: Scrummer
 Scrummed, of LEAAAAM development team. Github: [buythesenbundle](https://github.com/buythesenbundle)
 
 ### Alex “OFWGKTA” Van Linge: Scrummer 
@@ -24,6 +24,6 @@ Scrummed, of LEAAAAM development team. Github: [AlexTVL](https://github.com/Alex
 ### Aneesh “adiddya”: Scrummer
 Scrummed, of LEAAAAM development team. Github: [whitelunarium](https://github.com/whitelunarium)
 
-### Aditya “anees”: -Scrummed: 
+### Aditya “anees”: Scrummer 
 Scrummed, of LEAAAAM development team. Github: [AdityaS-2010](https://github.com/AdityaS-2010)
 
