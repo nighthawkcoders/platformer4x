@@ -24,4 +24,4 @@ Creators of Platformer 4.0
 [GitHub: Lara's Website](https://lara3333.github.io/Lara_2025/)
 
 ### Srinaga Prahalad Pillutla: Integrator of Team B
-[GitHub: Srinaga's Website](https://prahalad-ship-it.github.io/Srinaga_2025/)
+[GitHub: Srinaga's Website](https://prahalad-ship-it.git
