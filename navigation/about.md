@@ -8,7 +8,7 @@ Creators of Platformer 4.0
 
 <div style="border: 2px solid lightpurple; padding: 10px;">
 
-<h2>Team B</h2>
+<h1>Team B</h1>
 
 <h3>Cason Pollak: Scrum Master of Team B</h3>
 <a href="https://casonpollak.github.io/cason_2025/">Cason's Website</a>
