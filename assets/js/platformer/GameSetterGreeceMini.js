@@ -1,4 +1,4 @@
-// GameSetHills.js Key objective is to define objects for a GameLevel
+// GameSetterGreeceMini.js Key objective is to define objects for a GameLevel
 // To build GameLevels, each contains GameObjects from below imports
 import Background from './Background.js'
 import BackgroundTransitions from './BackgroundTransitions.js';

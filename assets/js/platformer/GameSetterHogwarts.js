@@ -1,4 +1,4 @@
-// GameSetHills.js Key objective is to define objects for a GameLevel
+// GameHogwarts.js Key objective is to define objects for a GameLevel
 import GameSet from './GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
 import BackgroundParallax from './BackgroundParallax.js';
