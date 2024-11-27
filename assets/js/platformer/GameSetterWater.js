@@ -1,33 +1,35 @@
-// GameSetHills.js Key objective is to define objects for a GameLevel
+// GameSetterWater.js Key objective is to define objects for a GameLevel
 import GameSet from './GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
+import Background from './Background.js';
 import BackgroundParallax from './BackgroundParallax.js';
 import BackgroundTransitions from './BackgroundTransitions.js';
 import Platform from './Platform.js';
+import BlockPlatform from './BlockPlatform.js';
 import JumpPlatform from './PlatformJump.js';
 import PlayerHills from './PlayerHills.js';
 import Goomba from './EnemyGoomba.js';
 import FlyingGoomba from './FlyingGoomba.js';
-import MovingPlatform from './PlatformMoving.js'
 import Mushroom from './Mushroom.js';
 import Coin from './Coin.js';
 import FinishLine from './FinishLine.js';
-import BlockPlatform from './BlockPlatform.js';
 
 // Define the GameSetup object literal
 const assets = {  
     obstacles: {
-      tube: { src: "/images/platformer/obstacles/tube.png",
-      hitbox: { widthPercentage: 0.5, heightPercentage: 0.5},
-      width: 300,
-      height: 300,
-      scaleSize: 100,
+      chest: {
+        src: "/images/platformer/obstacles/Chest.png",
+        hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
+        width: 300,
+        height: 300,
+        scaleSize: 150,
       },
       coin: { src: "/images/platformer/obstacles/coin.png" },
+      dimonds: { src: "/images/platformer/obstacles/dimonds.png" },
     },
     platforms: {
-      grass: { src: "/images/platformer/platforms/grass.png" },
-      bricks: { src: "/images/platformer/platforms/brick_wall.png" },
+      sand: { src: "/images/platformer/platforms/sand.png" },
+      sandblock: {src:"/images/platformer/platforms/sandblock.png"},
       block: { src: "/images/platformer/platforms/brick_block.png" }, 
       itemBlock: {
         src: "/images/platformer/platforms/mario_block_spritesheet_v2.png",
@@ -42,12 +44,14 @@ const assets = {
       }
     },
     backgrounds: {
-      hills: { src: "/images/platformer/backgrounds/hills.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
-      mountains: { src: "/images/platformer/backgrounds/mountains.jpg", parallaxSpeed: 0.1, moveOnKeyAction: true },
-      clouds: { src: "/images/platformer/backgrounds/clouds.png", parallaxSpeed: 0.5 },
+      water: { src: "/images/platformer/backgrounds/water.png" },
+      fish: { src: "/images/platformer/backgrounds/school-fish.png", parallaxSpeed: -0.5 },
+      reef: { src: "/images/platformer/backgrounds/reef.png" },
     },
     transitions: {
       loading: { src: "/images/platformer/transitions/greenscreen.png" },
+      waterEnd: { src: "/images/platformer/transitions/waterEnd.png" },
+      miniEnd: { src: "/images/platformer/transitions/miniEnd.png" },
     },
     players: {
       mario: {
@@ -98,44 +102,49 @@ const assets = {
         height: 180,
         hitbox: { widthPercentage: 0.0, heightPercentage: 0.2 }
       },
+      bubbles: {
+        src: "/images/platformer/platforms/bubbles.png",
+        width: 200,
+        height: 180,
+        hitbox: { widthPercentage: 0.0, heightPercentage: 0.2 }
+      },
     }
   };
 
-  // Hills Game Level defintion...
   const objects = [
-    { name: 'mountains', id: 'background', class: BackgroundParallax, data: assets.backgrounds.mountains },
-    { name: 'clouds', id: 'background', class: BackgroundParallax, data: assets.backgrounds.clouds },
-    { name: 'hills', id: 'background', class: BackgroundParallax, data: assets.backgrounds.hills },
-    { name: 'grass', id: 'floor', class: Platform, data: assets.platforms.grass },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2, yPercentage: 0.85 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2368, yPercentage: 0.85 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2736, yPercentage: 0.85 },
-    { name: 'blocks', id: 'wall', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.6, yPercentage: 1 },
+    { name: 'water', id: 'background', class: Background, data: assets.backgrounds.water },
+    { name: 'fish', id: 'background', class: BackgroundParallax, data: assets.backgrounds.fish },
+    { name: 'reef', id: 'background', class: Background, data: assets.backgrounds.reef },
+    { name: 'sand', id: 'floor', class: Platform, data: assets.platforms.sand },
+    { name: 'sandblock', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sandblock, xPercentage: 0.2, yPercentage: 0.85 },
+    { name: 'sandblock', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sandblock, xPercentage: 0.2368, yPercentage: 0.85 },
+    { name: 'sandblock', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sandblock, xPercentage: 0.2736, yPercentage: 0.85 },
+    { name: 'sandblock', id: 'wall', class: BlockPlatform, data: assets.platforms.sandblock, xPercentage: 0.6, yPercentage: 1 },
     { name: 'itemBlock', id: 'jumpPlatform', class: JumpPlatform, data: assets.platforms.itemBlock, xPercentage: 0.4, yPercentage: 0.65 }, //item block is a platform
     { name: 'goomba', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.5, yPercentage: 1, minPosition: 0.05 },
     { name: 'goomba', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.4, yPercentage: 1, minPosition: 0.05, difficulties: ["normal", "hard", "impossible"] },
     { name: 'goomba', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.3, yPercentage: 1, minPosition: 0.05, difficulties: ["normal", "hard", "impossible"] },
     { name: 'goomba', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.2, yPercentage: 1, minPosition: 0.05, difficulties: ["hard", "impossible"] },
     { name: 'goomba', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.1, yPercentage: 1, minPosition: 0.05, difficulties: ["impossible"] },
-    { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.75, yPercentage: 1, minPosition: 0.5 }, // special name is used for random event 2 to make sure that only one of the Goombas ends the random event
+    { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.75, yPercentage: 1, minPosition: 0.5 }, //this special name is used for random event 2 to make sure that only one of the Goombas ends the random event
     { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.95, yPercentage: 1, minPosition: 0.5, difficulties: ["hard", "impossible"] }, //this special name is used for random event 2 to make sure that only one of the Goombas ends the random event
     { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: assets.enemies.flyingGoomba, xPercentage: 0.9, minPosition: 0.5, difficulties: ["normal", "hard", "impossible"] },
     { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: assets.enemies.flyingGoomba, xPercentage: 0.9, minPosition: 0.5, difficulties: ["hard", "impossible"] },
     { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: assets.enemies.flyingGoomba, xPercentage: 0.9, minPosition: 0.5, difficulties: ["impossible"] },
-    { name: 'mushroom', id: 'mushroom', class: Mushroom, data: assets.enemies.mushroom, xPercentage: 0.49 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.1908, yPercentage: 0.75 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.2242, yPercentage: 0.75 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.2575, yPercentage: 0.75 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5898, yPercentage: 0.900 },
+    { name: 'bubbles', id: 'mushroom', class: Mushroom, data: assets.enemies.bubbles, xPercentage: 0.49 },
+    { name: 'dimonds', id: 'coin', class: Coin, data: assets.obstacles.dimonds, xPercentage: 0.1908, yPercentage: 0.75 },
+    { name: 'dimonds', id: 'coin', class: Coin, data: assets.obstacles.dimonds, xPercentage: 0.2242, yPercentage: 0.75 },
+    { name: 'dimonds', id: 'coin', class: Coin, data: assets.obstacles.dimonds, xPercentage: 0.2575, yPercentage: 0.75 },
+    { name: 'dimonds', id: 'coin', class: Coin, data: assets.obstacles.dimonds, xPercentage: 0.5898, yPercentage: 0.900 },
     { name: 'mario', id: 'player', class: PlayerHills, data: assets.players.mario },
-    { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.855 },
-    { name: 'loading', id: 'background', class: BackgroundTransitions, data: assets.transitions.loading },
+    { name: 'Chest', id: 'finishline', class: FinishLine, data: assets.obstacles.chest, xPercentage: 0.85, yPercentage: 0.82 },
+    { name: 'miniEnd', id: 'background', class: BackgroundTransitions, data: assets.transitions.miniEnd },
   ];
 
-  const GameSetHills = {
-    tag: 'Hills',
+  const GameSetterWater = {
+    tag: 'Water',
     assets: assets,
     objects: objects
   };
 
-export default GameSetHills;
+export default GameSetterWater;

@@ -3,7 +3,6 @@
 import GameEnv from './GameEnv.js';
 import GameLevel from './GameLevel.js';
 // To build GameLevels, each contains GameObjects from below imports
-import Background from './Background.js'
 import GameControl from './GameControl.js';
 import GameSet from './GameSet.js';
 import GameSetterStart from './GameSetterStart.js';

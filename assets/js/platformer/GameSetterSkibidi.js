@@ -8,7 +8,6 @@ import Laser from './Laser.js';
 import SkibidiToilet from './SkibidiToilet.js';
 import PlayerSkibidi from './PlayerSkibidi.js';
 import FinishLine from './FinishLine.js';
-import PlayerBaseOneD from './PlayerBaseOneD.js';
 
 const assets = {
     obstacles: {

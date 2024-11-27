@@ -1,6 +1,7 @@
 ## Deployment Information
+
 Change the Backend URL in GameEnv.  For a secure "https" connection use "wss" instead of ws
-platformer3x/assets/js/multiplayer/GameEnv.js
+platformer/assets/js/multiplayer/GameEnv.js
 
 ```nodejs
 static socket = io(`ws://${window.location.host.split(":")[0]}:3000`); 

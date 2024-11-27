@@ -1,5 +1,3 @@
-// GameSetHills.js Key objective is to define objects for a GameLevel
-import GameSet from './GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
 import Background from './Background.js'
 
@@ -10,7 +8,7 @@ const assets = {
   },
 };
 
-// Hills Game Level defintion...
+// Game Level defintion...
 const objects = [
   // GameObject(s), the order is important to z-index...
   { name: 'end', id: 'background', class: Background, data: assets.backgrounds.end },
