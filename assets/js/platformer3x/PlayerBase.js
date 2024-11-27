@@ -106,6 +106,11 @@ export class PlayerBase extends Character {
     updateJump() {
         // Jump height is 35% of the screen bottom, same as screen height
         this.setY(this.y - (this.bottom * 0.35)); 
+        if(this.movement.right) {
+            this.setX(this.x + this.speed)
+        } else {
+            this.setX(this.x-this.speed)
+        }
     }
 
     /**
