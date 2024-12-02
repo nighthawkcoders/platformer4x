@@ -14,9 +14,9 @@ const assets = {
   obstacles: {
     tube: { src: "/images/platformer/obstacles/tube.png",
     hitbox: { widthPercentage: 0.5, heightPercentage: 0.5},
-    width: 300,
-    height: 300,
-    scaleSize: 100,
+    width: 600,
+    height: 600,
+    scaleSize: 200,
     },
     tubeU: { src: "/images/platformer/obstacles/blue-tube-up.png",
     hitbox: { widthPercentage: 0.5, heightPercentage: 0.5},
