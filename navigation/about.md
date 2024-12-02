@@ -6,6 +6,7 @@ permalink: /about/
 
 Creators of Platformer 4.0x <br>
 Akhil - Scrum Master / dev <br>
+I used to live in Dallas before moving to San Diego in 2010. 
 William - Assistent Scrum Master / dev <br>
 I like dogs and cheez👍<br>
 Shay -intergrater / dev <br>
