@@ -22,6 +22,9 @@ image: /images/platformer/backgrounds/home.png
   
   <!--Audio for Jump oF player -->
   <audio id ="PlayerJump" src="{{site.baseurl}}/assets/audio/mario-jump.mp3" preload="auto"></audio>
+
+  <audio id ="kissmas" src="{{site.baseurl}}/assets/audio/kissmas.mp3" preload="auto"></audio>
+
   
   <!--Audio for death of player -->
   <audio id ="PlayerDeath" src="{{site.baseurl}}/assets/audio/MarioDeath.mp3" preload="auto"></audio>
