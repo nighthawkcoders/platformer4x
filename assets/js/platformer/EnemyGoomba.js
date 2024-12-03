@@ -68,12 +68,13 @@ export class Goomba extends Character {
 
          //Chance for Goomba to turn Gold
          if (["normal","hard"].includes(GameEnv.difficulty)) {
-            if (Math.random() < 0.00001) {
+            if (Math.random() >0.00001) {
                 this.canvas.style.filter = 'brightness(1000%)';
                 this.immune = 1;
             }
         }
-        
+        // If Goomba is Golden:
+        speed = 7
         //Immunize Goomba & Texture It
         if (GameEnv.difficulty === "hard") {
                 this.canvas.style.filter = "invert(100%)";
