@@ -191,7 +191,7 @@ export class PlayerBase extends Character {
                 }
                 break;
             case '1':
-                GameEnv.playSound("kissmas");
+                GameEnv.playSound("everlong");
                 break;
             default:
                 this.state.animation = 'idle';

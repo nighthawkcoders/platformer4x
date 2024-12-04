@@ -25,7 +25,8 @@ image: /images/platformer/backgrounds/home.png
 
   <audio id ="kissmas" src="{{site.baseurl}}/assets/audio/kissmas.mp3" preload="auto"></audio>
 
-  
+  <audio id ="everlong" src="{{site.baseurl}}/assets/audio/everlong.mp3" preload="auto"></audio>
+
   <!--Audio for death of player -->
   <audio id ="PlayerDeath" src="{{site.baseurl}}/assets/audio/MarioDeath.mp3" preload="auto"></audio>
   
