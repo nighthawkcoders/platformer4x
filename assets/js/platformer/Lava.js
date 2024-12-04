@@ -49,8 +49,8 @@ export class Lava extends GameObject {
                 this.timerElement.style.display = 'block'; // Initially hidden
                 this.warningSymbol.style.display = 'block'; // Show the warning symbol
             }
-            this.timerElement.innerText = `TIME UNTIL LAVA RISES: ${this.timeUntilRise / 1000}s`;
-        }, 1000);
+            this.timerElement.innerText = `TIME UNTIL LAVA RISES: ${this.timeUntilRise / 100}s`;
+        }, 100);
     }
 
     update() {
