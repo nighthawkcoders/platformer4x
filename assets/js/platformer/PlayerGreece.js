@@ -131,9 +131,9 @@ export class PlayerGreece extends PlayerBase {
                             }, 900);
                         }
                     } else if (GameEnv.difficulty === "easy" && this.collisionData.touchPoints.this.right) {
-                        this.x -= 10;
+                        this.x -= 20;
                     } else if (GameEnv.difficulty === "easy" && this.collisionData.touchPoints.this.left) {
-                       this.x += 10;
+                       this.x += 20;
                     }
                 }
                 break;
