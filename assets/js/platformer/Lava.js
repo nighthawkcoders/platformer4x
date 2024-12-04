@@ -60,7 +60,7 @@ export class Lava extends GameObject {
             const deltaTime = currentTime - this.lastUpdateTime;
 
             // Update the lava's position based on rising speed and delta time
-            this.islandY -= (this.risingSpeed * deltaTime) / 1000;
+            this.islandY -= (this.risingSpeed * deltaTime) / 10000;
 
             // Update last update time
             this.lastUpdateTime = currentTime;
