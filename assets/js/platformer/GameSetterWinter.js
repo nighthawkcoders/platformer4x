@@ -115,7 +115,7 @@ const assets = {
     miniHogwarts: { src: "/images/platformer/backgrounds/miniHogwarts.png"}, 
     space: { src: "/images/platformer/backgrounds/planet.jpg" },
     castles: { src: "/images/platformer/backgrounds/castles.png" },
-    winter: { src: "/images/platformer/backgrounds/winter.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
+    winter: { src: "/images/platformer/backgrounds/flowerBoy2.jpg", parallaxSpeed: 0.4, moveOnKeyAction: true },
     snow: { src: "/images/platformer/backgrounds/snowfall.png" },
     icewater: { src: "/images/platformer/backgrounds/icewater.png", parallaxSpeed: 0.4, moveOnKeyAction: true},
     narwhal: { src: "/images/platformer/backgrounds/narwhal.png", parallaxSpeed: 2 },
