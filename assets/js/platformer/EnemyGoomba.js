@@ -3,54 +3,47 @@ import GameEnv from './GameEnv.js';
 import GameControl from './GameControl.js';
 
 export class Goomba extends Character {
-    // constructors sets up Character object 
-    constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition) {
+    constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition, range = 300) {
         super(canvas, image, data);
 
-        // Unused but must be Defined
         this.name = name;
         this.y = yPercentage;
-
-        // Initial Position of Goomba
         this.x = xPercentage * GameEnv.innerWidth;
-
-        // Access in which a Goomba can travel    
-        this.minPosition = minPosition * GameEnv.innerWidth;
-        this.maxPosition = this.x + 0.4 * GameEnv.innerWidth; // Adjusted range to 40% of screen width
+        this.minPosition = this.x - range;
+        this.maxPosition = this.x + range;
 
         this.immune = 0;
 
-        // Define Speed of Enemy
-        if (["easy", "normal"].includes(GameEnv.difficulty)) {
-            this.speed = this.speed * Math.floor(Math.random() * 1.5 + 2);
-        } else if (GameEnv.difficulty === "hard") {
-            this.speed = this.speed * Math.floor(Math.random() * 3 + 3);
-        } else {
-            this.speed = this.speed * 5;
-        }
+        // Increased speed for Goomba
+        this.speed = 15;
+
+        // Movement delay between 1 and 5 seconds
+        this.movementDelay = Math.random() * 4000 + 1000;
+
+        this.startMovement();
+    }
+
+    startMovement() {
+        const move = () => {
+            if (this.speed !== 0) {
+                this.x += this.speed;
+
+                if (this.x <= this.minPosition || this.x >= this.maxPosition) {
+                    this.reverseDirection();
+                }
+            }
+            setTimeout(move, this.movementDelay);
+        };
+
+        move();
     }
 
     update() {
         super.update();
 
-        // Ensure Goomba keeps moving even if speed is 0
-        if (this.speed === 0) {
-            this.speed = 2; // Reset to a default speed if frozen
-        }
-
-        // Check for wall collisions
-        if (GameEnv.isCollidingWithWall(this)) {
-            this.speed = -this.speed; // Reverse direction upon hitting a wall
-        }
-
-        // Check for travel range boundaries
-        if (this.x <= this.minPosition || this.x >= this.maxPosition) {
-            this.speed = -this.speed; // Reverse direction at range boundaries
-        }
-
         // Random Event 2: Time Stop All Goombas
         if (GameControl.randomEventId === 2 && GameControl.randomEventState === 1) {
-            this.speed = 0; // Temporarily stop Goomba
+            this.speed = 0;
             if (this.name === "goombaSpecial") {
                 GameControl.endRandomEvent();
             }
@@ -62,22 +55,9 @@ export class Goomba extends Character {
             GameControl.endRandomEvent();
         }
 
-        // Every so often change direction
-        switch (GameEnv.difficulty) {
-            case "normal":
-                if (Math.random() < 0.5) this.speed = -this.speed;
-                break;
-            case "hard":
-                if (Math.random() < 0.01) this.speed = -this.speed;
-                break;
-            case "impossible":
-                if (Math.random() < 0.02) this.speed = -this.speed;
-                break;
-        }
-
         // Chance for Goomba to turn Gold
         if (["normal", "hard"].includes(GameEnv.difficulty)) {
-            if (Math.random() < 0.01) {
+            if (Math.random() < 0.00001) {
                 this.canvas.style.filter = 'brightness(1000%)';
                 this.immune = 1;
             }
@@ -93,69 +73,81 @@ export class Goomba extends Character {
             this.immune = 1;
         }
 
-        // Move the enemy
-        this.x -= this.speed;
-
-        // Randomly trigger a jump (increased probability)
-        if (Math.random() < 0.1) { // Adjust the probability as needed
+        // Randomly trigger a jump
+        if (Math.random() < 0.1) {
             this.jump();
         }
+
         this.playerBottomCollision = false;
     }
 
-    // Player action on collisions
+    reverseDirection() {
+        this.speed = -this.speed;
+    }
+
     collisionAction() {
-        if (this.collisionData.touchPoints.other.id === "finishline") {
-            if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
-                this.speed = -this.speed;
+        const other = this.collisionData.touchPoints.other;
+
+        if (other.id === "finishline") {
+            if (other.left || other.right) {
+                this.reverseDirection();
             }
         }
 
-        if (this.collisionData.touchPoints.other.id === "player") {
+        if (other.id === "wall") {
+            // Reverse direction upon hitting a wall
+            if (other.left || other.right) {
+                this.reverseDirection();
+            }
+        }
+
+        if (other.id === "player") {
             // Collision: Top of Goomba with Bottom of Player
-            if (this.collisionData.touchPoints.other.bottom && this.immune == 0) {
-                GameEnv.invincible = true;
+            if (other.bottom && this.immune === 0) {
                 GameEnv.goombaBounce = true;
                 this.explode();
                 GameEnv.playSound("goombaDeath");
 
-                setTimeout((function () {
-                    GameEnv.invincible = false;
+                setTimeout(() => {
                     this.destroy();
-                }).bind(this), 1500);
-
-                // Set a timeout to make GameEnv.invincible false after 2000 milliseconds (2 seconds)
-                setTimeout(function () {
-                    this.destroy();
-                    GameEnv.invincible = false;
-                }, 2000);
+                }, 1500);
+            } else {
+                // Player hit Goomba from the side or below: Trigger death
+                this.triggerPlayerDeath();
             }
         }
 
-        if (this.collisionData.touchPoints.other.id === "goomba") {
-            if (GameEnv.difficulty !== "impossible" && (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right)) {
-                this.speed = -this.speed;
+        if (other.id === "goomba") {
+            if (GameEnv.difficulty !== "impossible" && (other.left || other.right)) {
+                this.reverseDirection();
             }
         }
-        if (this.collisionData.touchPoints.other.id === "jumpPlatform") {
-            if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
-                this.speed = -this.speed;
+
+        if (other.id === "jumpPlatform") {
+            if (other.left || other.right) {
+                this.reverseDirection();
             }
         }
     }
 
-    // Define the explosion action
+    triggerPlayerDeath() {
+        // Ensure player death logic does not block the game
+        if (typeof GameEnv.triggerPlayerDeath === "function") {
+            GameEnv.triggerPlayerDeath();
+        }
+    }
+
     explode() {
-        const shards = 10; // number of shards
+        const shards = 10;
         for (let i = 0; i < shards; i++) {
             const shard = document.createElement('div');
             shard.style.position = 'absolute';
             shard.style.width = '5px';
             shard.style.height = '5px';
-            shard.style.backgroundColor = 'brown'; // color of the shards
+            shard.style.backgroundColor = 'brown';
             shard.style.left = `${this.x}px`;
             shard.style.top = `${this.y}px`;
-            this.canvas.parentElement.appendChild(shard); // add shard to the canvas container
+            this.canvas.parentElement.appendChild(shard);
 
             const angle = Math.random() * 2 * Math.PI;
             const speed = Math.random() * 5 + 2;
@@ -163,14 +155,17 @@ export class Goomba extends Character {
             const shardX = Math.cos(angle) * speed;
             const shardY = Math.sin(angle) * speed;
 
-            shard.animate([
-                { transform: 'translate(0, 0)', opacity: 1 },
-                { transform: `translate(${shardX * 20}px, ${shardY * 20}px)`, opacity: 0 }
-            ], {
-                duration: 1000,
-                easing: 'ease-out',
-                fill: 'forwards'
-            });
+            shard.animate(
+                [
+                    { transform: 'translate(0, 0)', opacity: 1 },
+                    { transform: `translate(${shardX * 20}px, ${shardY * 20}px)`, opacity: 0 },
+                ],
+                {
+                    duration: 1000,
+                    easing: 'ease-out',
+                    fill: 'forwards',
+                }
+            );
 
             setTimeout(() => {
                 shard.remove();
@@ -179,10 +174,8 @@ export class Goomba extends Character {
         this.canvas.style.opacity = 0;
     }
 
-    // Define the jump action
     jump() {
         // Implement your jump logic here
-        // For example, change the y position or apply a vertical velocity
     }
 }
 

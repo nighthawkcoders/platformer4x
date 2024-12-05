@@ -22,7 +22,6 @@
  * - call GameEnv.update() to update, serialize, and draw game objects
  * - call GameEnv.destroy() to destroy game objects
  */
-
 export class GameEnv {
 
     /**
@@ -92,15 +91,13 @@ export class GameEnv {
 
     static claimedCoinIds = []
 
-    // Added property for walls
-    static walls = []; // Array to store wall objects
-
+    
     // Make the constructor throws an error, or effectively make it a private constructor.
     constructor() {
         throw new Error('GameEnv is a static class and cannot be instantiated.');
     }
   
-    /**
+     /**
      * Setter for Top position, called by initialize in GameEnv
      * @static
      */
@@ -238,26 +235,6 @@ export class GameEnv {
                 GameEnv.backgroundDirection = 0;
                 break;
         }
-    }
-
-    // Add a wall to the environment
-    static addWall(wall) {
-        GameEnv.walls.push(wall);
-    }
-
-    // Check if a Goomba is colliding with any wall
-    static isCollidingWithWall(goomba) {
-        for (const wall of GameEnv.walls) {
-            if (
-                goomba.x < wall.x + wall.width &&
-                goomba.x + goomba.canvasWidth > wall.x &&
-                goomba.y < wall.y + wall.height &&
-                goomba.y + goomba.canvasHeight > wall.y
-            ) {
-                return true; // Collision detected
-            }
-        }
-        return false; // No collision
     }
   }
   
