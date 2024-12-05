@@ -1,8 +1,12 @@
 import Background from './Background.js';
+import GameEnv from './GameEnv.js';
 
 export class BackgroundSnow extends Background {
     constructor(canvas, image, data) {
         super(canvas, image, data);
+
+        // Start the background music in loop
+        GameEnv.loopSound("everlong");
 
         this.parallaxSpeed = 0.3; // Speed for vertical parallax scrolling
     }
