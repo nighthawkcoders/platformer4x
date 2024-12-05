@@ -22,7 +22,7 @@ image: /images/platformer/backgrounds/home.png
   
   <!--Audio for Jump oF player -->
   <audio id ="PlayerJump" src="{{site.baseurl}}/assets/audio/mario-jump.mp3" preload="auto"></audio>
-
+  <!-- Audio for Background Music -->
   <audio id ="kissmas" src="{{site.baseurl}}/assets/audio/kissmas.mp3" preload="auto"></audio>
 
   <audio id ="everlong" src="{{site.baseurl}}/assets/audio/everlong.mp3" preload="auto"></audio>
