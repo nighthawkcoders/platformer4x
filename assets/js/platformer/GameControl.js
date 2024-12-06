@@ -213,6 +213,9 @@ const GameControl = {
         // Destroy existing game objects
         GameEnv.destroy();
 
+        // Stop background music
+        GameEnv.stopAllSounds();
+
         // Load GameLevel objects
         if (GameEnv.currentLevel !== newLevel) {
             GameEnv.claimedCoinIds = [];
