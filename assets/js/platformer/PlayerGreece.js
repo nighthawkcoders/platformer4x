@@ -38,9 +38,9 @@ export class PlayerGreece extends PlayerBase {
         if (GameEnv.difficulty === "easy") {
             jumpHeightFactor = 0.91;
         } else if (GameEnv.difficulty === "normal") {
-            jumpHeightFactor = 0.61;
+            jumpHeightFactor = 0.64;
         } else {
-            jumpHeightFactor = 0.41;
+            jumpHeightFactor = 0.43;
         }
         this.setY(this.y - (this.bottom * jumpHeightFactor));
     }
