@@ -34,6 +34,9 @@ image: /images/platformer/backgrounds/home.png
   <!--Audio for Everlong by Foo Fighters (Winter) -->
   <audio id="everlong" src="{{site.baseurl}}/assets/audio/everlong.mp3" preload="auto"></audio>
 
+  <!--Audio for Everlong by Foo Fighters (Winter) -->
+  <audio id="regicide" src="{{site.baseurl}}/assets/audio/regicide.mp3" preload="auto"></audio>
+
 <!--Audio for when it hits top of platform -->
   <audio id ="stomp" src="{{site.baseurl}}/assets/audio/stomp2-93279.mp3" preload="auto"></audio>
 

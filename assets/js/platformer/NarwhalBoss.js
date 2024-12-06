@@ -9,7 +9,7 @@ export class NarwhalBoss extends Enemy {
     constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition) {
         super(canvas, image, data, xPercentage, yPercentage, name, minPosition);
 
-        GameEnv.loopSound("everlong");
+        GameEnv.loopSound("regicide");
 
         this.storeSpeed = this.speed;
 
