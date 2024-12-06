@@ -8,18 +8,18 @@ export class BackgroundSnow extends Background {
         // Start the background music in loop
         GameEnv.loopSound('everlong');
 
-        this.parallaxSpeed = 0.3; // Speed for vertical parallax scrolling
+        //this.parallaxSpeed = 0.3; // Speed for vertical parallax scrolling
     }
 
     // Update method to handle vertical scrolling
     update() {
-        this.y += this.parallaxSpeed; // Move vertically based on parallax speed
+        //this.y += this.parallaxSpeed; // Move vertically based on parallax speed
         super.update();
 
         // Reset the position once the entire image has scrolled through the canvas
-        if (this.y >= this.image.height) {
-            this.y -= this.image.height; // Reset to the top of the image
-        }
+        //if (this.y >= this.image.height) {
+        //    this.y -= this.image.height; // Reset to the top of the image
+       // }
     }
 
     // Draw method to render the background image vertically
