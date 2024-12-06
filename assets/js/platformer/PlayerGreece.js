@@ -142,7 +142,7 @@ export class PlayerGreece extends PlayerBase {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (this.state.isDying == false) {
                             this.setY(this.y - (this.bottom * 0.6));
-                            this.currentHp -= 33;
+                            this.currentHp -= 50;
                             this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
                             if(this.currentHp == 0){
                                 this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
