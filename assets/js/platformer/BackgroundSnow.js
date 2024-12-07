@@ -11,6 +11,7 @@ export class BackgroundSnow extends Background {
         //this.parallaxSpeed = 0.3; // Speed for vertical parallax scrolling
     }
 
+    
     // Update method to handle vertical scrolling
     update() {
         //this.y += this.parallaxSpeed; // Move vertically based on parallax speed
@@ -21,9 +22,11 @@ export class BackgroundSnow extends Background {
         //    this.y -= this.image.height; // Reset to the top of the image
        // }
     }
+    
 
     // Draw method to render the background image vertically
     draw() {
+        /*
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         // Calculate the vertical positions for drawing
@@ -35,6 +38,7 @@ export class BackgroundSnow extends Background {
 
         // Draw the second image above the first one for seamless scrolling
         this.ctx.drawImage(this.image, 0, secondImageY, this.canvas.width, this.image.height);
+        */
 
         super.draw();
     }

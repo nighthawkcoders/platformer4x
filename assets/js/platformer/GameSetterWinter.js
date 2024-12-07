@@ -443,7 +443,7 @@ const assets = {
   // Hills Game Level defintion...
   const objects = [
     // GameObject(s), the order is important to z-index...
-    { name: 'winter', id: 'background', class: Background, data: assets.backgrounds.winter },
+    { name: 'winter', id: 'background', class: BackgroundSnow, data: assets.backgrounds.winter },
     { name: 'snow', id: 'background', class: BackgroundSnow, data: assets.backgrounds.snow },
     { name: 'snowyfloor', id: 'platform', class: Platform, data: assets.platforms.snowyfloor },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.snowywood, xPercentage: 0.2, yPercentage: 0.82 },
