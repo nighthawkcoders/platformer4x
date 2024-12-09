@@ -37,10 +37,16 @@ image: /images/platformer/backgrounds/home.png
   <!--Audio for EARFQUAKE by Tyler the Creator-->
   <audio id="EARFQUAKE" src="{{site.baseurl}}/assets/audio/EARFQUAKE.mp3" preload="auto"></audio>
 
-  <!--Audio for Darling, I by Tyler the Creator-->
-  <audio id="Darling-I" src="{{site.baseurl}}/assets/audio/Darling-I.mp3" preload="auto"></audio>
+  <!--Audio for Noid by Tyler the Creator-->
+  <audio id="Noid" src="{{site.baseurl}}/assets/audio/Noid.mp3" preload="auto"></audio>
 
-  <!--Audio for Everlong by Foo Fighters (Winter) -->
+<!--Audio for See You Again by Tyler the Creator feat. Kalis Uchis-->
+  <audio id="SeeYouAgain" src="{{site.baseurl}}/assets/audio/SeeYouAgain.mp3" preload="auto"></audio>
+
+<!--Audio for See You Again by Tyler the Creator feat. YoungBoy Never Broke Again & Ty Dolla $ign-->
+  <audio id="WUSYANAME" src="{{site.baseurl}}/assets/audio/WUSYANAME.mp3" preload="auto"></audio>
+
+  <!--Audio for Regicide by Michael Salvatori & Various Artists (Winter) -->
   <audio id="regicide" src="{{site.baseurl}}/assets/audio/regicide.mp3" preload="auto"></audio>
 
 <!--Audio for when it hits top of platform -->

@@ -11,13 +11,19 @@ export class BackgroundSnow extends Background {
             return Math.floor(Math.random() * max);
           }
 
-        const soundVar = getRandomInt(2);
+        const soundVar = getRandomInt(4);
         
         if (soundVar === 0){
             GameEnv.loopSound('EARFQUAKE');
         }
         else if (soundVar === 1){
-            GameEnv.loopSound('Darling-I');
+            GameEnv.loopSound('Noid');
+        }
+        else if (soundVar === 2){
+            GameEnv.loopSound('SeeYouAgain');
+        }
+        else if (soundVar === 3){
+            GameEnv.loopSound('WUSYANAME');
         }
 
         this.parallaxSpeed = 0.3; // Speed for vertical parallax scrolling
