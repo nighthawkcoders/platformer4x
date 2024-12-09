@@ -39,7 +39,7 @@ export class Lava extends GameObject {
 
     startTimer() {
         setInterval(() => {
-            this.timeUntilRise -= 100;
+            this.timeUntilRise -= 500;
             if (this.timeUntilRise <= 0) {
                 this.timeUntilRise = 0;
                 this.initialDelayElapsed = true; // Set the flag to true when initial delay is over
