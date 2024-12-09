@@ -2,6 +2,7 @@
 // To build GameLevels, each contains GameObjects from below imports
 //import BackgroundParallax from './BackgroundParallax.js';
 import BackgroundTransitions from './BackgroundTransitions.js';
+import BackgroundSnowfall from './BackgroundSnowfall.js';
 import BackgroundSnow from './BackgroundSnow.js';
 import Platform from './Platform.js';
 import PlayerWinter from './PlayerWinter.js';
@@ -116,7 +117,7 @@ const assets = {
     space: { src: "/images/platformer/backgrounds/planet.jpg" },
     castles: { src: "/images/platformer/backgrounds/castles.png" },
     winter: { src: "/images/platformer/backgrounds/flowerBoy3.webp" },
-    snow: { src: "/images/platformer/backgrounds/snowfall.png" },
+    snow: { src: "/images/platformer/backgrounds/beefall.png" },
     icewater: { src: "/images/platformer/backgrounds/icewater.png" },
     narwhal: { src: "/images/platformer/backgrounds/narwhal.png", parallaxSpeed: 2 },
     mini: { src: "/images/platformer/backgrounds/mini.png" },
@@ -444,7 +445,7 @@ const assets = {
   const objects = [
     // GameObject(s), the order is important to z-index...
     { name: 'winter', id: 'background', class: BackgroundSnow, data: assets.backgrounds.winter },
-    { name: 'snow', id: 'background', class: BackgroundSnow, data: assets.backgrounds.snow },
+    { name: 'snowfall', id: 'background', class: BackgroundSnowfall, data: assets.backgrounds.snow },
     { name: 'snowyfloor', id: 'platform', class: Platform, data: assets.platforms.snowyfloor },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.snowywood, xPercentage: 0.2, yPercentage: 0.82 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.snowywood, xPercentage: 0.2368, yPercentage: 0.82 },
