@@ -33,6 +33,12 @@ image: /images/platformer/backgrounds/home.png
 
   <!--Audio for Everlong by Foo Fighters (Winter) -->
   <audio id="everlong" src="{{site.baseurl}}/assets/audio/everlong.mp3" preload="auto"></audio>
+  
+  <!--Audio for EARFQUAKE by Tyler the Creator-->
+  <audio id="EARFQUAKE" src="{{site.baseurl}}/assets/audio/EARFQUAKE.mp3" preload="auto"></audio>
+
+  <!--Audio for Darling, I by Tyler the Creator-->
+  <audio id="Darling-I" src="{{site.baseurl}}/assets/audio/Darling-I.mp3" preload="auto"></audio>
 
   <!--Audio for Everlong by Foo Fighters (Winter) -->
   <audio id="regicide" src="{{site.baseurl}}/assets/audio/regicide.mp3" preload="auto"></audio>
