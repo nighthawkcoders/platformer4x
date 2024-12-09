@@ -117,7 +117,7 @@ const assets = {
     space: { src: "/images/platformer/backgrounds/planet.jpg" },
     castles: { src: "/images/platformer/backgrounds/castles.png" },
     winter: { src: "/images/platformer/backgrounds/flowerBoy3.webp" },
-    snow: { src: "/images/platformer/backgrounds/beefall.png" },
+    snow: { src: "/images/platformer/backgrounds/beefall (2).png" },
     icewater: { src: "/images/platformer/backgrounds/icewater.png" },
     narwhal: { src: "/images/platformer/backgrounds/narwhal.png", parallaxSpeed: 2 },
     mini: { src: "/images/platformer/backgrounds/mini.png" },
