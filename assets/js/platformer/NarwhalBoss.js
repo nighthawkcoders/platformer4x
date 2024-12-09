@@ -9,6 +9,8 @@ export class NarwhalBoss extends Enemy {
     constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition) {
         super(canvas, image, data, xPercentage, yPercentage, name, minPosition);
 
+        GameEnv.loopSound("regicide");
+
         this.storeSpeed = this.speed;
 
         this.animationSpeed = data?.animationSpeed || 1; //higher "animationSpeed" means slower animation

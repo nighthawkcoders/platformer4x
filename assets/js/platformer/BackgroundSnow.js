@@ -6,7 +6,25 @@ export class BackgroundSnow extends Background {
         super(canvas, image, data);
 
         // Start the background music in loop
-        GameEnv.loopSound('everlong');
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+
+        const soundVar = getRandomInt(4);
+        
+        if (soundVar === 0){
+            GameEnv.loopSound('EARFQUAKE');
+        }
+        else if (soundVar === 1){
+            GameEnv.loopSound('Noid');
+        }
+        else if (soundVar === 2){
+            GameEnv.loopSound('SeeYouAgain');
+        }
+        else if (soundVar === 3){
+            GameEnv.loopSound('WUSYANAME');
+        }
 
         //this.parallaxSpeed = 0.3; // Speed for vertical parallax scrolling
     }
