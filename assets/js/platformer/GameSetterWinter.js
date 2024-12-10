@@ -75,7 +75,7 @@ const assets = {
     narwhalfloor: { src: "/images/platformer/platforms/narwhalfloor.png" },
     sand: { src: "/images/platformer/platforms/sand.png" },
     sandblock: {src:"/images/platformer/platforms/sandblock.png"},
-    snowyfloor: { src: "/images/platformer/platforms/snowyfloor.png" },
+    snowyfloor: { src: "/images/platformer/platforms/grass.png" },
     snowywood: { src: "/images/platformer/platforms/snowywood.png" },
     alien: { src: "/images/platformer/platforms/alien.png" },
     bricks: { src: "/images/platformer/platforms/brick_wall.png" },
