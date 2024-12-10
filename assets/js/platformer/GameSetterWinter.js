@@ -34,7 +34,7 @@ const assets = {
     scaleSize: 100,
     },
     cabin: {
-      src: "/images/platformer/obstacles/cabin.png",
+      src: "/images/platformer/obstacles/mugshot.png",
       hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
       width: 300,
       height: 300,
@@ -62,7 +62,7 @@ const assets = {
       scaleSize: 120,
     },
     coin: { src: "/images/platformer/obstacles/coin.png" },
-    snowflake: { src: "/images/platformer/obstacles/snowflake.png" },
+    snowflake: { src: "/images/platformer/obstacles/oddfuture.png" },
     star: { src: "/images/platformer/obstacles/star.png" },
     snitch: { src: "/images/platformer/obstacles/snitch.png" },
     whompingwillow: {
