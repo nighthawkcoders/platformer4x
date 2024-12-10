@@ -1,21 +1,20 @@
 import Character from './Character.js';
 import GameEnv from './GameEnv.js';
 import GameControl from './GameControl.js';
-import Goomba from './EnemyGoomba.js';
 
-export class Fish extends Goomba {
-    // constructor sets up Character object 
-    constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition) {
+export class Fishies extends Character {
+    // Constructor sets up Character object 
+    constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition){
         super(canvas, image, data);
 
         // Unused but must be Defined
         this.name = name;
         this.y = yPercentage;
 
-        // Initial Position of Fish
+        // Initial Position of Fishies
         this.x = xPercentage * GameEnv.innerWidth;
 
-        // Access in which a Fish can travel    
+        // Access in which a Fishies can travel    
         this.minPosition = minPosition * GameEnv.innerWidth;
         this.maxPosition = this.x + xPercentage * GameEnv.innerWidth;
 
@@ -33,29 +32,29 @@ export class Fish extends Goomba {
 
     update() {
         super.update();
-
+        
         // Check for boundaries
         if (this.x <= this.minPosition || (this.x + this.canvasWidth >= this.maxPosition)) {
             this.speed = -this.speed;
         };
 
-        // Random Event 2: Time Stop All Fish
+        // Random Event 2: Time Stop All Fishies
         if (GameControl.randomEventId === 2 && GameControl.randomEventState === 1) {
             this.speed = 0;
-            if (this.name === "fishSpecial") {
+            if (this.name === "fishiesSpecial") {
                 GameControl.endRandomEvent();
             };
         };
 
-        // Random Event 3: Kill a Random Fish
-        // Whichever Fish receives this message first will die, then end the event so the other Fish don't die
+        // Random Event 3: Kill a Random Fishies
+        // Whichever Fishies receives this message first will die, then end the event so the others don't die
         if (GameControl.randomEventId === 3 && GameControl.randomEventState === 1) {
             this.destroy();
             GameControl.endRandomEvent();
         };
 
         // Every so often change direction
-        switch (GameEnv.difficulty) {
+        switch(GameEnv.difficulty) {
             case "normal":
                 if (Math.random() < 0.005) this.speed = -this.speed;
                 break;
@@ -67,19 +66,19 @@ export class Fish extends Goomba {
                 break;
         }
 
-        // Chance for Fish to turn Gold
-        if (["normal", "hard"].includes(GameEnv.difficulty)) {
+         // Chance for Fishies to turn Gold
+         if (["normal","hard"].includes(GameEnv.difficulty)) {
             if (Math.random() < 0.00001) {
                 this.canvas.style.filter = 'brightness(1000%)';
                 this.immune = 1;
             }
         }
-
-        // Immunize Fish & Texture It
+        
+        // Immunize Fishies & Texture It
         if (GameEnv.difficulty === "hard") {
-            this.canvas.style.filter = "invert(100%)";
-            this.canvas.style.scale = 1.25;
-            this.immune = 1;
+                this.canvas.style.filter = "invert(100%)";
+                this.canvas.style.scale = 1.25;
+                this.immune = 1;
         } else if (GameEnv.difficulty === "impossible") {
             this.canvas.style.filter = 'brightness(1000%)';
             this.immune = 1;
@@ -87,58 +86,55 @@ export class Fish extends Goomba {
 
         // Move the enemy
         this.x -= this.speed;
-
         // Randomly trigger a jump (increased probability)
         if (Math.random() < 0.1) { // Adjust the probability as needed
             this.jump();
         }
         this.playerBottomCollision = false;
     }
-
+    
     // Player action on collisions
     collisionAction() {
         if (this.collisionData.touchPoints.other.id === "finishline") {
             if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
-                this.speed = -this.speed;
+                this.speed = -this.speed;            
             }
         }
 
         if (this.collisionData.touchPoints.other.id === "player") {
-            // Collision: Top of Fish with Bottom of Player
+            // Collision: Top of Fishies with Bottom of Player
             if (this.collisionData.touchPoints.other.bottom && this.immune == 0) {
                 GameEnv.invincible = true;
-                GameEnv.fishBounce = true;
-                this.explode();
-                GameEnv.playSound("fishDeath");
+                GameEnv.fishiesBounce = true;
+                this.explode()
+                GameEnv.playSound("fishiesDeath");
 
-                setTimeout((function () {
+                setTimeout((function() {
                     GameEnv.invincible = false;
                     this.destroy();
                 }).bind(this), 1500);
 
                 // Set a timeout to make GameEnv.invincible false after 2000 milliseconds (2 seconds)
                 setTimeout(function () {
-                    this.destroy();
-                    GameEnv.invincible = false;
+                this.destroy();
+                GameEnv.invincible = false;
                 }, 2000);
             }
         }
 
-        if (this.collisionData.touchPoints.other.id === "fish") {
+        if (this.collisionData.touchPoints.other.id === "fishies") {
             if (GameEnv.difficulty !== "impossible" && (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right)) {
-                this.speed = -this.speed;
+                this.speed = -this.speed;      
             }
         }
-
         if (this.collisionData.touchPoints.other.id === "jumpPlatform") {
             if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
-                this.speed = -this.speed;
+                this.speed = -this.speed;            
             }
         }
     }
-
-    // Define the explosion action
-    explode() {
+     // Define the explosion action
+     explode() {
         const shards = 10; // number of shards
         for (let i = 0; i < shards; i++) {
             const shard = document.createElement('div');
@@ -179,4 +175,4 @@ export class Fish extends Goomba {
     }
 }
 
-export default Fish;
+export default Fishies;
