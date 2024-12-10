@@ -18,7 +18,7 @@ import FinishLine from './FinishLine.js';
 const assets = {  
     obstacles: {
       chest: {
-        src: "/images/platformer/obstacles/Chest.png",
+        src: "/images/platformer/sprite/treasure.png",
         hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
         width: 300,
         height: 300,
