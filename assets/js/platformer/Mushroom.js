@@ -72,9 +72,9 @@ export class Mushroom extends Character {
                 // Apply speed boost to player here
                 const player = GameEnv.player;
                 if (player) {
-                    player.speed *= 2; // Double the player's speed
+                    player.speed *= 1.2; // Double the player's speed
                     setTimeout(() => {
-                        player.speed /= 2; // Reset speed after 5 seconds
+                        player.speed /= 1.2; // Reset speed after 5 seconds
                     }, 5000); // Duration of the boost
                 }
                 setTimeout((function() {
