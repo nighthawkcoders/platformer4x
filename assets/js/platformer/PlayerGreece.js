@@ -25,8 +25,8 @@ export class PlayerGreece extends PlayerBase {
         this.timer = false;
         GameEnv.invincible = false; // Player is not invincible
         //Hp Bar
-        this.maxHp = 99; // Maximum health points
-        this.currentHp = 99; // Current health points
+        this.maxHp = 70; // Maximum health points
+        this.currentHp = 70; // Current health points
         this.hpBar = new hpBar(100, 15, this.canvasWidth, this.canvasHeight, this.maxHp, this.currentHp, this.x, this.y)
     }
     /**
