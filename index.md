@@ -121,15 +121,15 @@ image: /images/platformer/backgrounds/home.png
       */
   
       // Setup game data, the objects and levels
-      GameSetup.initLevels("{{site.baseurl}}");   
+      GameSetup.initLevels("{{site.baseurl}}");
       /* 
        * ==========================================
        * ========== Game Control ==================
        * ==========================================
        * Game Control starts the game loop and activates game objects
        * 1.) GameControl cycles through GameLevels
-       * 2.) Each GameLevel is on a looping timer, called within the game loop 
-       * 3.) The game loop allows the game player (user), to interact with the game objects 
+       * 2.) Each GameLevel is on a looping timer, called within the game loop
+       * 3.) The game loop allows the game player (user), to interact with the game objects
        * 4.) A timer (or score) tracks the time of user interaction within the game
        * ==========================================
       */
@@ -137,12 +137,12 @@ image: /images/platformer/backgrounds/home.png
       // Start the PRIMARY game loop
      GameControl.gameLoop();
   
-      /* 
+      /*
       * ==========================================
       * ========== Settings Control ==============
       * ==========================================
       * Settings Control provides the ability to select game level and change game settings
-      * 1.) SettingsControl must be after GameControl, it depends on GameLevels 
+      * 1.) SettingsControl must be after GameControl, it depends on GameLevels
       * 2.) GameControl extends and implements LocalStorage to support the persistence of user data
       * 3.) Modifications can be made to User ID, GameSpeed, Gravity, and Invert(ing) screen color
       * ==========================================
@@ -150,10 +150,13 @@ image: /images/platformer/backgrounds/home.png
   
       // Construct settings sidebar, MVC variable paradigm, and async events to trigger user interaction
       SettingsControl.initialize();
+
+      // Added by students, should be factored into GameControl or SettingsControl
       Leaderboard.initializeLeaderboard();
       startCutstory();
       RandomEvent();
-      /* 
+
+      /*
        * ==========================================
        *  ========== Event / Listeners =============
        *  ==========================================
