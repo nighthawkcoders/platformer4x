@@ -13,7 +13,7 @@ import GameControl from './GameControl.js';
  * @extends Character
  */
 export class PlayerBase extends Character {
-    /**
+    /**s
      * Initial environment of the player.
      * @property {string} collision - The current object the player is interacting with (e.g., 'floor', 'wall', 'platform').
      * @property {Array} collisions - The collisions that the player has had.

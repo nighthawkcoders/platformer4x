@@ -82,7 +82,7 @@ export class Mushroom extends Character {
             // Collision: Top of Goomba with Bottom of Player
             //console.log(this.collisionData.touchPoints.other.bottom + 'bottom')
             //console.log(this.collisionData.touchPoints.other.top + "top")
-            //console.log(this.collisionData.touchPoints.other.right + "right")
+            //console.log(this.col lisionData.touchPoints.other.right + "right")
             //console.log(this.collisionData.touchPoints.other.left + "left")
             if (this.collisionData.touchPoints.other.bottom && this.immune == 0) {
                 GameEnv.invincible = true;
