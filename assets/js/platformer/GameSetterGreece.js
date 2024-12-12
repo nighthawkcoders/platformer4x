@@ -57,25 +57,25 @@ const assets = {
   players: {
     knight: {
       src: "/images/platformer/sprites/scout_sprite.png",
-      width: 53,
-      height: 60,
-      scaleSize: 50,
-      speedRatio: 0.7,
+      width: 63.25,
+      height: 66.66,
+      scaleSize: 80,
+      speedRatio: 1,
       idle: {
-        left: { row: 0, frames: 1 },
-        right: { row: 1, frames: 1 },
+        left: { row: 1, frames: 2 },
+        right: { row: 2, frames: 2 },
       },
       walk: {
-        left: { row: 0, frames: 4 },
-        right: { row: 1, frames: 4 },
+        left: { row: 1, frames: 2 },
+        right: { row: 2, frames: 2 },
       },
       run: {
-        left: { row: 0, frames: 4 },
-        right: { row: 1, frames: 4},
+        left: { row: 1, frames: 2 },
+        right: { row: 2, frames: 2},
       },
       jump: {
-        left: { row: 0, frames: 1 },
-        right: { row: 1, frames: 1 },
+        left: { row: 1, frames: 2 },
+        right: { row: 1, frames: 2 },
       },
       hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
     }, 

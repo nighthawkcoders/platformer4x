@@ -25,8 +25,8 @@ export class PlayerGreece extends PlayerBase {
         this.timer = false;
         GameEnv.invincible = false; // Player is not invincible
         //Hp Bar
-        this.maxHp = 99; // Maximum health points
-        this.currentHp = 99; // Current health points
+        this.maxHp = 70; // Maximum health points
+        this.currentHp = 70; // Current health points
         this.hpBar = new hpBar(100, 15, this.canvasWidth, this.canvasHeight, this.maxHp, this.currentHp, this.x, this.y)
     }
     /**
@@ -142,7 +142,7 @@ export class PlayerGreece extends PlayerBase {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (this.state.isDying == false) {
                             this.setY(this.y - (this.bottom * 0.6));
-                            this.currentHp -= 50;
+                            this.currentHp -= 60;
                             this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
                             if(this.currentHp == 0){
                                 this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
