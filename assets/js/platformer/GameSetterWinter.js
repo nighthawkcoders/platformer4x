@@ -483,8 +483,8 @@ const assets = {
     { name: 'snowman', id: 'snowman', class: Snowman, data: assets.enemies.Snowman, xPercentage: 0.35, minPosition: 0.1, difficulties: ["normal", "hard", "impossible"] },
     { name: 'snowman', id: 'snowman', class: Snowman, data: assets.enemies.Snowman, xPercentage: 0.5, minPosition: 0.1, difficulties: ["normal", "hard", "impossible"] },
     { name: 'mario', id: 'player', class: PlayerWinter, data: assets.players.whitemario },
-    { name: 'cabin', id: 'finishline', class: FinishLine, data: assets.obstacles.cabin, xPercentage: 0.85, yPercentage: 0.795 },
-    { name: 'tubeU', id: 'minifinishline', class: FinishLine, data: assets.obstacles.tubeU, xPercentage: 0.675, yPercentage: 0.9 },
+    { name: 'cabin', id: 'finishline', class: FinishLine, data: assets.obstacles.cabin, xPercentage: 0.85, yPercentage: 0.775 },
+    { name: 'tubeU', id: 'minifinishline', class: FinishLine, data: assets.obstacles.tubeU, xPercentage: 0.675, yPercentage: 0.8615 },
     { name: 'quidditchEnd', id: 'background', class: BackgroundTransitions, data: assets.transitions.quidditchEnd },
   ];
 
