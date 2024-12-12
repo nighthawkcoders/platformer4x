@@ -8,7 +8,7 @@ export class Lava extends GameObject {
         this.islandX = xPercentage * GameEnv.innerWidth;
         this.islandY = yPercentage * GameEnv.innerHeight; // Initialize islandY with a pixel value
         this.initialDelay = 5000; // 5 seconds delay
-        this.risingSpeed = 60; // Adjust the rising speed as needed       
+        this.risingSpeed = 65; // Adjust the rising speed as needed       
         this.lastUpdateTime = Date.now(); // Initialize last update time to current time
         this.timeUntilRise = this.initialDelay; // Time until lava rises
         this.timerElement = document.createElement('div'); // Create a timer element
@@ -39,7 +39,7 @@ export class Lava extends GameObject {
 
     startTimer() {
         setInterval(() => {
-            this.timeUntilRise -= 110000000;
+            this.timeUntilRise -= 1500;
             if (this.timeUntilRise <= 0) {
                 this.timeUntilRise = 0;
                 this.initialDelayElapsed = true; // Set the flag to true when initial delay is over
