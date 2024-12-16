@@ -15,11 +15,11 @@ import BlockPlatform from './BlockPlatform.js';
 // Define the GameSetup object literal
 const assets = {  
     obstacles: {
-      tube: { src: "/images/platformer/obstacles/tube.png",
+      tube: { src: "/images/platformer/obstacles/reddoor.png",
       hitbox: { widthPercentage: 0.5, heightPercentage: 0.5},
-      width: 300,
-      height: 300,
-      scaleSize: 100,
+      width: 225,
+      height: 225,
+      scaleSize: 200,
       },
       coin: { src: "/images/platformer/obstacles/coin.png" },
     },
@@ -28,16 +28,16 @@ const assets = {
       bricks: { src: "/images/platformer/platforms/brick_wall.png" },
       block: { src: "/images/platformer/platforms/brick_block.png" }, 
       itemBlock: {
-        src: "/images/platformer/platforms/mario_block_spritesheet_v2.png",
+        src: "/images/platformer/sprites/key.png",
         sizeRatio: 83.2,
-        widthRatio: 0.5,
+        widthRatio: 1.0,
         heightRatio: 1.0,
-        width: 204,
-        height: 204,
-        scaleSize: 80,
+        width: 5952, // 204
+        height: 6000, // 204
+        scaleSize: 10, // 80
         speedRatio: 0.7,
         hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
-      }
+      },
     },
     backgrounds: {
       hills: { src: "/images/platformer/backgrounds/hills.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
@@ -126,7 +126,7 @@ const assets = {
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.2575, yPercentage: 0.75 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5898, yPercentage: 0.900 },
     { name: 'mario', id: 'player', class: PlayerHills, data: assets.players.mario },
-    { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.855 },
+    { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.75 },
     { name: 'loading', id: 'background', class: BackgroundTransitions, data: assets.transitions.loading },
   ];
 
