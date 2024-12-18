@@ -2,6 +2,8 @@ import GameEnv from './GameEnv.js';
 import PlayerBase from './PlayerBase.js';
 import GameControl from './GameControl.js';
 import hpBar from './hpBar.js';
+
+
 /**
  * @class PlayerHills class
  * @description PlayerHills.js key objective is to eent the user-controlled character in the game.
@@ -102,6 +104,17 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
             case "finishline":
+                console.log("HIT FINISH LINE///////////////////////////")
+                for (let obj of GameEnv.currentLevel.gameObjects) {
+                    if (obj.id === "coin") {
+                        console.log(GameEnv.currentLevel.gameObjects)
+                        console.log("PLAYER DOES NOT HAVE ITEM NEEDED TO EXIT THE LVL")
+                        return; // or break;
+                    }
+                  }
+                  console.log("player has item to exit lvl")
+
+                  console.log("///////////////////////////////////////////")
                 // Transition to the next level when touching the flag
                 const index = GameEnv.levels.findIndex(level => level.tag === "Water")
                 GameControl.transitionToLevel(GameEnv.levels[index]);
@@ -138,6 +151,7 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
                 case "lava": // Note: Goomba.js and Player.js could be refactored
+
                 if (this.collisionData.touchPoints.other.id === "lava") {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (this.state.isDying == false) {

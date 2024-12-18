@@ -165,7 +165,7 @@ const assets = {
     { name: 'flag', id: 'finishline', class: FinishLine, data: assets.obstacles.flag, xPercentage: 0.875, yPercentage: 0.275 },
     { name: 'hillsEnd', id: 'background', class: BackgroundTransitions, data: assets.transitions.hillsEnd },
     { name: 'lava', id: 'lava', class: Lava, data: assets.platforms.lava, xPercentage: 0, yPercentage: 1 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5898, yPercentage: 0.900 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.1, yPercentage: 0.9 },//0.4, 0.9 might be a lower value for testing
   ];
 
   const GameSetterGreece = {

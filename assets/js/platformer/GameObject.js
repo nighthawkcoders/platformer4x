@@ -115,6 +115,8 @@ class GameObject {
     */
     destroy() {
         const index = GameEnv.gameObjects.indexOf(this);
+     // GameEnv.gameObjects.removeChild(this)
+      // GameEnv.gameObjects.splice(index, 1)
         if (index !== -1) {
             // Remove the canvas from the DOM
             this.canvas.parentNode.removeChild(this.canvas);
