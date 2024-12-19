@@ -33,10 +33,10 @@ export class JumpPlatform extends GameObject {
     handleItemBlockCollision() {
         // Make the item block disappear by hiding it
         this.isVisible = false;
-
+        // Update status of key
+        GameEnv.keyCollected = true
         // Remove the block from the display
         this.canvas.style.display = 'none';
-
     }
     
     // Set platform position

@@ -154,6 +154,18 @@ class GameObject {
             }
         }
     }
+    playerTubeCollision(player, tube) {
+        // Check if there is a collision between the player and the tube
+        const playerRect = player.canvas.getBoundingClientRect();
+        const tubeRect = tube.canvas.getBoundingClientRect();
+    
+        const collisionDetected = (
+            playerRect.right > tubeRect.left &&
+            playerRect.left < tubeRect.right &&
+            playerRect.bottom > tubeRect.top &&
+            playerRect.top < tubeRect.bottom
+        );
+    }
 
     /* Collision detection method
      * usage: if (player.isCollision(platform)) { // action }
@@ -212,7 +224,7 @@ class GameObject {
                     top: thisRect.bottom < otherRect.top,
                     bottom: (thisRect.bottom >= otherRect.top) && !(Math.abs(thisRect.bottom - otherRect.bottom) <= GameEnv.gravity),
                     left: thisCenterX < otherCenterX, 
-                    right: thisCenterX > otherCenterX,
+                     right: thisCenterX > otherCenterX,
                 },
             },
         };
