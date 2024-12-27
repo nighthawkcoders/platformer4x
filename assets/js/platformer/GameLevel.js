@@ -46,7 +46,7 @@ class GameLevel {
                 if (obj.data.file) {
                     // Load the image for the game object.
                     objFile = obj.data.file; 
-                    console.log(objFile);
+                    //console.log(objFile);
                     obj.image = await this.loadImage(obj.data.file);
                     // Create a new canvas for the game object.
                     const canvas = document.createElement("canvas");
@@ -121,7 +121,7 @@ class GameLevel {
         
         existingTimeScores.push(data);
         // Log the updated array to the console for debugging
-        console.log(existingTimeScores);
+        //console.log(existingTimeScores);
         // Save the updated array to local storage
         localStorage.setItem('GtimeScores', JSON.stringify(existingTimeScores));
     }

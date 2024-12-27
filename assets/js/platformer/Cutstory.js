@@ -25,14 +25,14 @@ function startCutstory() {
             "Do you want a speed boost?   [Y/N]", 
             "This game was provided by CompSci Inc.", 
             "Turn on multiplayer from the settings tab to play with others."];
-        console.log("Message length: " + messages.length);
+        //console.log("Message length: " + messages.length);
         function showMessage() {
             var x = cutStory;
             x.className = 'show'; // change class name to show
             //only want to last 3 secs
             setTimeout(function () { x.className = x.className.replace("show", " "); }, 2000); //replace show with an empty string
             setTimeout(function () { x.className = x.className.replace(" ", "hide"); }, 2000);
-            console.log("class name after: " + x.className);
+            //console.log("class name after: " + x.className);
         }
         let i = 0;
         let interval = setInterval(() => {

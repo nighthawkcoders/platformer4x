@@ -86,7 +86,7 @@ export class PlayerGreece extends PlayerBase {
                     if (Math.abs(this.y - this.bottom) <= GameEnv.gravity) {
                         const indexMini = GameEnv.levels.findIndex(level => level.tag === "Greece Lava")
                         GameControl.transitionToLevel(GameEnv.levels[indexMini]);
-                        console.log(indexMini)  
+                        //console.log(indexMini)  
                         // Force end of level condition
                         // this.x = GameEnv.innerWidth + 1;
                         return
