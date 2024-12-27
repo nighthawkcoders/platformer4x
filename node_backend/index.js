@@ -7,7 +7,7 @@ io.on("connection", (socket) => {
   const id = uuidv4()
   socket.emit("id", id)
   socket.on("update", (data) => {
-    console.log(data)
+    //console.log(data)
     io.emit("stateUpdate", data)
   })
 
