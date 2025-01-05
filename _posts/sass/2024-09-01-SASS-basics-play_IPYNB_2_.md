@@ -5,6 +5,7 @@ description: Experiment with SASS using your project
 permalink: /sass_basics/play
 menu: nav/sass_basics.html
 toc: True
+categories: ['SASS']
 ---
 
 ## Popcorn Hack #1

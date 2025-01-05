@@ -5,6 +5,7 @@ description: Understanding the concepts behind SASS
 permalink: /sass_basics/intro
 menu: nav/sass_basics.html
 toc: True
+categories: ['SASS']
 ---
 
 # What is SASS?

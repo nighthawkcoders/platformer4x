@@ -1,10 +1,9 @@
 ---
 comments: false
 layout: post
-title: OOP game levels, Part 2 coding
-description: The key ideas behind creating game levels.  This serves as an introduction prior to learning and playing with the code.  
-type: ccc
-courses: { csse: {week: 14} }
+title: Game levels and objects
+description: A description of concepts behind creating game levels.  This describes Game Level setup and defining the assets used to create Game Objects.
+categories: [An Introduction] 
 ---
 
 ## Game Level Setup

@@ -2,10 +2,9 @@
 toc: false
 comments: false
 layout: post
-title: OOP game levels, Part 1 files
+title: Platformer files 
 description: This provides a synopsis of the platformer game. Included is an overview of files, directories, JavaScript files, and an outline of the game objects, game levels, and game control.
-type: ccc
-courses: { csse: {week: 14} }
+categories: [An Introduction] 
 ---
 
 ## Files and Directories
