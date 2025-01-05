@@ -2,8 +2,9 @@
 toc: true
 comments: false
 layout: post
-title:  Parallax Lesson
-description: Describing parallax and other features
+title:  Parallax setup
+description: Describing backgrounds and parallax features
+categories: [Backgrounds]
 ---
 
 ## What is motion parallax?
