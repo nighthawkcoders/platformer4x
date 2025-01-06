@@ -5,6 +5,7 @@ description: Understanding the fundamental aspects of coding with SASS
 permalink: /sass_basics/coding
 menu: nav/sass_basics.html
 toc: True
+categories: ['SASS']
 ---
 
 # Fundementals SASS

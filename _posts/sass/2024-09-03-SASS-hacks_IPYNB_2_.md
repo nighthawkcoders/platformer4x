@@ -6,6 +6,7 @@ permalink: /sass_basics/hacks
 menu: nav/sass_basics.html
 toc: True
 comments: True
+categories: ['SASS']
 ---
 
 ## SASS Hacks Overview
