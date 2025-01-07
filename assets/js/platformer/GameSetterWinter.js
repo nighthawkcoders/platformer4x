@@ -166,7 +166,7 @@ const assets = {
       hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
     },
     whitemario: {
-      src: "/images/platformer/sprites/white_mario.png",
+      src: "/images/platformer/sprites/mario.png",
       width: 256,
       height: 256,
       scaleSize: 80,

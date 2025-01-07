@@ -80,15 +80,22 @@ export class PlayerHills extends PlayerBase {
                 //         this.x = GameEnv.innerWidth + 1;
                 //     }
                 // 2. Collision between player right and finishline   
+                console.log(GameEnv.levels)
                 if (this.collisionData.touchPoints.this.right && GameEnv.keyCollected) {
-                    this.state.movement.right = true;
-                    this.state.movement.left = false;
-                    this.x = GameEnv.innerWidth + 1;
+                    this.state.movement.right = false;
+                    this.state.movement.left = true;
+                    GameEnv.levels[1].gameObjects[21].data.src = "/images/platformer/obstacles/dooropen.png"
+                    setTimeout(() => {
+                        this.x = GameEnv.innerWidth + 1;
+                    }, 1000);
                 // 3. Collision between player left and finishline
                 } else if (this.collisionData.touchPoints.this.left && GameEnv.keyCollected) {
                     this.state.movement.left = false;
                     this.state.movement.right = true;
-                    this.x = GameEnv.innerWidth + 1;
+                    GameEnv.levels[1].gameObjects[21].data.src = "/images/platformer/obstacles/dooropen.png"
+                    setTimeout(() => {
+                        this.x = GameEnv.innerWidth + 1;
+                    }, 1000);
                 }
                 break;
             case "goomba": // Note: Goomba.js and Player.js could be refactored
