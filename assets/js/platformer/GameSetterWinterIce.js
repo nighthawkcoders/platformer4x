@@ -310,8 +310,8 @@ const assets = {
     },
     Penguin: {
       src: "/images/platformer/sprites/penguin.png",
-      width: 240,
-      height: 290,
+      width: 385,
+      height: 420,
       scaleSize: 80,
       speedRatio: 0.6,
       xPercentage: 0.6,
