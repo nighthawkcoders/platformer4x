@@ -6,7 +6,7 @@ permalink: /about/
 
 Creators of Platformer 4.0
 
-### LEAAAAM Development Team
+### Enron Development Team
 Lucas Masterson (Srum Master of Scrum Masters): [Parallaxes](https://github.com/Parallaxes)
 
 Aaryav Lal (Assistant Scrum Master): [aaryavlal](https://github.com/aaryavlal)
