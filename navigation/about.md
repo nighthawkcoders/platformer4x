@@ -31,18 +31,12 @@ Creators of Platformer 4.0
 </div>
 
 =======
-### LEAAAAM Development Team
+### Enron Development Team
 Lucas Masterson (Srum Master of Scrum Masters): [Parallaxes](https://github.com/Parallaxes)
-
-Aaryav Lal (Assistant Scrum Master): [aaryavlal](https://github.com/aaryavlal)
 
 Matthew Borg: [MaTThewB0rg](https://github.com/MaTThewB0rg)
 
-Aneesh Deevi: [whitelunarium](https://github.com/whitelunarium)
-
 Ethan Fu: [buythesenbundle](https://github.com/buythesenbundle)
-
-Aditya Srivastava: [AdityaS-2010](https://github.com/AdityaS-2010)
 
 Alex Van Linge: [AlexTVL](https://github.com/AlexTVL)
 
