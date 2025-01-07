@@ -59,7 +59,7 @@ Avantika Chittari: [avantikachittari](https://avantikachittari.github.io/Avantik
 
 Veera Kalakota: [VeeraKalakota](https://veerakalakota.github.io/Veera_2025/)
 
-### C Development Team
+### Syntax Squad
 Akhil Kulkarni (Scrum Master): [AkhilKulkarni123](https://github.com/AkhilKulkarni123/Akhil_2025_1)
 
 Shay Mortensen (Integrator): [Shay-Robostrike1](https://github.com/Shay-Robostrike1/shay_2025)
