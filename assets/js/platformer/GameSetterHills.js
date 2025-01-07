@@ -15,10 +15,10 @@ import BlockPlatform from './BlockPlatform.js';
 // Define the GameSetup object literal
 const assets = {  
     obstacles: {
-      tube: { src: "/images/platformer/obstacles/reddoor.png",
+      tube: { src: "/images/platformer/obstacles/doorclosed.png",
       hitbox: { widthPercentage: 0.5, heightPercentage: 0.5},
-      width: 87,
-      height: 125,
+      width: 52, //87
+      height: 81, //125
       scaleSize: 100,
       },
       coin: { src: "/images/platformer/obstacles/coin.png" },
