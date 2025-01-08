@@ -79,12 +79,12 @@ export class PlayerHills extends PlayerBase {
                 //         // Force end of level condition
                 //         this.x = GameEnv.innerWidth + 1;
                 //     }
-                // 2. Collision between player right and finishline   
-                console.log(GameEnv.levels)
+                // 2. Collision between player right and finishline  
+
                 if (this.collisionData.touchPoints.this.right && GameEnv.keyCollected) {
                     this.state.movement.right = false;
                     this.state.movement.left = true;
-                    GameEnv.levels[1].gameObjects[21].data.src = "/images/platformer/obstacles/dooropen.png"
+                    GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
                     setTimeout(() => {
                         this.x = GameEnv.innerWidth + 1;
                     }, 1000);
@@ -92,11 +92,13 @@ export class PlayerHills extends PlayerBase {
                 } else if (this.collisionData.touchPoints.this.left && GameEnv.keyCollected) {
                     this.state.movement.left = false;
                     this.state.movement.right = true;
-                    GameEnv.levels[1].gameObjects[21].data.src = "/images/platformer/obstacles/dooropen.png"
+                    GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
                     setTimeout(() => {
                         this.x = GameEnv.innerWidth + 1;
                     }, 1000);
                 }
+                // GameEnv.update()
+                console.log("Hello",GameEnv.gameObjects[GameEnv.gameObjects.length - 1])
                 break;
             case "goomba": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js

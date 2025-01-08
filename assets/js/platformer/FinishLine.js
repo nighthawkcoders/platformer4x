@@ -13,7 +13,12 @@ export class FinishLine extends GameObject {
     update() {
         // No update actions needed
     }
-
+    updateImg() {
+        // No update actions needed
+        console.log("FinishLine is here!",this.image)
+        this.image.src = "/platformer4x/images/platformer/obstacles/dooropen.png"
+    }
+    
     draw() {
         this.ctx.drawImage(this.image, 0, 0, this.canvas.width, this.canvas.height);
     }
