@@ -4,6 +4,7 @@ title: Local Storage Basics
 author: Lucas Masterson
 description: What the heck is local storage?? A brief overview of the basics.
 permalink: /local-storage/basics
+menu: nav/local_storage.html
 toc: True
 ---
 

@@ -3,7 +3,8 @@ layout: post
 title: Local Storage In-Game
 author: Alex Van Linge
 description: The current usage of local storage in game
-permalink: /local-storage/in-game
+permalink: /local-storage/in-game/
+menu: nav/local_storage.html
 toc: True
 ---
 
