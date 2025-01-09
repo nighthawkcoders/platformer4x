@@ -27,6 +27,8 @@ Documents using `file:` URLs (loaded from the local filesystem, rather than from
 
 <img src="https://i.ytimg.com/vi/Q1sroG_iGnc/maxresdefault.jpg" alt="suggestion" width="300">
 
+OH and also, people refresh their browser cache, so this local storage data will be wiped. The best option, naturally, would be to use server-side storage, but we aren't there yet. Perhaps you can add that in a later iteration of the platformer.
+
 # Simple Implementation
 
 Here we demonstrate the `Storage` object and add a data item using `Storage.setItem()`:
