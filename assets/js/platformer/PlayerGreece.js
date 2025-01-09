@@ -104,20 +104,20 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
             case "finishline":
-                console.log("HIT FINISH LINE///////////////////////////")
-                for (let obj of GameEnv.currentLevel.gameObjects) {
-                    if (obj.id === "coin") {
-                        console.log(GameEnv.currentLevel.gameObjects)
-                        console.log("PLAYER DOES NOT HAVE ITEM NEEDED TO EXIT THE LVL")
-                        return; // or break;
+                console.log("finish line checks")
+                console.log(GameEnv.gameObjects)
+                for (let obj of GameEnv.gameObjects) {
+                    console.log(obj.jsonifiedElement.id)
+                    if (obj.jsonifiedElement.id === "coin") {
+                        console.log("coin not collected not advancing to next lvl")
+                        return;
                     }
-                  }
+                  } 
                   console.log("player has item to exit lvl")
-
-                  console.log("///////////////////////////////////////////")
                 // Transition to the next level when touching the flag
                 const index = GameEnv.levels.findIndex(level => level.tag === "Water")
                 GameControl.transitionToLevel(GameEnv.levels[index]);
+              //above code were you transition levels is broken and crashes the game when ran
                 break;
             case "cerberus": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
