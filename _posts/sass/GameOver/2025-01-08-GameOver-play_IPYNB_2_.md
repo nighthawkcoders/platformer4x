@@ -1,10 +1,11 @@
 ---
 layout: post
-title: GameOver intro
+title: GameOver play
 description: Understanding the concepts behind GameOver / transitions / and the leaderboard
 permalink: /GameOverHelp/play
 menu: nav/GameOverHelp.html
 toc: True
+search_exclude: False
 ---
 
 create snippets of code that that can be changed and played with to teach them how your topic works with hands on changes
