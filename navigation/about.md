@@ -28,11 +28,11 @@ Ethan Wong (Assistant Scrum Master): [ethanwong2008](https://github.com/ethanwon
 
 Veera Kalakota: [VeeraKalakota](https://github.com/VeeraKalakota)
 
-Srinaga Prahalad Pillutla (Integrator): [Prahalad-ship-it](https://prahalad-ship-it.github.io/Srinaga_2025/)
+Srinaga Prahalad Pillutla (Integrator): [Prahalad-ship-it](https://github.com/prahalad-ship-it)
 
-Lara Banjac: [Lara3333](https://lara3333.github.io/Lara_2025/)
+Lara Banjac: [Lara3333] (https://github.com/Lara3333)
 
-Avantika Chittari: [avantikachittari](https://avantikachittari.github.io/Avantika_2025_2/)
+Avantika Chittari: [avantikachittari](https://github.com/avantikachittari)
 
 ### C Development Team
 Akhil Kulkarni (Scrum Master): [AkhilKulkarni123](https://github.com/AkhilKulkarni123/Akhil_2025_1)
