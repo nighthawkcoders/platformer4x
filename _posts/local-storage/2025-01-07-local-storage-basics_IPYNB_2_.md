@@ -2,12 +2,10 @@
 layout: post
 title: Local Storage Basics
 author: Lucas Masterson
-description: Understanding the concepts behind SASS
-permalink: /local_storage/basics
+description: What the heck is local storage?? A brief overview of the basics.
+permalink: /local-storage/basics
 toc: True
 ---
-
-ADD THE MENU SOON
 
 # What is Local Storage?
 
