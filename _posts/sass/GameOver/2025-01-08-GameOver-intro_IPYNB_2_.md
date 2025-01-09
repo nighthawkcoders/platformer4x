@@ -22,7 +22,7 @@ Transitions are how the game switches you from your current level to the next le
 
 Upon reaching the end of a level you will trigger a function that will update the current level and switch to the next level
 (code below)
-```
+```js
             if (currentLevel) {
                 // run the isComplete callback function
                 if (currentLevel.isComplete && currentLevel.isComplete()) {
@@ -37,7 +37,7 @@ Upon reaching the end of a level you will trigger a function that will update th
 
 In the code below you can see how the function works by removing all the objects on the screen and adds the objects for the next level which is found inside the levels object array
 (code below)
-```
+```js
 async transitionToLevel(newLevel) {
         this.inTransition = true;
 
