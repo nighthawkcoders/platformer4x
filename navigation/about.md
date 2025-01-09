@@ -30,7 +30,7 @@ Veera Kalakota: [VeeraKalakota](https://github.com/VeeraKalakota)
 
 Srinaga Prahalad Pillutla (Integrator): [Prahalad-ship-it](https://github.com/prahalad-ship-it)
 
-Lara Banjac: [Lara3333] (https://github.com/Lara3333)
+Lara Banjac: [Lara3333](https://github.com/Lara3333)
 
 Avantika Chittari: [avantikachittari](https://github.com/avantikachittari)
 
