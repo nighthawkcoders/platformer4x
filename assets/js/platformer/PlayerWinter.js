@@ -35,16 +35,14 @@ export class PlayerWinter extends PlayerBase {
     updateJump() {
         let jumpHeightFactor;
         if (GameEnv.difficulty === "easy") {
-            jumpHeightFactor = 0.05;
+            jumpHeightFactor = 0.50;
         } else if (GameEnv.difficulty === "normal") {
-            jumpHeightFactor = 0.04;
+            jumpHeightFactor = 0.40;
         }
         if (GameEnv.currentLevel.tag == "narwhalboss") {
-            jumpHeightFactor = 0.03;
+            jumpHeightFactor = 0.50;
         }
-        this.yv = -this.bottom * jumpHeightFactor;
-        this.y += this.yv;
-        this.setY(this.y);
+        this.setY(this.y - (this.bottom * jumpHeightFactor));
     }
 
     /**
