@@ -1,4 +1,5 @@
 ---
+author: Shay, Akhil, William
 layout: post
 title: GameOver intro
 description: Understanding the concepts behind GameOver / transitions / and the leaderboard
@@ -22,7 +23,7 @@ Transitions are how the game switches you from your current level to the next le
 
 Upon reaching the end of a level you will trigger a function that will update the current level and switch to the next level
 (code below)
-```js
+```
             if (currentLevel) {
                 // run the isComplete callback function
                 if (currentLevel.isComplete && currentLevel.isComplete()) {

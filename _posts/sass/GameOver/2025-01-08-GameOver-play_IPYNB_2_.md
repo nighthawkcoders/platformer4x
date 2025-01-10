@@ -1,4 +1,5 @@
 ---
+author: Shay, Akhil, William
 layout: post
 title: GameOver play
 description: Understanding the concepts behind GameOver / transitions / and the leaderboard
@@ -18,6 +19,7 @@ You can add checks before the level transition to make requrments needed to proc
 
 
 ```python
+            %%js
             //add checks here
 
                 // Transition to the next level when touching the flag
@@ -33,6 +35,7 @@ Look at the code below and play around with it in your game to see what breaks i
 
 
 ```python
+%%js
 async transitionToLevel(newLevel) {
     this.inTransition = true;
 

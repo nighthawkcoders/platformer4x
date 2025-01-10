@@ -1,4 +1,5 @@
 ---
+author: Shay, Akhil, William
 layout: post
 title: GameOver hacks
 description: Understanding the concepts behind GameOver / transitions / and the leaderboard
