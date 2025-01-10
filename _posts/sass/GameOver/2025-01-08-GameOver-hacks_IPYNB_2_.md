@@ -1,0 +1,12 @@
+---
+author: Shay, Akhil, William
+layout: post
+title: GameOver hacks
+description: Understanding the concepts behind GameOver / transitions / and the leaderboard
+permalink: /GameOverHelp/hacks
+menu: nav/GameOverHelp.html
+toc: True
+search_exclude: False
+---
+
+make hacks that will change the game in small ways based off of your topic
