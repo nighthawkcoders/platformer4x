@@ -145,6 +145,6 @@ const assets = {
     tag: 'Water',
     assets: assets,
     objects: objects
-  };
+  };p
 
 export default GameSetterWater;
