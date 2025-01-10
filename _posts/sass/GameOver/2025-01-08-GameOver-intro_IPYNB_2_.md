@@ -9,7 +9,7 @@ toc: True
 search_exclude: False
 ---
 
-Explain what your topic is and how it is being used in the game
+Explain what your topic is and how it is being used in the game/ what it is
 
 Game Over
 
@@ -23,7 +23,7 @@ Transitions are how the game switches you from your current level to the next le
 
 Upon reaching the end of a level you will trigger a function that will update the current level and switch to the next level
 (code below)
-```
+```js
             if (currentLevel) {
                 // run the isComplete callback function
                 if (currentLevel.isComplete && currentLevel.isComplete()) {

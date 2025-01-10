@@ -9,7 +9,7 @@ toc: True
 search_exclude: False
 ---
 
-create snippets of code that that can be changed and played with to teach them how your topic works with hands on changes
+create snippets of code that that can be changed and played with to teach how your topic works with hands on changes
 
 Game Over
 
