@@ -29,6 +29,26 @@ image: /images/platformer/backgrounds/home.png
   <!--Audio for coin collection -->
   <audio id ="coin" src="{{site.baseurl}}/assets/audio/coin.mp3" preload="auto"></audio>
 
+<!--Audio for music -->
+
+  <!--Audio for Everlong by Foo Fighters (Winter) -->
+  <audio id="everlong" src="{{site.baseurl}}/assets/audio/everlong.mp3" preload="auto"></audio>
+  
+  <!--Audio for EARFQUAKE by Tyler the Creator-->
+  <audio id="EARFQUAKE" src="{{site.baseurl}}/assets/audio/EARFQUAKE.mp3" preload="auto"></audio>
+
+  <!--Audio for Noid by Tyler the Creator-->
+  <audio id="Noid" src="{{site.baseurl}}/assets/audio/Noid.mp3" preload="auto"></audio>
+
+<!--Audio for See You Again by Tyler the Creator feat. Kalis Uchis-->
+  <audio id="SeeYouAgain" src="{{site.baseurl}}/assets/audio/SeeYouAgain.mp3" preload="auto"></audio>
+
+<!--Audio for See You Again by Tyler the Creator feat. YoungBoy Never Broke Again & Ty Dolla $ign-->
+  <audio id="WUSYANAME" src="{{site.baseurl}}/assets/audio/WUSYANAME.mp3" preload="auto"></audio>
+
+  <!--Audio for Regicide by Michael Salvatori & Various Artists (Winter) -->
+  <audio id="regicide" src="{{site.baseurl}}/assets/audio/regicide.mp3" preload="auto"></audio>
+
 <!--Audio for when it hits top of platform -->
   <audio id ="stomp" src="{{site.baseurl}}/assets/audio/stomp2-93279.mp3" preload="auto"></audio>
 
@@ -101,15 +121,15 @@ image: /images/platformer/backgrounds/home.png
       */
   
       // Setup game data, the objects and levels
-      GameSetup.initLevels("{{site.baseurl}}");   
+      GameSetup.initLevels("{{site.baseurl}}");
       /* 
        * ==========================================
        * ========== Game Control ==================
        * ==========================================
        * Game Control starts the game loop and activates game objects
        * 1.) GameControl cycles through GameLevels
-       * 2.) Each GameLevel is on a looping timer, called within the game loop 
-       * 3.) The game loop allows the game player (user), to interact with the game objects 
+       * 2.) Each GameLevel is on a looping timer, called within the game loop
+       * 3.) The game loop allows the game player (user), to interact with the game objects
        * 4.) A timer (or score) tracks the time of user interaction within the game
        * ==========================================
       */
@@ -117,12 +137,12 @@ image: /images/platformer/backgrounds/home.png
       // Start the PRIMARY game loop
      GameControl.gameLoop();
   
-      /* 
+      /*
       * ==========================================
       * ========== Settings Control ==============
       * ==========================================
       * Settings Control provides the ability to select game level and change game settings
-      * 1.) SettingsControl must be after GameControl, it depends on GameLevels 
+      * 1.) SettingsControl must be after GameControl, it depends on GameLevels
       * 2.) GameControl extends and implements LocalStorage to support the persistence of user data
       * 3.) Modifications can be made to User ID, GameSpeed, Gravity, and Invert(ing) screen color
       * ==========================================
@@ -130,10 +150,13 @@ image: /images/platformer/backgrounds/home.png
   
       // Construct settings sidebar, MVC variable paradigm, and async events to trigger user interaction
       SettingsControl.initialize();
+
+      // Added by students, should be factored into GameControl or SettingsControl
       Leaderboard.initializeLeaderboard();
       startCutstory();
       RandomEvent();
-      /* 
+
+      /*
        * ==========================================
        *  ========== Event / Listeners =============
        *  ==========================================

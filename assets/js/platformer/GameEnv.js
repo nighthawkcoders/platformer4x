@@ -53,6 +53,7 @@ export class GameEnv {
      * @property {number} prevBottom - used by platformer objects
      * @property {number} time - Initialize time variable, used by timer objects
      * @property {number} timerInterval - Variable to hold the interval reference, used by timer objects
+     * @property {boolean} keyCollected - Checks whether the key has been collected my Mario or not
      */
     static userID = "Guest";
     static player = null;
@@ -79,6 +80,7 @@ export class GameEnv {
     static goombaInvincible = false;
     static goombaBounce = false;
     static goombaBounce1 = false;
+    static keyCollected = false;
 
     static timerActive = false;
     static timerInterval = 10;
@@ -204,6 +206,22 @@ export class GameEnv {
         sound.play();
     }
 
+    // Play a sound by its ID in a loop
+    static loopSound(id) {
+        const sound = document.getElementById(id);
+        sound.loop = true;
+        sound.play();
+    }
+
+    // Stop all sounds
+    static stopAllSounds() {
+        const sounds = document.getElementsByTagName('audio');
+        for (let sound of sounds) {
+            sound.pause();
+            sound.currentTime = 0;
+        }
+    }
+
     static updateParallaxDirection(key) {
         switch (key) {
             case "a":
@@ -222,8 +240,8 @@ export class GameEnv {
                     if (GameEnv.player?.x > 2) {
                     GameEnv.backgroundDirection = -5;
                     }
-                } else if (keys.includes("d") && keys.includes("s")) {
-                // If both "d" and "s" are clicked
+                } else if  (keys.includes("d") && keys.includes("s")) {
+                // If both " d" and "s" are clicked
                     if (GameEnv.player?.x < (GameEnv.innerWidth - 2)) {
                         GameEnv.backgroundDirection = 5;
                     }

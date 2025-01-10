@@ -21,7 +21,7 @@ export class Background extends GameObject {
             this.canvasHeight = this.canvasWidth / (16/9) // force 16:9
         }
 
-        console.log(`width:${this.canvasWidth}, height:${this.canvasHeight}`)
+        //console.log(`width:${this.canvasWidth}, height:${this.canvasHeight}`)
     }
 
     /* Update uses modulo math to cycle to start at width extent

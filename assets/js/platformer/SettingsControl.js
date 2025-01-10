@@ -764,7 +764,8 @@ const SettingsControl = {
             GameEnv.funFact = localStorageFunFact.toLowerCase() === "true";
         } else {
             // Default value if nothing is found in localStorage
-            GameEnv.funFact = true;
+            // Default is to disable fun facts
+            GameEnv.funFact = false;
         }
 
         // Set the initial state of hints and the checkbox based on GameEnv.funFact

@@ -15,10 +15,10 @@ import BlockPlatform from './BlockPlatform.js';
 // Define the GameSetup object literal
 const assets = {  
     obstacles: {
-      tube: { src: "/images/platformer/obstacles/tube.png",
+      tube: { src: "/images/platformer/obstacles/doorclosed.png",
       hitbox: { widthPercentage: 0.5, heightPercentage: 0.5},
-      width: 300,
-      height: 300,
+      width: 52, //87
+      height: 81, //125
       scaleSize: 100,
       },
       coin: { src: "/images/platformer/obstacles/coin.png" },
@@ -28,16 +28,16 @@ const assets = {
       bricks: { src: "/images/platformer/platforms/brick_wall.png" },
       block: { src: "/images/platformer/platforms/brick_block.png" }, 
       itemBlock: {
-        src: "/images/platformer/platforms/mario_block_spritesheet_v2.png",
+        src: "/images/platformer/sprites/key.png",
         sizeRatio: 83.2,
-        widthRatio: 0.5,
+        widthRatio: 1.0,
         heightRatio: 1.0,
-        width: 204,
-        height: 204,
-        scaleSize: 80,
+        width: 5952, // 204
+        height: 6000, // 204
+        scaleSize: 10, // 80
         speedRatio: 0.7,
         hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
-      }
+      },
     },
     backgrounds: {
       hills: { src: "/images/platformer/backgrounds/hills.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
@@ -108,6 +108,8 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2, yPercentage: 0.85 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2368, yPercentage: 0.85 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2736, yPercentage: 0.85 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.5, yPercentage: 0.85 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.35, yPercentage: 0.7},
     { name: 'blocks', id: 'wall', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.6, yPercentage: 1 },
     { name: 'itemBlock', id: 'jumpPlatform', class: JumpPlatform, data: assets.platforms.itemBlock, xPercentage: 0.4, yPercentage: 0.65 }, //item block is a platform
     { name: 'goomba', id: 'goomba', class: Goomba, data: assets.enemies.goomba, xPercentage: 0.5, yPercentage: 1, minPosition: 0.05 },
@@ -120,13 +122,13 @@ const assets = {
     { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: assets.enemies.flyingGoomba, xPercentage: 0.9, minPosition: 0.5, difficulties: ["normal", "hard", "impossible"] },
     { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: assets.enemies.flyingGoomba, xPercentage: 0.9, minPosition: 0.5, difficulties: ["hard", "impossible"] },
     { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: assets.enemies.flyingGoomba, xPercentage: 0.9, minPosition: 0.5, difficulties: ["impossible"] },
-    { name: 'mushroom', id: 'mushroom', class: Mushroom, data: assets.enemies.mushroom, xPercentage: 0.49 },
+    { name: 'mushroom', id: 'mushroom', class: Mushroom, data: assets.enemies.mushroom, xPercentage: 0.4, yPercentage: 0.65 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.1908, yPercentage: 0.75 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.2242, yPercentage: 0.75 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.2575, yPercentage: 0.75 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5898, yPercentage: 0.900 },
     { name: 'mario', id: 'player', class: PlayerHills, data: assets.players.mario },
-    { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.855 },
+    { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.85 },
     { name: 'loading', id: 'background', class: BackgroundTransitions, data: assets.transitions.loading },
   ];
 
