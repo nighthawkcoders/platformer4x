@@ -69,8 +69,11 @@ export class Coin extends GameObject {
                 GameEnv.claimedCoinIds.push(this.id)
             }
             this.destroy();
+
             GameControl.gainCoin(5)
             GameEnv.playSound("coin");
+
+            
         }
     }
     

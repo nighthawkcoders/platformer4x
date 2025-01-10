@@ -2,6 +2,8 @@ import GameEnv from './GameEnv.js';
 import PlayerBase from './PlayerBase.js';
 import GameControl from './GameControl.js';
 import hpBar from './hpBar.js';
+
+
 /**
  * @class PlayerHills class
  * @description PlayerHills.js key objective is to eent the user-controlled character in the game.
@@ -36,11 +38,11 @@ export class PlayerGreece extends PlayerBase {
     updateJump() {
         let jumpHeightFactor;
         if (GameEnv.difficulty === "easy") {
-            jumpHeightFactor = 0.90;
+            jumpHeightFactor = 0.45;
         } else if (GameEnv.difficulty === "normal") {
-            jumpHeightFactor = 0.65;
+            jumpHeightFactor = 0.35;
         } else {
-            jumpHeightFactor = 0.50;
+            jumpHeightFactor = 0.30;    
         }
         this.setY(this.y - (this.bottom * jumpHeightFactor));
     }
@@ -102,9 +104,20 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
             case "finishline":
+                console.log("finish line checks")
+                console.log(GameEnv.gameObjects)
+                for (let obj of GameEnv.gameObjects) {
+                    console.log(obj.jsonifiedElement.id)
+                    if (obj.jsonifiedElement.id === "coin") {
+                        console.log("coin not collected not advancing to next lvl")
+                        return;
+                    }
+                  } 
+                  console.log("player has item to exit lvl")
                 // Transition to the next level when touching the flag
                 const index = GameEnv.levels.findIndex(level => level.tag === "Water")
                 GameControl.transitionToLevel(GameEnv.levels[index]);
+              //above code were you transition levels is broken and crashes the game when ran
                 break;
             case "cerberus": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
@@ -138,6 +151,7 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
                 case "lava": // Note: Goomba.js and Player.js could be refactored
+
                 if (this.collisionData.touchPoints.other.id === "lava") {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (this.state.isDying == false) {
