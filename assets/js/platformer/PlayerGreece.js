@@ -2,6 +2,7 @@ import GameEnv from './GameEnv.js';
 import PlayerBase from './PlayerBase.js';
 import GameControl from './GameControl.js';
 import hpBar from './hpBar.js';
+import GameLevel from './GameLevel.js';
 
 
 /**
@@ -158,15 +159,14 @@ export class PlayerGreece extends PlayerBase {
                             this.setY(this.y - (this.bottom * 0.6));
                             this.currentHp -= 60;
                             this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
-                            if(this.currentHp == 0){
+                            if(this.currentHp == 0 || this.currentHp < 0){///death of the player
                                 this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
                                 this.state.isDying = true;
                                 this.canvas.style.transition = "transform 0.5s";
                                 this.canvas.style.transform = "rotate(-90deg) translate(-26px, 0%)";
                                 GameEnv.playSound("PlayerDeath");
-                                setTimeout(async() => {
-                                    await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
-                                }, 900);
+                                GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
+                                console.log(GameEnv.gameObjects)
                             }
                         }
                     } else if (GameEnv.difficulty === "easy" && this.collisionData.touchPoints.this.right) {
