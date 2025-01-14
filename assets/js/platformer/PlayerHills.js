@@ -87,7 +87,7 @@ export class PlayerHills extends PlayerBase {
                     GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
                     setTimeout(() => {
                         this.x = GameEnv.innerWidth + 1;
-                    }, 1000);
+                    }, 1250);
                 // 3. Collision between player left and finishline
                 } else if (this.collisionData.touchPoints.this.left && GameEnv.keyCollected) {
                     this.state.movement.left = false;
@@ -95,7 +95,7 @@ export class PlayerHills extends PlayerBase {
                     GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
                     setTimeout(() => {
                         this.x = GameEnv.innerWidth + 1;
-                    }, 1000);
+                    }, 1250);
                 }
                 // GameEnv.update()
                 console.log("Hello",GameEnv.gameObjects[GameEnv.gameObjects.length - 1])
