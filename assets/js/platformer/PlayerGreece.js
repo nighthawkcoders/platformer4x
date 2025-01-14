@@ -107,13 +107,18 @@ export class PlayerGreece extends PlayerBase {
             case "finishline":
                 console.log("finish line checks")
                 console.log(GameEnv.gameObjects)
-                for (let obj of GameEnv.gameObjects) {
-                    console.log(obj.jsonifiedElement.id)
-                    if (obj.jsonifiedElement.id === "coin") {
-                        console.log("coin not collected not advancing to next lvl")
-                        return;
-                    }
+                var collectedCoin
+                if (collectedCoin == false){
+                    for (let obj of GameEnv.gameObjects) {
+                        console.log(obj.jsonifiedElement.id)
+                        if (obj.jsonifiedElement.id === "coin") {
+                            collectedCoin = false
+                            console.log("coin not collected not advancing to next lvl")
+                            return;
+                        }
+                }
                   } 
+                  collectedCoin = true
                   console.log("player has item to exit lvl")
                 // Transition to the next level when touching the flag
                 const index = GameEnv.levels.findIndex(level => level.tag === "Water")
