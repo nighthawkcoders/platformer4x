@@ -35,16 +35,16 @@ Lara Banjac: [Lara3333](https://github.com/Lara3333)
 Avantika Chittari: [avantikachittari](https://github.com/avantikachittari)
 
 ### Syntax Squad
-Akhil Kulkarni (Scrum Master): [AkhilKulkarni123](https://github.com/AkhilKulkarni123/Akhil_2025_1)
+Akhil Kulkarni (Scrum Master): [AkhilKulkarni123](https://github.com/AkhilKulkarni123)
 
-Shay Mortensen (Integrator): [Shay-Robostrike1](https://github.com/Shay-Robostrike1/shay_2025)
+Shay Mortensen (Integrator): [Shay-Robostrike1](https://github.com/Shay-Robostrike1)
 
-Zoe Chow: [zoe-coding123](https://github.com/zoe-coding123/zoe_2025_2)
+Zoe Chow: [zoe-coding123](https://github.com/zoe-coding123)
 
-Leila Horoz: [leila010](https://github.com/leila010/Leila_2025)
+Leila Horoz: [leila010](https://github.com/leila010)
 
-Jeongjun Kim: [nicx91](https://github.com/nicx91/jeongjun_2025)
+Jeongjun Kim: [nicx91](https://github.com/nicx91)
 
-William Windle: [mrboiisthebest](https://github.com/mrboiisthebest/william_2025)
+William Windle: [mrboiisthebest](https://github.com/mrboiisthebest)
 
-Kian Zhu: [Kian-bloodborne](https://github.com/Kian-bloodborne/Kian_2025)
+Kian Zhu: [Kian-bloodborne](https://github.com/Kian-bloodborne)
