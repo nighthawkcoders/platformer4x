@@ -2,6 +2,7 @@ import GameEnv from './GameEnv.js';
 import PlayerBase from './PlayerBase.js';
 import GameControl from './GameControl.js';
 import hpBar from './hpBar.js';
+import GameLevel from './GameLevel.js';
 
 
 /**
@@ -106,13 +107,18 @@ export class PlayerGreece extends PlayerBase {
             case "finishline":
                 console.log("finish line checks")
                 console.log(GameEnv.gameObjects)
-                for (let obj of GameEnv.gameObjects) {
-                    console.log(obj.jsonifiedElement.id)
-                    if (obj.jsonifiedElement.id === "coin") {
-                        console.log("coin not collected not advancing to next lvl")
-                        return;
-                    }
+                var collectedCoin
+                if (collectedCoin == false){
+                    for (let obj of GameEnv.gameObjects) {
+                        console.log(obj.jsonifiedElement.id)
+                        if (obj.jsonifiedElement.id === "coin") {
+                            collectedCoin = false
+                            console.log("coin not collected not advancing to next lvl")
+                            return;
+                        }
+                }
                   } 
+                  collectedCoin = true
                   console.log("player has item to exit lvl")
                 // Transition to the next level when touching the flag
                 const index = GameEnv.levels.findIndex(level => level.tag === "Water")
@@ -158,15 +164,14 @@ export class PlayerGreece extends PlayerBase {
                             this.setY(this.y - (this.bottom * 0.6));
                             this.currentHp -= 60;
                             this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
-                            if(this.currentHp == 0){
+                            if(this.currentHp == 0 || this.currentHp < 0){///death of the player
                                 this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
                                 this.state.isDying = true;
                                 this.canvas.style.transition = "transform 0.5s";
                                 this.canvas.style.transform = "rotate(-90deg) translate(-26px, 0%)";
                                 GameEnv.playSound("PlayerDeath");
-                                setTimeout(async() => {
-                                    await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
-                                }, 900);
+                                GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
+                                console.log(GameEnv.gameObjects)
                             }
                         }
                     } else if (GameEnv.difficulty === "easy" && this.collisionData.touchPoints.this.right) {
