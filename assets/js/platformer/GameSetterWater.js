@@ -24,7 +24,7 @@ const assets = {
         scaleSize: 150,
       },
       coin: { src: "/images/platformer/obstacles/coin.png" },
-      dimonds: { src: "/images/platformer/obstacles/dimonds.png" },
+      dimonds: {src: "/images/platformer/obstacles/shell.png"},
     },
     platforms: {
       sand: { src: "/images/platformer/platforms/sand.png" },
@@ -43,7 +43,7 @@ const assets = {
       }
     },
     backgrounds: {
-      water: { src: "/images/platformer/backgrounds/water.png" },
+      water: { src: "/images/platformer/backgrounds/whalecsse.png" },
       fish: { src: "/images/platformer/backgrounds/school-fish.png", parallaxSpeed: -0.5 },
       reef: { src: "/images/platformer/backgrounds/reef.png" },
     },
