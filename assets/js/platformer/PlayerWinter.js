@@ -93,6 +93,18 @@ export class PlayerWinter extends PlayerBase {
                 }
                 break;
             case "finishline":
+                // Check if the player has collected all the coins
+                var collectedAllCoins = true;
+                for (let obj of GameEnv.gameObjects) {
+                    // If coins still exist in the level, break out of the loop
+                    if (obj.jsonifiedElement.id === "coin") {
+                        collectedAllCoins = false;
+                        console.log("coin not collected, not advancing to next level");
+                        return;
+                    }
+                }
+                // Continue with finishline collisions checks
+
                 // 1. Caught in finishline
                 if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom) {
                     // Position player in the center of the finishline 
@@ -148,7 +160,7 @@ export class PlayerWinter extends PlayerBase {
                 
                 }
                 break;
-                case "narwhalboss": // Note: Goomba.js and Player.js could be refactored
+            case "narwhalboss": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
                 if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom && this.state.isDying == false) {
                     // GoombaBounce deals with player.js and goomba.js
