@@ -17,6 +17,7 @@ import GameSetterWinterIce from './GameSetterWinterIce.js';
 import GameSetterBoss from './GameSetterBoss.js';
 import GameSetterSkibidi from './GameSetterSkibidi.js';
 import GameSetterEnd from './GameSetterEnd.js';
+import Leaderboard from './Leaderboard.js';
 //test comment
 
 /* Coding Style Notes
@@ -150,6 +151,7 @@ const GameSetup = {
     // console.log(GameEnv.player?.x)
     if (GameEnv.player?.x > GameEnv.innerWidth) {
       GameEnv.player = null; // reset for next level
+      Leaderboard.openLeaderboardPanel();
       return true;
     } else {
       return false;

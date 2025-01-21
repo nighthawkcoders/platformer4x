@@ -1,5 +1,4 @@
 // GameSetHills.js Key objective is to define objects for a GameLevel
-// To build GameLevels, each contains GameObjects from below imports
 import BackgroundParallax from './BackgroundParallax.js';
 import BackgroundTransitions from './BackgroundTransitions.js';
 import Platform from './Platform.js';

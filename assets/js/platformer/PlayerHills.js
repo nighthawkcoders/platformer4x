@@ -80,7 +80,6 @@ export class PlayerHills extends PlayerBase {
                 //         this.x = GameEnv.innerWidth + 1;
                 //     }
                 // 2. Collision between player right and finishline  
-
                 if (this.collisionData.touchPoints.this.right && GameEnv.keyCollected) {
                     this.state.movement.right = false;
                     this.state.movement.left = true;
