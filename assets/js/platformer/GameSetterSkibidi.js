@@ -174,17 +174,17 @@ const assets = {
         hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
       },
       escaper: {
-        src: "/images/platformer/sprites/hunter1-removebg-preview.png",
-        width: 59,
-        height: 59,
-        scaleSize: 75,
+        src: "/images/platformer/sprites/merged_sprite_sheet.png",
+        width: 81,   
+        height: 83,
+        scaleSize: 85,
         speedRatio: 0.7,
-        animationSpeed: 400,
+        animationSpeed: 6,
         ///animationspeed:6
-        idle: {row: 0, frames: 3 },
-        walk: {  row: 2, frames: 3 },
-        run: {  row: 2, frames: 3 },
-        jump: {row: 3, frames: 3 },
+        idle: {row: 0, frames: 4 },
+        walk: {  row: 1, frames: 6 },
+        run: {  row: 2, frames: 6 },
+        jump: {row: 4, frames: 6 },
         hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
       },
       whitemario: {
