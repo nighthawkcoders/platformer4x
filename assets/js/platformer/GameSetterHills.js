@@ -105,7 +105,6 @@ const assets = {
     { name: 'clouds', id: 'background', class: BackgroundParallax, data: assets.backgrounds.clouds },
     { name: 'hills', id: 'background', class: BackgroundParallax, data: assets.backgrounds.hills },
     { name: 'grass', id: 'floor', class: Platform, data: assets.platforms.grass },
-
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.1, yPercentage: 1},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2, yPercentage: 0.8 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.31, yPercentage: 0.75},
