@@ -16,6 +16,7 @@ import FinishLine from './FinishLine.js';
 // Define the GameSetup object literal
 const assets = {  
     obstacles: {
+ main
         chest: {
             src: "/images/platformer/obstacles/Chest.png",
             hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
@@ -25,6 +26,16 @@ const assets = {
         },
         coin: { src: "/images/platformer/obstacles/coin.png" },
         dimonds: { src: "/images/platformer/obstacles/dimonds.png" },
+      chest: {
+        src: "/images/platformer/obstacles/Chest.png",
+        hitbox: { widthPercentage: 0.5, heightPercentage: 0.5 },
+        width: 300,
+        height: 300,
+        scaleSize: 150,
+      },
+      coin: { src: "/images/platformer/obstacles/coin.png" },
+      dimonds: {src: "/images/platformer/obstacles/shell.png"},
+main
     },
     platforms: {
         sand: { src: "/images/platformer/platforms/sand.png" },
@@ -43,9 +54,15 @@ const assets = {
         }
     },
     backgrounds: {
+ main
         water: { src: "/images/platformer/backgrounds/water.png" },
         fish: { src: "/images/platformer/backgrounds/school-fish.png", parallaxSpeed: -0.5 },
         reef: { src: "/images/platformer/backgrounds/reef.png" },
+
+      water: { src: "/images/platformer/backgrounds/whalecsse.png" },
+      fish: { src: "/images/platformer/backgrounds/school-fish.png", parallaxSpeed: -0.5 },
+      reef: { src: "/images/platformer/backgrounds/reef.png" },
+main
     },
     transitions: {
         loading: { src: "/images/platformer/transitions/greenscreen.png" },

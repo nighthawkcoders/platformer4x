@@ -4,7 +4,7 @@ comments: false
 layout: post
 title:  Parallax setup
 description: Describing backgrounds and parallax features
-categories: [Backgrounds]
+categories: Backgrounds|Theme|Messages
 ---
 
 ## What is motion parallax?
