@@ -4,11 +4,8 @@ import GameControl from './GameControl.js';
 
 /**
  * @class PlayerWater class
- * @description Handles the user-controlled character in the water-themed level.
- * 
- * The Player class extends the Character class, which in turn extends the GameObject class.
- * Animations and events are activated by key presses, collisions, and gravity.
- * WASD keys are used by the user to control The Player object.
+ * @description PlayerWater.js is used for the player-controlled character in water-themed levels.
+ * The class extends PlayerBase and allows the character to interact with water-specific elements in the game.
  * 
  * @extends PlayerBase 
  */
@@ -22,139 +19,96 @@ export class PlayerWater extends PlayerBase {
      */
     constructor(canvas, image, data) {
         super(canvas, image, data);
+
+        // Water-related variables
         this.timer = false;
         GameEnv.invincible = false; // Player is not invincible 
     }
 
     /**
      * @override
-     * Updates Player jump height based on GameEnv difficulty.
+     * gameLoop helper: Update Player's behavior underwater, replacing PlayerBase updateJump
      */
     updateJump() {  
         let jumpHeightFactor;
         if (GameEnv.difficulty === "easy") {
-            jumpHeightFactor = 0.50;
+            jumpHeightFactor = 0.35;  // Reduced jump height underwater
         } else if (GameEnv.difficulty === "normal") {
-            jumpHeightFactor = 0.40;
+            jumpHeightFactor = 0.25;
         }
-        if (GameEnv.currentLevel.tag === "boss") {
+        if(GameEnv.currentLevel.tag == "boss"){
             jumpHeightFactor = 0;
         }
-        this.setY(this.y - (this.bottom * jumpHeightFactor));
+        this.setY(this.y - (this.bottom * jumpHeightFactor));  // Modify Y position based on jump height
     }
 
     /**
      * @override
-     * Watches for Player collision events.
-     */
+     * gameLoop: Watch for Player collision events (water-specific interactions)
+     */ 
     handleCollisionStart() {
-        super.handleCollisionStart(); 
-        this.handleCollisionEvent("finishline");
-        this.handleCollisionEvent("goomba");
-        this.handleCollisionEvent("mushroom");
-        this.handleCollisionEvent("boss");
+        super.handleCollisionStart(); // Calls the super class method
+        // Water-themed collisions
+        this.handleCollisionEvent("waterSurface");
+        this.handleCollisionEvent("fish");
+        this.handleCollisionEvent("shark");
+        this.handleCollisionEvent("waterChest");
     }
-
+   
     /**
      * @override
-     * Handles Player reactions to collisions based on game environment.
+     * gameLoop: Handles additional Player reactions to water-based collisions
      */
     handlePlayerReaction() {
-        super.handlePlayerReaction(); 
-
-        if (GameEnv.ifWater) {
-            for (let obj of GameEnv.gameObjects) {
-                if (obj.jsonifiedElement.id === "coin") {
-                    console.log("All coins not collected; cannot advance to next level.");
-                    return;
-                }
-            }
-        }
-
+        super.handlePlayerReaction(); // Calls the super class method
+        
         switch (this.state.collision) {
-            case "finishline":
-                if (GameEnv.keyCollected) {
-                    GameControl.transitionToNextLevel();
+            case "waterSurface":
+                // Player has reached the surface of the water
+                if (this.collisionData.touchPoints.this.top) {
+                    // Enable swimming or set player to water breathing mode
+                    this.state.isSwimming = false;
+                    this.state.isBreathing = true;
                 }
                 break;
-
-            case "goomba":
-            case "boss":
-                if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom && !this.state.isDying) {
-                    if (GameEnv.goombaBounce) {
-                        GameEnv.goombaBounce = false;
-                        this.y -= 100;
-                    }
-                    if (GameEnv.goombaBounce1) {
-                        GameEnv.goombaBounce1 = false;
-                        this.y -= 250;
-                    }
-                } else if (this.collisionData.touchPoints.this.right || this.collisionData.touchPoints.this.left) {
+            case "fish":
+                // Interaction with fish (bounce, interact, etc.)
+                if (this.collisionData.touchPoints.this.top && !this.state.isDying) {
+                    this.y = this.y - 50;  // Bounce up when player hits the fish
+                }
+                break;
+            case "shark":
+                // Interaction with sharks (damage, dodge, etc.)
+                if (this.collisionData.touchPoints.this.left || this.collisionData.touchPoints.this.right) {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (!this.state.isDying) {
                             this.state.isDying = true;
                             this.canvas.style.transition = "transform 0.5s";
                             this.canvas.style.transform = "rotate(-90deg) translate(-26px, 0%)";
                             GameEnv.playSound("PlayerDeath");
-                            setTimeout(() => {
-                                GameControl.transitionToLevel(GameEnv.currentLevel);
-                            }, 900);
+                            setTimeout(async() => {
+                                await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
+                            }, 900); 
                         }
                     } else if (GameEnv.difficulty === "easy") {
-                        this.x += this.collisionData.touchPoints.this.right ? -10 : 10;
+                        // Shark bounce effect for easy mode
+                        this.x -= 15;  // Bounce player to the left
                     }
                 }
                 break;
-
-            case "mushroom":
-                if (!GameEnv.destroyedMushroom) {
-                    GameEnv.destroyedMushroom = true;
-                    this.canvas.style.filter = 'invert(1)';
+            case "waterChest":
+                // Chest interaction underwater (treasure or power-ups)
+                if (!GameEnv.destroyedChest) {
+                    GameEnv.destroyedChest = true;
+                    this.canvas.style.filter = 'invert(1)';  // Chest treasure effect
                     setTimeout(() => {
                         this.canvas.style.filter = 'invert(0)';
-                    }, 2000);
+                    }, 2000); // Effect lasts for 2 seconds
                 }
-                break;
+                break;  
         }
     }
 }
 
-/**
- * Extends GameControl with level transition functionality.
- */
-GameControl.transitionToNextLevel = async function () {
-    console.log("Transitioning to the next level...");
-
-    const allCoinsCollected = GameEnv.gameObjects.every(obj => obj.jsonifiedElement.id !== "coin");
-    if (!allCoinsCollected) {
-        console.log("All coins must be collected to proceed.");
-        return;
-    }
-
-    GameEnv.playSound("LevelComplete");
-    const currentIndex = GameEnv.levels.indexOf(GameEnv.currentLevel);
-    if (currentIndex < GameEnv.levels.length - 1) {
-        GameEnv.currentLevel = GameEnv.levels[currentIndex + 1];
-        GameEnv.loadLevel(GameEnv.currentLevel);
-    } else {
-        console.log("Game Completed!");
-        this.showGameCompleteScreen();
-    }
-};
-
-GameControl.showGameCompleteScreen = function () {
-    const messageElement = document.createElement("div");
-    messageElement.textContent = "Congratulations! You've completed the game!";
-    messageElement.style.position = "absolute";
-    messageElement.style.top = "50%";
-    messageElement.style.left = "50%";
-    messageElement.style.transform = "translate(-50%, -50%)";
-    messageElement.style.fontSize = "2.5rem";
-    messageElement.style.color = "#fff";
-    messageElement.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-    messageElement.style.padding = "30px";
-    messageElement.style.borderRadius = "15px";
-    document.body.appendChild(messageElement);
-};
-
 export default PlayerWater;
+
