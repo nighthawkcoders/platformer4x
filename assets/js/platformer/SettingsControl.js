@@ -870,9 +870,18 @@ const SettingsControl = {
         userID.maxLength = 10; // set maximum length to 10 characters
         userID.className = "input userID";    // custom style in platformer-styles.scss
 
+        // Retrieve userID from localStorage if available
+        const storedUserID = localStorage.getItem('userID');
+        if (storedUserID) {
+            userID.value = storedUserID;
+            GameEnv.userID = storedUserID;
+        }
+
         userID.addEventListener("change", () => { 
             // dispatch event to update userID
-            window.dispatchEvent(new CustomEvent("userID", { detail: {userID:()=>userID.value} }));
+            dispatchEvent(new CustomEvent("userID", { detail: {userID:()=>userID.value} }));
+            // Save userID to localStorage
+            localStorage.setItem('userID', userID.value);
         });
 
         Socket.sendData("name",GameEnv.userID)
