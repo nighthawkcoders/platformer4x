@@ -1,6 +1,7 @@
 import Background from './Background.js'
 import BackgroundTransitions from './BackgroundTransitions.js';
 import Platform from './Platform.js';
+import JumpPlatform2 from './PlatformJump2.js';
 import BlockPlatform from './BlockPlatform.js';
 import Coin from './Coin.js';
 import skibidiTitan from './SkibidiTitan.js';
@@ -103,17 +104,17 @@ const assets = {
       island: { src: "/images/platformer/platforms/island.png" },
       island: { src: "/images/platformer/platforms/island.png" },
       block: { src: "/images/platformer/platforms/brick_block.png" }, //MAY need 3 new variables: sizeRatio, widthRatio, and heightRatio
-      itemBlock: {
-        src: "/images/platformer/platforms/mario_block_spritesheet_v2.png",
-        sizeRatio: 83.2,
-        widthRatio: 0.5,
+      itemBlock2: {
+        src: "/images/platformer/sprites/jumppowerup.png",
+        sizeRatio: 2.0,
+        widthRatio: 1.0,
         heightRatio: 1.0,
-        width: 204,
-        height: 204,
-        scaleSize: 80,
+        width: 205, // 204
+        height: 246, // 204
+        scaleSize: 1, // 80
         speedRatio: 0.7,
         hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
-      }
+      },
     },
     backgrounds: {
       boss: { src: "/images/platformer/backgrounds/BossBackground.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
@@ -500,14 +501,13 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.14, yPercentage: 0.84 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.7, yPercentage: 0.84 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.3, yPercentage: 0.4 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.36, yPercentage: 0.8 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.4, yPercentage: 0.8 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.32, yPercentage: 0.87 },
-    //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.475, yPercentage: 0.5 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.287, yPercentage: 0.3 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.51, yPercentage: 0.9 },
-    //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.495, yPercentage: 0.87},
-    //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.35, yPercentage: 0.88 },
+    ///{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.475, yPercentage: 0.5 },
+    { name: 'itemBlock2', id: 'jumpPlatform', class: JumpPlatform2, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
+    //{ name: 'itemBlock2', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.325, yPercentage: 0.7 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: -0.0125, yPercentage: 0.4 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0125, yPercentage: 0.4 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0325, yPercentage: 0.4 },
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.3, minPosition: 0.07 },
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.5, minPosition: 0.3 },
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.75, minPosition: 0.5 },
