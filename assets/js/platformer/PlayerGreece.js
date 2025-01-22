@@ -2,6 +2,9 @@ import GameEnv from './GameEnv.js';
 import PlayerBase from './PlayerBase.js';
 import GameControl from './GameControl.js';
 import hpBar from './hpBar.js';
+import GameLevel from './GameLevel.js';
+
+
 /**
  * @class PlayerHills class
  * @description PlayerHills.js key objective is to eent the user-controlled character in the game.
@@ -36,11 +39,11 @@ export class PlayerGreece extends PlayerBase {
     updateJump() {
         let jumpHeightFactor;
         if (GameEnv.difficulty === "easy") {
-            jumpHeightFactor = 0.90;
+            jumpHeightFactor = 0.45;
         } else if (GameEnv.difficulty === "normal") {
-            jumpHeightFactor = 0.65;
+            jumpHeightFactor = 0.35;
         } else {
-            jumpHeightFactor = 0.50;
+            jumpHeightFactor = 0.30;    
         }
         this.setY(this.y - (this.bottom * jumpHeightFactor));
     }
@@ -102,9 +105,25 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
             case "finishline":
+                console.log("finish line checks")
+                console.log(GameEnv.gameObjects)
+                var collectedCoin
+                if (collectedCoin == false){
+                    for (let obj of GameEnv.gameObjects) {
+                        console.log(obj.jsonifiedElement.id)
+                        if (obj.jsonifiedElement.id === "coin") {
+                            collectedCoin = false
+                            console.log("coin not collected not advancing to next lvl")
+                            return;
+                        }
+                }
+                  } 
+                  collectedCoin = true
+                  console.log("player has item to exit lvl")
                 // Transition to the next level when touching the flag
                 const index = GameEnv.levels.findIndex(level => level.tag === "Water")
                 GameControl.transitionToLevel(GameEnv.levels[index]);
+              //above code were you transition levels is broken and crashes the game when ran
                 break;
             case "cerberus": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
@@ -138,21 +157,21 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
                 case "lava": // Note: Goomba.js and Player.js could be refactored
+
                 if (this.collisionData.touchPoints.other.id === "lava") {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (this.state.isDying == false) {
                             this.setY(this.y - (this.bottom * 0.6));
                             this.currentHp -= 60;
                             this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
-                            if(this.currentHp == 0){
+                            if(this.currentHp == 0 || this.currentHp < 0){///death of the player
                                 this.hpBar.updateHpBar(this.currentHp, this.x, this.y, this.canvasWidth, this.canvasHeight)
                                 this.state.isDying = true;
                                 this.canvas.style.transition = "transform 0.5s";
                                 this.canvas.style.transform = "rotate(-90deg) translate(-26px, 0%)";
                                 GameEnv.playSound("PlayerDeath");
-                                setTimeout(async() => {
-                                    await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
-                                }, 900);
+                                GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
+                                console.log(GameEnv.gameObjects)
                             }
                         }
                     } else if (GameEnv.difficulty === "easy" && this.collisionData.touchPoints.this.right) {

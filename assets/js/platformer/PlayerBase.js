@@ -1,7 +1,6 @@
 import GameEnv from './GameEnv.js';
 import Character from './Character.js';
 import GameControl from './GameControl.js';
-
 /**
  * @class PlayerBase class
  * @description PlayeiBase.js key objective is to handle the user-controlled player's actions and animations.
@@ -22,7 +21,6 @@ export class PlayerBase extends Character {
         isDying: false,
         isFinishing: false,
     };
-
     constructor(canvas, image, data) {
         super(canvas, image, data);
         // Player Data
@@ -39,62 +37,42 @@ export class PlayerBase extends Character {
         this.keyupListener = this.handleKeyUp.bind(this);
         document.addEventListener('keydown', this.keydownListener);
         document.addEventListener('keyup', this.keyupListener);
-        // Velocity
-        this.xv = 0;
-        this.yv = 0;
     }
-
     destroy() {
         document.removeEventListener('keydown', this.keydownListener);
         document.removeEventListener('keyup', this.keyupListener);
         super.destroy();
     }
-
     update() {
         this.updateAnimation();
         this.updateMovement();
         super.update();
     }
-
+    updateJump() {
+        this.setY(this.y - (this.bottom * 0.35));
+    }
     updateMovement() {
+        const speedMultiplier = GameEnv.playerSpeedMultiplier || 1; // Default to 1 if not set
         switch (this.state.animation) {
             case 'idle':
                 break;
             case 'jump':
                 if (this.state.movement.up && !this.state.movement.falling) {
                     GameEnv.playSound("PlayerJump");
-                    this.yv = GameEnv.bottom * -0.06;
+                    this.updateJump();
                     this.state.movement.falling = true;
                 }
+                // No break to allow default case to run
             default:
                 if (this.state.direction === 'left' && this.state.movement.left && 'a' in this.pressedKeys) {
-                    if (this.state.animation === 'run') {
-                        this.xv -= this.runSpeed;
-                    } else {
-                        this.xv -= this.speed;
-                    }
+                    this.setX(this.x - (this.state.animation === 'run' ? this.runSpeed : this.speed) * speedMultiplier);
                 } else if (this.state.direction === 'right' && this.state.movement.right && 'd' in this.pressedKeys) {
-                    if (this.state.animation === 'run') {
-                        this.xv += this.runSpeed;
-                    } else {
-                        this.xv += this.speed;
-                    }
+                    this.setX(this.x + (this.state.animation === 'run' ? this.runSpeed : this.speed) * speedMultiplier);
                 }
         }
-
-        // Update X
-        this.xv *= 0.8;
-        this.x += this.xv;
-        this.setX(this.x);
-
-        // Update Y
-        this.y += this.yv;
-        this.setY(this.y);
-
         GameEnv.PlayerPosition.playerX = this.x;
         GameEnv.PlayerPosition.playerY = this.y;
     }
-
     updateAnimation() {
         switch (this.state.animation) {
             case 'idle':
@@ -113,7 +91,6 @@ export class PlayerBase extends Character {
                 console.error(`Invalid state: ${this.state.animation}`);
         }
     }
-
     updateAnimationState(key) {
         switch (key) {
             case 'a':
@@ -136,7 +113,6 @@ export class PlayerBase extends Character {
                 break;
         }
     }
-
     handleKeyDown(event) {
         const key = event.key;
         if (!(event.key in this.pressedKeys)) {
@@ -158,7 +134,6 @@ export class PlayerBase extends Character {
         }
         GameEnv.updateParallaxDirection(key);
     }
-
     handleKeyUp(event) {
         const key = event.key;
         if (key in this.pressedKeys) {
@@ -173,20 +148,17 @@ export class PlayerBase extends Character {
             }
         }
     }
-
     collisionAction() {
         this.handleCollisionStart();
         this.handleCollisionEnd();
         this.setActiveCollision();
         this.handlePlayerReaction();
     }
-
     handleCollisionStart() {
         this.handleCollisionEvent("jumpPlatform");
         this.handleCollisionEvent("wall");
         this.handleCollisionEvent("floor");
     }
-
     handleCollisionEvent(collisionType) {
         if (this.collisionData.touchPoints.other.id === collisionType) {
             if (!this.state.collisions.includes(collisionType)) {
@@ -194,14 +166,12 @@ export class PlayerBase extends Character {
             }
         }
     }
-
     handleCollisionEnd() {
         if (this.state.collision === "floor") {
         } else if (this.state.collisions.includes(this.state.collision) && this.collisionData.touchPoints.other.id !== this.state.collision) {
             this.state.collisions = this.state.collisions.filter(collision => collision !== this.state.collision);
         }
     }
-
     setActiveCollision() {
         if (this.state.collisions.length > 0) {
             this.state.collision = this.state.collisions[this.state.collisions.length - 1];
@@ -209,7 +179,6 @@ export class PlayerBase extends Character {
             this.state.collision = "floor";
         }
     }
-
     handlePlayerReaction() {
         this.gravityEnabled = true;
         switch (this.state.collision) {
@@ -217,39 +186,27 @@ export class PlayerBase extends Character {
                 if (this.collisionData.touchPoints.this.onTopofOther) {
                     this.state.movement = { up: false, down: false, left: true, right: true, falling: false };
                     this.gravityEnabled = false;
-                    this.yv = 0;
-                    this.y -= 1;
                 } else if (this.collisionData.touchPoints.this.right) {
                     this.state.movement = { up: false, down: false, left: true, right: false, falling: false };
-                    this.x -= this.xv;
-                    this.xv *= -1;
+                    this.y -= 4;
                 } else if (this.collisionData.touchPoints.this.left) {
                     this.state.movement = { up: false, down: false, left: false, right: true, falling: false };
-                    this.x -= this.xv;
-                    this.xv *= -1.5;
+                    this.y -= 4;
                 }
                 break;
             case "wall":
                 if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom) {
                     this.state.movement = { up: false, down: false, left: true, right: true, falling: false };
                     this.gravityEnabled = false;
-                    this.y -= this.yv;
-                    this.yv = 0;
                 } else if (this.collisionData.touchPoints.this.right) {
                     this.state.movement = { up: false, down: false, left: true, right: false, falling: false };
-                    this.x -= this.xv;
-                    this.xv *= -1;
                 } else if (this.collisionData.touchPoints.this.left) {
                     this.state.movement = { up: false, down: false, left: false, right: true, falling: false };
-                    this.x -= this.xv;
-                    this.xv *= -1;
                 }
                 break;
             case "floor":
                 if (this.onTop) {
                     this.state.movement = { up: false, down: false, left: true, right: true, falling: false };
-                    this.y -= this.yv;
-                    this.yv = 0;
                 } else {
                     this.state.movement = { up: false, down: false, left: true, right: true, falling: true };
                 }
@@ -257,5 +214,4 @@ export class PlayerBase extends Character {
         }
     }
 }
-
 export default PlayerBase;
