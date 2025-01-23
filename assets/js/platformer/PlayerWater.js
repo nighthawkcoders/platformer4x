@@ -31,7 +31,7 @@ export class PlayerWater extends PlayerBase {
      * Updates Player jump height based on GameEnv difficulty.
      */
     updateJump() {  
-        let jumpHeightFactor;
+        let jumpHeightFactor = 0;
         if (GameEnv.difficulty === "easy") {
             jumpHeightFactor = 0.50;
         } else if (GameEnv.difficulty === "normal") {
@@ -53,6 +53,9 @@ export class PlayerWater extends PlayerBase {
         this.handleCollisionEvent("goomba");
         this.handleCollisionEvent("mushroom");
         this.handleCollisionEvent("boss");
+
+        // Add the additional collisions here
+        this.handleCollisionEvent("jumpPlatform");
     }
 
     /**
@@ -80,7 +83,7 @@ export class PlayerWater extends PlayerBase {
 
             case "goomba":
             case "boss":
-                if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom && !this.state.isDying) {
+                if (this.collisionData.touchPoints?.this.top && this.collisionData.touchPoints?.other.bottom && !this.state.isDying) {
                     if (GameEnv.goombaBounce) {
                         GameEnv.goombaBounce = false;
                         this.y -= 100;
@@ -89,7 +92,7 @@ export class PlayerWater extends PlayerBase {
                         GameEnv.goombaBounce1 = false;
                         this.y -= 250;
                     }
-                } else if (this.collisionData.touchPoints.this.right || this.collisionData.touchPoints.this.left) {
+                } else if (this.collisionData.touchPoints?.this.right || this.collisionData.touchPoints?.this.left) {
                     if (GameEnv.difficulty === "normal" || GameEnv.difficulty === "hard") {
                         if (!this.state.isDying) {
                             this.state.isDying = true;
@@ -101,7 +104,7 @@ export class PlayerWater extends PlayerBase {
                             }, 900);
                         }
                     } else if (GameEnv.difficulty === "easy") {
-                        this.x += this.collisionData.touchPoints.this.right ? -10 : 10;
+                        this.x += this.collisionData.touchPoints?.this.right ? -10 : 10;
                     }
                 }
                 break;
@@ -115,6 +118,13 @@ export class PlayerWater extends PlayerBase {
                     }, 2000);
                 }
                 break;
+
+            // New collision logic for jump platforms
+            case "jumpPlatform":
+                if (this.topOfPlatform === true) {
+                    this.y -= 150; // Bounce effect when the player lands on the platform
+                }
+                break;
         }
     }
 }
@@ -125,6 +135,7 @@ export class PlayerWater extends PlayerBase {
 GameControl.transitionToNextLevel = async function () {
     console.log("Transitioning to the next level...");
 
+    // Ensure that all coins are collected before advancing
     const allCoinsCollected = GameEnv.gameObjects.every(obj => obj.jsonifiedElement.id !== "coin");
     if (!allCoinsCollected) {
         console.log("All coins must be collected to proceed.");

@@ -39,8 +39,6 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         let jumpHeightFactor;
         if (GameEnv.difficulty === "easy") {
             jumpHeightFactor = 0.50;
-        }else if (GameEnv.difficulty === "super_easy") {
-            jumpHeightFactor = 0.80;
         } else if (GameEnv.difficulty === "normal") {
             jumpHeightFactor = 0.40;
         } else {
@@ -74,7 +72,6 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         this.handleCollisionEvent("finishline");
         this.handleCollisionEvent("SkibidiToilet");
         this.handleCollisionEvent("laser");
-        this.handleCollisionEvent("powerup");
     }
    
     
@@ -161,22 +158,6 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                 
                 }
                 break;  
-            case "powerup": 
-                if (this.collisionData.touchPoints.this.right && GameEnv.powerUpCollected) {
-                    this.state.movement.right = false;
-                    this.state.movement.left = true;
-                    //GameEnv.difficulty = "super_easy";
-                    updateJump();
-                // 3. Collision between player left and finishline
-                } else if (this.collisionData.touchPoints.this.left && GameEnv.powerUpCollected) {
-                    this.state.movement.left = false;
-                    this.state.movement.right = true;
-                    //GameEnv.difficulty = "super_easy";
-                    updateJump();
-                }
-                GameEnv.update();
-                console.log("Power Up",GameEnv.gameObjects[GameEnv.gameObjects.length - 1]);
-                break;
         }
 
     }
