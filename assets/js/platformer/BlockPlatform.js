@@ -21,23 +21,6 @@ export class BlockPlatform extends GameObject {
     // Required, but no update action
     update() {
         //console.log(this.platformY)
-        this.collisionChecks();
-    }
-
-    collisionAction() {
-            // Collision only applies to the item block when Mario collides with it
-            if (this.collisionData.touchPoints.other.id === "player" && this.name === "itemBlock2") {
-                this.handleItemBlockCollision();
-            }
-        }
-    
-    handleItemBlockCollision() {
-        // Make the item block disappear by hiding it
-        this.isVisible = false;
-        // Update status of key
-        GameEnv.powerUpCollected = true
-        // Remove the block from the display
-        this.canvas.style.display = 'none';
     }
 
     // Draw position is always 0,0
