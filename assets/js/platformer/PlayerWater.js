@@ -66,18 +66,20 @@ export class PlayerWater extends PlayerBase {
         super.handlePlayerReaction(); 
 
         if (GameEnv.ifWater) {
-            for (let obj of GameEnv.gameObjects) {
-                if (obj.jsonifiedElement.id === "coin") {
-                    console.log("All coins not collected; cannot advance to next level.");
-                    return;
-                }
+            // Check if all coins are collected before allowing level exit
+            const allCoinsCollected = GameEnv.gameObjects.every(obj => obj.jsonifiedElement.id !== "coin");
+            if (!allCoinsCollected) {
+                console.log("All coins must be collected to proceed.");
+                return;  // Stop here if not all coins are collected
+            } else {
+                console.log("All coins collected! You can now exit the level.");
             }
         }
 
         switch (this.state.collision) {
             case "finishline":
                 if (GameEnv.keyCollected) {
-                    GameControl.transitionToNextLevel();
+                    GameControl.transitionToNextLevel();  // Proceed to the next level if key is collected
                 }
                 break;
 
