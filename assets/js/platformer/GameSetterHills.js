@@ -105,11 +105,9 @@ const assets = {
     { name: 'hills', id: 'background', class: BackgroundParallax, data: assets.backgrounds.hills },
     { name: 'grass', id: 'floor', class: Platform, data: assets.platforms.grass },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.1, yPercentage: 1},
-
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.067, yPercentage: 0.55},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.1, yPercentage: 0.55},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.03, yPercentage: 0.55},
-
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2, yPercentage: 0.76 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.31, yPercentage: 0.75},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.3475, yPercentage: 0.8},
@@ -117,11 +115,9 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.525, yPercentage: 0.8},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.5625, yPercentage: 0.8},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.5999, yPercentage: 0.75},
-
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.2752, yPercentage: 0.4},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.3126, yPercentage: 0.4},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.35, yPercentage: 0.4},
-
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.48, yPercentage: 0.4},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.5174, yPercentage: 0.4},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.block, xPercentage: 0.5548, yPercentage: 0.4},
@@ -142,9 +138,10 @@ const assets = {
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.09, yPercentage: 0.88 },  
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.057, yPercentage: 0.4},
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.69, yPercentage: 0.88 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.55, yPercentage: 0.68},  
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.28}, 
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.3, yPercentage: 0.28},   
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.55, yPercentage: 0.69}, 
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.34, yPercentage: 0.69},
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.31, yPercentage: 0.27},   
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.27},   
     { name: 'mario', id: 'player', class: PlayerHills, data: assets.players.mario },
     { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.85 },
     { name: 'loading', id: 'background', class: BackgroundTransitions, data: assets.transitions.loading },
