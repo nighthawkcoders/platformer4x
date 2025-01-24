@@ -8,7 +8,7 @@ export class Lava extends GameObject {
         this.islandX = xPercentage * GameEnv.innerWidth;
         this.islandY = yPercentage * GameEnv.innerHeight; // Initialize islandY with a pixel value
         this.initialDelay = 5000; // 5 seconds delay
-        this.risingSpeed = 212; // Adjust the rising speed as needed       
+        this.risingSpeed = 190; // Adjust the rising speed as needed       
         this.lastUpdateTime = Date.now(); // Initialize last update time to current time
         this.timeUntilRise = this.initialDelay; // Time until lava rises
         this.timerElement = document.createElement('div'); // Create a timer element
