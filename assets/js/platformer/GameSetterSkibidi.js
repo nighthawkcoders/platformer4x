@@ -44,7 +44,7 @@ const assets = {
         hitbox: { widthPercentage: 0.06, heightPercentage: 0.5},
         width: 60,
         height: 500,
-        scaleSize: 100
+        scaleSize: 90
       },
       cabin: {
         src: "/images/platformer/obstacles/cabin.png",
@@ -504,8 +504,8 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.4, yPercentage: 0.8 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.32, yPercentage: 0.87 },
     //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.475, yPercentage: 0.5 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.287, yPercentage: 0.3 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.51, yPercentage: 0.9 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.287, yPercentage: 0.3 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.51, yPercentage: 0.9 },
     //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.495, yPercentage: 0.87},
     //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.35, yPercentage: 0.88 },
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.3, minPosition: 0.07 },
