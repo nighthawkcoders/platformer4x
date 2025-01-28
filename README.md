@@ -2,15 +2,13 @@
 
 This is a general help for NightHawk pages.  
 
-- Go to settings and configure pages, and configure Build and Deployment for "GitHub Actions". IF YOU DO NOT DO THIS YOUR PAGE WILL NOT BUILD.
+- Go to github.com/platformeer4x Settings -> Pages look for **Build and deployment** and change source to **GitHub Action**. IF YOU DO NOT DO THIS YOUR **Actions** WILL NOT BUILD!
 
-- In case of issues with the user for your repository not being able to be resolved resulting in the page not building do the following: instead of the usual `repository: yourRepoName` in the repository section write `repository: usr/yourRepoName`
-
-- Game projects use the minima theme.   To understand files and organization read [Minima README.md](https://github.com/jekyll/minima#readme)
+- The **_config.yml** file contains project settings for **GitHub Acitions***.  Change settings to reflect your personal environment.
 
 ## File Names in "_posts", "_notebooks"
 
-- To name a file, use the following structure (Note that dates should never be in the future and should always be in the format YYYY-MM-DD):
+- To name a file to be used in blog, use the following naming convention (Note that dates should should always be in the format YYYY-MM-DD). The **_config.yml** has a setting to disply **future** dates.
 
 - Make sure that notebooks are in the notebook folder and posts are in the posts folder.
 
@@ -28,23 +26,23 @@ This is a general help for NightHawk pages.
       - BAD EXAMPLE: first-day.ipynb
       - BAD EXAMPLE: 2069-12-31-First-Day.ipynb
 
-## NIGHTHAWK-Pages CHANGES
-
-### TAGS
-
-- Tags are used to organize pages by their tag the way to add tags is to add the following to your front matter such as the example seen here `categories: [`C1.4]` Each item in the same category will be lumped together to be seen easily on the tags page.
+## NIGHTHAWK-Pages Blogging Features
 
 ### SEARCH
 
 - All pages can be searched for using the built-in search bar. This search bar will search for any word in the title of a page or in the page itself. This allows for easily finding pages and information that you are looking for. However, sometimes this may not be desirable so to hide a page from the search you can add `search_exclude: true` to the front matter of the page. This will hide the page from appearing when the viewer uses search.
 
+### TAGS
+
+- Tags are used to organize pages by their tag the way to add tags is to add the following to your front matter such as the example seen here `categories: [Lesson, Python]` Each item in the same category will be lumped together to be seen easily on the searc
+
 ### NAVIGATION BAR
 
-- To add pages to the navigation bar add them to the general main directory then add the alpha tag that will order them in the way that you desire such as AA Being the first page and ZZ being the last page.
+- To add pages to the navigation bar add them **_config.yml** under the **header_pages** section.
 
 ### BLOG PAGE
 
-- There is a newly designed blog page with all pages having images and a description of what the page is about. This is to help the viewer understand what the page is about and what they can expect to find on the page. The way to add images to a page is to have the following front matter `image: /images/file.jpg` and then the name of the image that you want to use. The image must be in the `images` folder. Furthermore, if you would like the file to not show up on the blog page `hide: true` can be added to the front matter.
+- There is a blog page with all pages having images using the front matter **description:** to tell what the blog is about.  To add images to a page add the following front matter `image: /images/file.jpg` and then the name of the image that you want to use. The image must be in the `images` folder. Furthermore, if you would like the file to not show up on the blog page `hide: true` can be added to the front matter.
 
 ### SASS support
 
@@ -58,18 +56,6 @@ This is a general help for NightHawk pages.
 
 - To create a custom page layout, make an HTML page inside the _layouts directory, and when you want to use that layout in a file, use the following front matter `layout: [your layout here]` Using another pre-existing layout use the same front matter syntax as defined above. This layout will have to be written in in logic customizing liquid to define the structure of the page.
 
-### CONFIG.YML
-
-- NIGHTHAWK-Pages allows for social links to be added at the bottom of every page, along with other things. To change the pre-set social links and names, go to the _config.yml file and change the desired category to the desired nomenclature. There are only a few supported social links that you can choose from.
-
-## Blog site using GitHub Pages and Jekyll
-
-> This site is intended for Students.   This is to record plans, complete hacks, and do work for your learnings.
-
-- This can be customized to support computer science as you work through the pathway (JavaScript, Python/Flask, Java/Spring)
-- All tangible artifact work is in a _posts|_notebooks.  
-- Front matter (aka metadata) in ".ipynb" and md files are used to organize information according to week and column in the running website.
-
 ## GitHub Pages
 
 All `GitHub Pages` websites are managed on GitHub infrastructure. GitHub uses `Jekyll` to transform your content into static websites and blogs. Each time we change files in GitHub it initiates a GitHub Action that rebuilds and publishes the site with Jekyll.  
@@ -79,7 +65,7 @@ All `GitHub Pages` websites are managed on GitHub infrastructure. GitHub uses `J
 
 ## Preparing a Preview Site
 
-In all development, it is recommended to test your code before deployment.  The GitHub Pages development process is optimized by testing your development on your local machine, before committing files to GitHub.
+In all development, it is recommended to test your code before deployment.  The GitHub Pages development process is optimized by testing your development on your local machine, before committing files to GitHub.  Use `make` from terminal to build local instance of GitHub pages.
 
 Development Cycle. For GitHub pages, the tooling described below will support a development cycle, such as `make-code-save-preview`.  In the development cycle, it is a requirement to preview work locally, before doing a VSCode `commit` to git.  Preview functionality requires Python and Python libraries.
 
@@ -115,7 +101,7 @@ The terminal output shows the server address. "Cmd" or "Ctl" click the http loca
 
     - Save on ".ipynb" or ".md" file activiates "regeneration". Refresh the browser to see updates. Example terminal message...
 
-    ```
+    ```text
     Regenerating: 1 file(s) changed at 2023-07-31 06:54:32
         _notebooks/2024-01-04-cockpit-setup.ipynb
     ```
@@ -158,7 +144,7 @@ Metadata, also known as "front matter", is a set of key-value pairs that can pro
   title: Daily Plan Sample
   description: Example Blog!!!  This shows planning and notes from hacks.
   type: plans
-  courses: { compsci: {week: 0} }
+  courses: { csse: {week: 0} }
   ---
   ```
 
@@ -166,15 +152,10 @@ Metadata, also known as "front matter", is a set of key-value pairs that can pro
 
 - Here we can modify things like the title and description.
 
-- The type value will tell us which column this is going to appear under, supported values: `plans`, `hacks`, `tangibles`.
+- In this project, IPYNB files are stored in the `_notebooks` folder.   The MD files are stored in GitHub under the `_posts` folder.
 
-- The courses will tell us which menu item it will be under, in this case, the `compsci` menu, and the `week` tells it what row (week) it will appear under that menu.
+- Developers can make their own layouts by adding data to front matter and making custom layouts.
 
-- In our examples,  hacks(ToDo) contain references to our IPYNB files; these are stored in GitHub under the `_notebooks` folder.   The plans and tangibles contain references to our MD files; these are stored in GitHub under the `_posts` folder.
+  - **type**. A value that will tell us which column this is going to appear under in a custom Time Box layout, these are subject to change according to owners interests: `plans`, `ccc`, `collab`.
 
-### Key files in Computer Science Lab Notebook
-
-- `compsci.md` - this is the "Computer Science Lab Notebook" page and is the link `https://nighthawkcoders.github.io/student/compsci`.  It contains the Title and Number of units on the page.
-- `_data/compsci.yml` - this contains the supporting data that helps organize the units on the page.
-- `_layouts`\schedule.html - this contains code, in the Liquid language, that generates the HTML for all the rows and columns.
-- FYI, the schedule.html could work for another type of page.  For instance, you could make a csa.md, _data/csa.yml, and tag files with `csa: {week: 0}` under courses.
+  - **courses**.  The courses page, in this case, the `csse` menu, and the `week` tells it what row (week) it will appear under that menu.

@@ -7,6 +7,7 @@ export class BackgroundSnow extends Background {
 
         // Start the background music in loop
 
+        //Randomizer for tyler music :)
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
           }

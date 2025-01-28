@@ -97,7 +97,7 @@ class GameObject {
     updateInfo(json) {
         var element = this.canvas;
         if (json.id === element.id) {
-            console.log("runs", json.width, json.height)
+            //console.log("runs", json.width, json.height)
             this.canvas.width = json.width;
             this.canvas.height = json.height;
             this.canvas.style.filter = json.filter;
@@ -115,6 +115,8 @@ class GameObject {
     */
     destroy() {
         const index = GameEnv.gameObjects.indexOf(this);
+     // GameEnv.gameObjects.removeChild(this)
+      // GameEnv.gameObjects.splice(index, 1)
         if (index !== -1) {
             // Remove the canvas from the DOM
             this.canvas.parentNode.removeChild(this.canvas);
@@ -153,6 +155,18 @@ class GameObject {
                 }
             }
         }
+    }
+    playerTubeCollision(player, tube) {
+        // Check if there is a collision between the player and the tube
+        const playerRect = player.canvas.getBoundingClientRect();
+        const tubeRect = tube.canvas.getBoundingClientRect();
+    
+        const collisionDetected = (
+            playerRect.right > tubeRect.left &&
+            playerRect.left < tubeRect.right &&
+            playerRect.bottom > tubeRect.top &&
+            playerRect.top < tubeRect.bottom
+        );
     }
 
     /* Collision detection method
@@ -212,7 +226,7 @@ class GameObject {
                     top: thisRect.bottom < otherRect.top,
                     bottom: (thisRect.bottom >= otherRect.top) && !(Math.abs(thisRect.bottom - otherRect.bottom) <= GameEnv.gravity),
                     left: thisCenterX < otherCenterX, 
-                    right: thisCenterX > otherCenterX,
+                     right: thisCenterX > otherCenterX,
                 },
             },
         };

@@ -223,6 +223,11 @@ const GameControl = {
         await newLevel.load();
         GameEnv.currentLevel = newLevel;
 
+        // Save the current level index to localStorage
+        const currentLevelIndex = GameEnv.levels.indexOf(newLevel);
+        console.log("Set currentLevelIndex to localStorage:", currentLevelIndex);
+        localStorage.setItem('currentLevelIndex', currentLevelIndex);
+
         // Update invert property
         GameEnv.setInvert();
         
