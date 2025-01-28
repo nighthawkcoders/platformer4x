@@ -81,20 +81,20 @@ const assets = {
     },
     enemies: {
       goomba: {
-        src: "/images/platformer/sprites/goomba.png",
-        width: 448,
-        height: 452,
+        src: "/images/platformer/sprites/shark.png",
+        width: 119,
+        height: 110,
         scaleSize: 60,
-        speedRatio: 0.7,
+        speedRatio: 0.1,
         xPercentage: 0.6,
         hitbox: { widthPercentage: 0.0, heightPercentage: 0.2 }
       },
       flyingGoomba: {
-        src: "/images/platformer/sprites/flying-goomba.png",
-        width: 448,
-        height: 452,
+        src: "/images/platformer/sprites/Stingray.png",
+        width: 1390,
+        height: 696,
         scaleSize: 60,
-        speedRatio: 0.7,
+        speedRatio: 0.9,
       },
       mushroom: {
         src: "/images/platformer/platforms/mushroom.png",
