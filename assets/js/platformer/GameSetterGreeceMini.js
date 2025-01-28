@@ -145,7 +145,7 @@ const assets = {
   const GameSetterGreeceMini = {
     tag: 'Greece Lava',
     assets: assets,
-    objects: objects
+    objects: objects,
   };
 
 export default GameSetterGreeceMini;

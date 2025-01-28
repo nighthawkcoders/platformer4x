@@ -113,10 +113,11 @@ export class PlayerGreece extends PlayerBase {
                         }
                 }
                   console.log("player has item to exit lvl")
+                //FindNextLevelID(this.jsonifiedElement.tag)//the input is the current level tag
+
                 // Transition to the next level when touching the flag
-                const index = GameEnv.levels.findIndex(level => level.tag === "Water")
+                const index = FindNextLevelID(this.jsonifiedElement.tag)//the input is the current level tag
                 GameControl.transitionToLevel(GameEnv.levels[index]);
-              //above code were you transition levels is broken and crashes the game when ran
                 break;
             case "cerberus": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
@@ -192,4 +193,31 @@ export class PlayerGreece extends PlayerBase {
         }
     }
 }
+
+
+function FindNextLevelID(currentLvlTag) {
+    let nextLvlIndex = 1;// this is a default value if the level tag is not found
+    let NextLvl = null
+    for(let i = 0; i < GameEnv.levels.length; i++){
+        if(GameEnv.levels[i].tag == currentLvlTag){
+            function checkLoop(){
+                if(i + 1 < GameEnv.levels.length){
+                    NextLvl = GameEnv.levels[i + 1];
+                    //console.log(NextLvl)
+                    //console.log(NextLvl.subLvl)
+    
+                    if(NextLvl.subLvl == false){
+                        nextLvlIndex = i + 1;
+                    }else{
+                        i++;
+                        checkLoop()
+                    }
+                }
+            }
+            checkLoop()
+        }
+    }
+    return nextLvlIndex //retuens the index of the next level wich is a number value
+}
+
 export default PlayerGreece;

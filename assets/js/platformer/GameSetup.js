@@ -220,26 +220,26 @@ const GameSetup = {
 
 
     // Initialize Game Levels
-    function GameLevelSetup(GameSetter, path, callback, passive = false) {
+    function GameLevelSetup(GameSetter, path, callback, subLevel = false,  passive = false) {
       var gameObjects = new GameSet(GameSetter.assets, GameSetter.objects, path);
-      return new GameLevel({ tag: GameSetter.tag, callback: callback, objects: gameObjects.getGameObjects(), passive: passive });
+      return new GameLevel({ tag: GameSetter.tag, callback: callback, objects: gameObjects.getGameObjects(), subLevel: subLevel, passive: passive });
     }
 
     // Start Game
-    GameLevelSetup(GameSetterStart, this.path, this.homeScreenCallback, true);
+    GameLevelSetup(GameSetterStart, this.path, this.homeScreenCallback, false, true);
     // Game Levels added to the Game ...
     GameLevelSetup(GameSetterHills, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterGreece, this.path, this.playerOffScreenCallBack);
-    GameLevelSetup(GameSetterGreeceMini, this.path, this.playerOffScreenCallBack);
+    GameLevelSetup(GameSetterGreeceMini, this.path, this.playerOffScreenCallBack,true);
     GameLevelSetup(GameSetterWater, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterQuidditch, this.path, this.playerOffScreenCallBack);
-    GameLevelSetup(GameSetterHogwarts, this.path, this.playerOffScreenCallBack);
+    GameLevelSetup(GameSetterHogwarts, this.path, this.playerOffScreenCallBack, true);
     GameLevelSetup(GameSetterWinter, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterWinterIce, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterSkibidi, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterBoss, this.path, this.playerOffScreenCallBack);
     // End Game
-    GameLevelSetup(GameSetterEnd, this.path, this.gameOverCallBack, true);
+    GameLevelSetup(GameSetterEnd, this.path, this.gameOverCallBack, false, true);
 
   }
 }
