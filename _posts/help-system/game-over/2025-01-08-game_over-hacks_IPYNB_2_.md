@@ -1,0 +1,412 @@
+---
+author: Shay, Akhil, William
+layout: post
+title: GameOver hacks
+description: Understanding the concepts behind GameOver / transitions / and the leaderboard
+permalink: /GameOverHelp/hacks
+menu: nav/GameOverHelp.html
+toc: True
+categories: ['Game Over']
+search_exclude: False
+---
+
+## Game Over
+
+Change the image displayed on the gameover screen. 
+
+I couldn't figure anything else out
+
+## Transitions
+
+Use a bool variable that determeains if you are able to advance to the next level. You can add this before the level switch in the collition checks found in your games player JS file if it is false use "return;" instead of break; to not transition to the next level
+
+## Leaderboard
+
+Current GameControl.js code for Greece level including time saves and timer and how local storage learerboarrd is coded for user
+
+
+```python
+/**
+ * GameControl module.
+ * @module GameControl
+ * @description GameControl.js key objective is to control the game loop.
+ * Usage Notes:
+ * - call GameControl.gameLoop() to run the game levels.
+ * - call or add listener to GameControl.startTimer() to start the game timer.
+ */
+import GameEnv from './GameEnv.js';
+
+/**
+ * GameControl is a singleton object that controls the game loop.
+ * @namespace GameControl
+ * 
+ * Coding Style Notes:
+ * - GameControl is defined as an object literal
+ * - GameControl is a singleton object, without a constructor.
+ * - This coding style ensures one instance, thus the term object literal.
+ * - Informerly, GameControl looks like defining a variable with methods contained inside.
+ * - The object literal style is a common pattern in JavaScript.
+ * - Observe, definition style of methods with GameControl.methodName = function() { ... }
+ *   - Example: transitionToLevel(newLevel) { ... } versus transitionToLevel: function(newLevel) { ... }
+ *   - Methods are defined as ES6 shorthand, versus the traditional function() style.
+ *   - The shorthand style is a common pattern in JavaScript, more concise, and readable as it common to other coding languages.
+ *   - But, it does not look like key-value pairs, which is the traditional object literal style.
+ *   - This shorthand is part of ES6, and is supported by all modern browsers. references: https://caniuse.com/#feat=es6, https://www.w3schools.com/js/js_versions.asp
+ * - Observe, scoping/encapulation of this.inTransition and sharing data between methods.
+ *   - this.inTransition is defined in the object literal scope.
+ *   - this.inTransition is shared between methods.
+ *   - this.inTransition is not accessible outside of the object literal scope.
+ *   - this.inTransition is not a global or static variable.
+ * 
+ */
+const GameControl = {
+    /**
+     * A reference to the interval used for the game timer.
+     * @type {number}
+     */
+    intervalID: null, // Variable to hold the timer interval reference
+    localStorageTimeKey: "localTimes",
+    /**
+     * Updates and displays the game timer.
+     * @function updateTimer
+     * @memberof GameControl
+     */ 
+    saveTime(time, score) {
+        if (time == 0) return;
+        const userID = GameEnv.userID
+        const oldTable = this.getAllTimes()
+
+        const data = {
+            userID: userID,
+            time: time,
+            score: score
+        }
+
+        if (!oldTable) {
+            localStorage.setItem(this.localStorageTimeKey, JSON.stringify([data]))
+            return;
+        }
+
+        oldTable.push(data)
+
+        localStorage.setItem(this.localStorageTimeKey, JSON.stringify(oldTable))
+    },
+    getAllTimes() {
+        let timeTable = null;
+
+        try {
+            timeTable = localStorage.getItem(this.localStorageTimeKey);
+        }
+        catch (e) {
+            return e;
+        }
+
+        return JSON.parse(timeTable)
+    },
+    updateTimer() {
+        const time = GameEnv.time
+
+        if (GameEnv.timerActive) {
+            const newTime = time + GameEnv.timerInterval
+            GameEnv.time = newTime                
+            if (document.getElementById('timeScore')) {
+                document.getElementById('timeScore').textContent = (time/1000).toFixed(2) 
+            }
+                return newTime
+            }
+            if (document.getElementById('timeScore')) {
+                document.getElementById('timeScore').textContent = (time/1000).toFixed(2) 
+            }
+    },   
+    updateCoinDisplay() {
+        const coins = GameEnv.coinScore
+        const coinDisplay = document.getElementById('coinScore')
+        if (!coinDisplay) {
+            console.error("COIN DISPLAY DOES NOT EXIST");
+        }
+        coinDisplay.textContent = coins
+    },     
+    gainCoin(value) {
+        GameEnv.coinScore += value;
+        this.updateCoinDisplay()
+    },
+    /**
+     * Starts the game timer.
+     * @function startTimer
+     * @memberof GameControl
+     */
+    startTimer() {
+        if (GameEnv.timerActive) {
+            console.warn("TIMER ACTIVE: TRUE, TIMER NOT STARTED")
+            return;
+        }
+        
+        this.intervalId = setInterval(() => this.updateTimer(), GameEnv.timerInterval);
+        GameEnv.timerActive = true;
+    },
+
+    /**
+     * Stops the game timer.
+     * @function stopTimer
+     * @memberof GameControl
+     */
+    stopTimer() {   
+        if (!GameEnv.timerActive) return;
+        
+        this.saveTime(GameEnv.time, GameEnv.coinScore)
+
+        GameEnv.timerActive = false
+        GameEnv.time = 0;
+        GameEnv.coinScore = 0;
+        this.updateCoinDisplay()
+        clearInterval(this.intervalID)
+    },
+
+    saveTime() {
+        const data = {
+            userID: GameEnv.userID,
+            time: GameEnv.time - 10,
+            coinScore: GameEnv.coinScore,
+            date: Date(),
+            gameSpeed: GameEnv.gameSpeed,
+            difficulty: GameEnv.difficulty
+        }
+
+        const currDataList = JSON.parse(localStorage.getItem(this.localStorageTimeKey))
+
+        if (!currDataList || !Array.isArray(currDataList)) {
+            localStorage.setItem(this.localStorageTimeKey, JSON.stringify([data]))
+            return;
+        }
+
+        currDataList.push(data)
+        
+        localStorage.setItem(this.localStorageTimeKey, JSON.stringify(currDataList))
+    },
+
+    randomEventId: null, //Variable to determine which random event will activate.
+    randomEventState: null, //Variable to hold the state. Is equal set to 1 when an event is triggered and then back to 0 once the event is completed.
+
+    //HOW TO ADD A RANDOM EVENT
+    //Import GameControl.js into the desired file
+    //Put this code in the update function of any game object
+
+    /**if (GameControl.randomEventId === # && GameControl.randomEventState === 1) {
+        //random event goes here
+        GameControl.endRandomEvent();
+    }*/
+
+    //Next, make sure that the event Id that triggers it is not being used
+    //Make sure that the event id is within the possible numbers that can be picked
+    //Once you are done make sure to add it to the random event key below
+
+
+    startRandomEvent(event) {
+        if(event === "game"){ //game random event
+            this.randomEventState = 1;
+            this.randomEventId = Math.floor(Math.random() * 3) + 1; //The number multiplied by Math.random() is the number of possible events.
+            /**Random Event Key
+             * 1: Inverts the Color of the Background
+             * 2: Time Stops all Goombas
+             * 3: Kills a Random Goomba
+            */
+        }
+        else if(event === "boss"){ //zombie event
+            this.randomEventState = 2;
+            this.randomEventId = Math.floor(Math.random() * 4) + 1; //The number multiplied by Math.random() is the number of possible events.
+            /**Random Event Key
+             * 1: Stop the boss and let it face left
+             * 4: Stop the boss and let it face left
+             * 2: Let the boss to walk left
+             * 3: Let the boss to walk right
+            */
+        }
+        else if (event === "zombie"){
+            GameEnv.playerChange = true;
+        }
+    },
+
+    endRandomEvent() {
+        this.randomEventId = 0;
+    },
+
+
+    /**
+     * Transitions to a new level. Destroys the current level and loads the new level.
+     * @param {Object} newLevel - The new level to transition to.
+     */
+    async transitionToLevel(newLevel) {
+        this.inTransition = true;
+
+        // Destroy existing game objects
+        GameEnv.destroy();
+
+        // Stop background music
+        GameEnv.stopAllSounds();
+
+        // Load GameLevel objects
+        if (GameEnv.currentLevel !== newLevel) {
+            GameEnv.claimedCoinIds = [];
+        }
+        await newLevel.load();
+        GameEnv.currentLevel = newLevel;
+
+        // Update invert property
+        GameEnv.setInvert();
+        
+        // Trigger a resize to redraw canvas elements
+        window.dispatchEvent(new Event('resize'));
+
+        this.inTransition = false;
+    },
+
+    /**
+     * The main game control loop.
+     * Checks if the game is in transition. If it's not, it updates the game environment,
+     * checks if the current level is complete, and if it is, transitions to the next level.
+     * If the current level is null, it transitions to the beginning of the game.
+     * Finally, it calls itself again using requestAnimationFrame to create a loop.
+     */    
+    gameLoop() {
+        // Turn game loop off during transitions
+        if (!this.inTransition) {
+
+            // Get current level
+            GameEnv.update();
+            const currentLevel = GameEnv.currentLevel;
+
+            // currentLevel is defined
+            if (currentLevel) {
+                // run the isComplete callback function
+                if (currentLevel.isComplete && currentLevel.isComplete()) {
+                    const currentIndex = GameEnv.levels.indexOf(currentLevel);
+                    // next index is in bounds
+                    if (currentIndex !== -1 && currentIndex + 1 < GameEnv.levels.length) {
+                        // transition to the next level
+                        this.transitionToLevel(GameEnv.levels[currentIndex + 1]);
+                    } 
+                }
+            // currentLevel is null, (ie start or restart game)
+            } else {
+                // transition to beginning of game
+                this.transitionToLevel(GameEnv.levels[0]);
+            }
+        }
+
+        // recycle gameLoop, aka recursion
+        requestAnimationFrame(this.gameLoop.bind(this));  
+    },
+};
+
+export default GameControl;
+```
+
+Game Control,js imported from our player and gamesetter files for our Level. 
+
+
+
+The leaderboard functionality in this code is indirectly implemented through the saveTime() and getAllTimes() methods. These methods interact with localStorage to persist and retrieve player performance data, such as time, score, and other metadata. Here's how it works:
+
+1. Saving Data for the Leaderboard
+The saveTime() method is responsible for storing the player's game performance data:
+
+Inputs: Time (GameEnv.time), score (GameEnv.coinScore), and additional information like user ID, game speed, difficulty, and date.
+Steps:
+Constructs an object (data) representing the player's game session.
+Fetches the current leaderboard data from localStorage using the key localStorageTimeKey.
+If no previous data exists, initializes a new array with the current game session.
+Appends the new game session data to the existing leaderboard data.
+Updates localStorage with the updated leaderboard data.
+javascript
+Copy code
+const data = {
+    userID: GameEnv.userID,
+    time: GameEnv.time - 10, // Adjusted time
+    coinScore: GameEnv.coinScore,
+    date: Date(),
+    gameSpeed: GameEnv.gameSpeed,
+    difficulty: GameEnv.difficulty
+};
+
+const currDataList = JSON.parse(localStorage.getItem(this.localStorageTimeKey));
+
+if (!currDataList || !Array.isArray(currDataList)) {
+    localStorage.setItem(this.localStorageTimeKey, JSON.stringify([data]));
+} else {
+    currDataList.push(data);
+    localStorage.setItem(this.localStorageTimeKey, JSON.stringify(currDataList));
+}
+2. Retrieving Leaderboard Data
+The getAllTimes() method retrieves all saved game sessions from the leaderboard:
+
+Steps:
+Reads the leaderboard data stored in localStorage using the key localStorageTimeKey.
+Parses the JSON string into a JavaScript array and returns it.
+javascript
+Copy code
+getAllTimes() {
+    let timeTable = null;
+    try {
+        timeTable = localStorage.getItem(this.localStorageTimeKey);
+    } catch (e) {
+        return e;
+    }
+    return JSON.parse(timeTable);
+}
+3. Displaying the Leaderboard
+While the code doesn't explicitly handle the display of the leaderboard, the retrieved data (getAllTimes()) can be used to create a UI for the leaderboard:
+
+Sort the array by a specific metric (e.g., score or time).
+Dynamically render the leaderboard as an HTML table or list.
+Key Points
+The leaderboard is stored locally using localStorage, making it accessible only on the same device.
+The leaderboard data includes essential fields like userID, time, score, difficulty, and gameSpeed, which can be used to create comprehensive rankings.
+To implement a fully functional leaderboard, you'd need to add a UI component that fetches and displays this data, potentially sorting it by score or time.
+
+Hack 1: Save and Display the User's Rank
+Goal: Show the user's current rank based on their score and time compared to others on the leaderboard. I gave you some starter code below, you must finish it.
+
+
+```python
+getUserRank(userID) {
+    const allTimes = this.getAllTimes();
+    const sortedLeaderboard = this.sortLeaderboard(allTimes);
+
+    for (let i = 0; i < sortedLeaderboard.length; i++) {
+        if (sortedLeaderboard[i].userID === userID) {
+            return i + 1; // Rank is 1-based
+        }
+    }
+    return null;
+},
+
+```
+
+
+```python
+Hack 2: Hack: Highlight the Top 3 Players
+Goal: Visually distinguish the top 3 players with special styles (e.g., gold, silver, bronze). Finish the code, here is the starter code:
+```
+
+
+```python
+renderLeaderboard() {
+    const allTimes = this.sortLeaderboard(this.getAllTimes());
+    const leaderboardElement = document.getElementById("leaderboard");
+
+    leaderboardElement.innerHTML = ""; // Clear existing leaderboard
+    allTimes.forEach((entry, index) => {
+        const row = document.createElement("div");
+        row.classList.add("leaderboard-row");
+
+        // Add special styles for top 3
+        if (index === 0) row.classList.add("gold");
+        else if (index === 1) row.classList.add("silver");
+        else if (index === 2) row.classList.add("bronze");
+
+        row.textContent = `Rank ${index + 1}: ${entry.userID}, Score: ${entry.score}`;
+        leaderboardElement.appendChild(row);
+    });
+},
+
+```
