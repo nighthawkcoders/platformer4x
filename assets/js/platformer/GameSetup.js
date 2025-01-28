@@ -151,7 +151,8 @@ const GameSetup = {
     // console.log(GameEnv.player?.x)
     if (GameEnv.player?.x > GameEnv.innerWidth) {
       GameEnv.player = null; // reset for next level
-      Leaderboard.openLeaderboardPanel();
+      //Leaderboard.openLeaderboardPanel();
+      alert("Level Complete! Click OK to continue to the next level.");
       return true;
     } else {
       return false;
@@ -240,7 +241,17 @@ const GameSetup = {
     GameLevelSetup(GameSetterBoss, this.path, this.playerOffScreenCallBack);
     // End Game
     GameLevelSetup(GameSetterEnd, this.path, this.gameOverCallBack, true);
-
+    
+    const savedLevelIndex = localStorage.getItem('currentLevelIndex');
+    if (savedLevelIndex !== null) {
+        GameEnv.currentLevel = GameEnv.levels[parseInt(savedLevelIndex)];
+        GameControl.transitionToLevel(GameEnv.levels[savedLevelIndex]);
+        console.log("Restored level index from localStorage:", savedLevelIndex);
+    } else {
+        console.log("No saved level index found in localStorage. Starting from the beginning.");
+        GameEnv.currentLevel = GameEnv.levels[1];
+        GameControl.transitionToLevel(GameEnv.levels[1]);
+    }
   }
 }
 // Bind the methods to the GameSetup object, ensures "this" inside of methods binds to "GameSetup"
