@@ -25,7 +25,7 @@ const assets = {
         scaleSize: 150,
       },
       coin: { src: "/images/platformer/obstacles/coin.png" },
-      dimonds: { src: "/images/platformer/obstacles/dimonds.png" },
+      dimonds: { src: "/images/platformer/sprites/seashell.png" },
     },
     platforms: {
       sand: { src: "/images/platformer/platforms/sand.png" },
