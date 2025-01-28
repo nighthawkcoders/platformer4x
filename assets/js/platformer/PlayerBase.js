@@ -3,7 +3,7 @@ import Character from './Character.js';
 import GameControl from './GameControl.js';
 /**
  * @class PlayerBase class
- * @description PlayeiBase.js key objective is to handle the user-controlled player's actions and animations.
+ * @description PlayerBase.js key objective is to handle the user-controlled player's actions and animations.
  *
  * The PlayerBase class extends the Character class, which in turn extends the GameObject class.
  * Animations and events are activated by key presses, collisions, and gravity.

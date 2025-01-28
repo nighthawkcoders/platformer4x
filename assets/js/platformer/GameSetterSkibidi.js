@@ -178,15 +178,16 @@ const assets = {
         src: "/images/platformer/sprites/merged_sprite_sheet.png",
         width: 81,   
         height: 83,
-        scaleSize: 85,
+        scaleSize: 85,   
         speedRatio: 0.7,
-        animationSpeed: 6,
-        ///animationspeed:6
-        idle: {row: 0, frames: 4 },
-        walk: {  row: 1, frames: 6 },
-        run: {  row: 2, frames: 6 },
-        jump: {row: 4, frames: 6 },
+        animationSpeed: 6, // How fast it goes through displaying each frame in specified row below:
+        idle: {row: 0, frames: 4 }, // idle animation
+        walk: {  row: 1, frames: 6 }, // walking animation
+        run: {  row: 2, frames: 6 },  // running animation
+        jump: {row: 4, frames: 6 }, // jumping animation
+        attack: {row: 4, frames: 6 },
         hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
+        
       },
       whitemario: {
         src: "/images/platformer/sprites/white_mario.png",
