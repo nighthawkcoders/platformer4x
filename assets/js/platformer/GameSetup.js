@@ -151,7 +151,8 @@ const GameSetup = {
     // console.log(GameEnv.player?.x)
     if (GameEnv.player?.x > GameEnv.innerWidth) {
       GameEnv.player = null; // reset for next level
-      Leaderboard.openLeaderboardPanel();
+      //Leaderboard.openLeaderboardPanel();
+      alert("Level Complete! Click OK to continue to the next level.");
       return true;
     } else {
       return false;
