@@ -112,7 +112,7 @@ const assets = {
         width: 205, // 205
         height: 246, // 246
         scaleSize: 1, // 1
-        speedRatio: 0.7, // framerate
+        speedRatio: 0.7, // framerate, how fast it goes through between displaying each frame or animation
         hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
       },
     },
