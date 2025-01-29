@@ -39,7 +39,7 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         let jumpHeightFactor;
         if (GameEnv.difficulty === "easy") {
             jumpHeightFactor = 0.50;
-        }else if (GameEnv.difficulty === "super_easy") {
+        }else if (GameEnv.difficulty === "super_easy") { // New game difficulty, "super easy", increases jump factor to make player jump higher
             jumpHeightFactor = 0.80;
         } else if (GameEnv.difficulty === "normal") {
             jumpHeightFactor = 0.40;
@@ -162,13 +162,13 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                 }
                 break;  
             case "powerup": 
-                if (this.collisionData.touchPoints.this.right && GameEnv.powerUpCollected) {
+                if (this.collisionData.touchPoints.this.right && GameEnv.powerUpCollected) { // Checks if right side of player sprite has collided with power-up
                     this.state.movement.right = false;
                     this.state.movement.left = true;
                     //GameEnv.difficulty = "super_easy";
                     updateJump();
                 // 3. Collision between player left and finishline
-                } else if (this.collisionData.touchPoints.this.left && GameEnv.powerUpCollected) {
+                } else if (this.collisionData.touchPoints.this.left && GameEnv.powerUpCollected) { // Checks if left side of player sprite has collided with power-up
                     this.state.movement.left = false;
                     this.state.movement.right = true;
                     //GameEnv.difficulty = "super_easy";

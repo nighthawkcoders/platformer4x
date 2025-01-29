@@ -2,7 +2,7 @@ import GameControl from './GameControl.js';
 import GameEnv from './GameEnv.js';
 import GameObject from './GameObject.js';
 
-export class JumpPlatform2 extends GameObject {
+export class JumpPlatform2 extends GameObject { // Create new class for power-up
     constructor(canvas, image, data, xPercentage, yPercentage, name) {
         super(canvas, image, data);
         this.platformX = xPercentage * GameEnv.innerWidth;
