@@ -497,13 +497,17 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.34, yPercentage: 0.8},
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.38, yPercentage: 0.8 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.42, yPercentage: 0.8 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.36, yPercentage: 0.8},
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.4, yPercentage: 0.8 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.32, yPercentage: 0.8 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.45, yPercentage: 0.75 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.6, yPercentage: 0.71 } ,
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.14, yPercentage: 0.84 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.7, yPercentage: 0.84 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.3, yPercentage: 0.4 },
     ///{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.475, yPercentage: 0.5 },
-    { name: 'itemBlock2', id: 'jumpPlatform', class: JumpPlatform2, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //Positions item block, make the object show up, item block is a platform
+    { name: 'itemBlock2', id: 'jumpPlatform', class: JumpPlatform2, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
+    //{ name: 'itemBlock2', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.325, yPercentage: 0.7 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: -0.0125, yPercentage: 0.4 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0125, yPercentage: 0.4 },
