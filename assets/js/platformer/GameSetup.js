@@ -252,6 +252,13 @@ const GameSetup = {
         GameEnv.currentLevel = GameEnv.levels[1];
         GameControl.transitionToLevel(GameEnv.levels[1]);
     }
+
+    // Load the GameControl.lastLocalStorageTime value
+    const savedTime = localStorage.getItem(GameControl.lastLocalStorageTime);
+
+    // Set game time to saved local time or 0 if not set
+    // Note: local storage key values are stored as strings, so have to convert to int
+    GameEnv.time = savedTime ? parseInt(savedTime, 10) : 0;
   }
 }
 // Bind the methods to the GameSetup object, ensures "this" inside of methods binds to "GameSetup"
