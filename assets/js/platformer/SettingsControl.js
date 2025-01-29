@@ -241,12 +241,6 @@ const SettingsControl = {
             window.dispatchEvent(new CustomEvent("gameSpeed", { detail: { gameSpeed: value } }));
             updateCharacterSpeed(value); // call function to update character speed
         });
-
-        function updateCharacterSpeed(speed) {
-            // Assuming you have a game character object with a speed property
-            gameSpeed = speed;
-            // Additional logic to apply the new speed to the game character
-        }
     
         div.appendChild(gameSpeed);
         return div;
