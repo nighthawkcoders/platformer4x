@@ -2,7 +2,7 @@ import GameControl from './GameControl.js';
 import GameEnv from './GameEnv.js';
 import GameObject from './GameObject.js';
 
-export class JumpPlatform2 extends GameObject { // Create new class for power-up
+export class JumpPlatform2 extends GameObject { // Created new class for the power-up collision. File allows the object to be collected like the coin
     constructor(canvas, image, data, xPercentage, yPercentage, name) {
         super(canvas, image, data);
         this.platformX = xPercentage * GameEnv.innerWidth;
@@ -33,6 +33,7 @@ export class JumpPlatform2 extends GameObject { // Create new class for power-up
         this.isVisible = false;
         // Update status of key
         GameEnv.powerUpCollected = true
+        console.log("Power-up collected!")
         // Remove the block from the display
         this.canvas.style.display = 'none';
     }
