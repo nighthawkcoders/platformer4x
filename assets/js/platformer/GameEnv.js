@@ -61,7 +61,7 @@ export class GameEnv {
     static currentLevel = null;
     static gameObjects = [];
     static isInverted = false;
-    static gameSpeed = 4;
+    static gameSpeed = 2;
     static backgroundDirection = 0;
     static transitionHide = false;
     static gravity = 3;
