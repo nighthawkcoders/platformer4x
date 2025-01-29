@@ -20,6 +20,8 @@ const assets = {
       height: 81, //125
       scaleSize: 100,
       },
+      trash: { src: "/images/platformer/trash.png" },
+      trashCan: { src: "/images/platformer/trashbin.png" },
       coin: { src: "/images/platformer/obstacles/coin.png" },
     },
     platforms: {
@@ -142,6 +144,10 @@ const assets = {
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.34, yPercentage: 0.69},
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.31, yPercentage: 0.27},   
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.27},   
+    { name: 'trash', id: 'coin', class: Coin, data: assets.obstacles.trash, xPercentage: 0.05, yPercentage: 0.4},
+    { name: 'trash', id: 'coin', class: Coin, data: assets.obstacles.trash, xPercentage: 0.55, yPercentage: 0.3},
+    { name: 'trash', id: 'coin', class: Coin, data: assets.obstacles.trash, xPercentage: 0.2, yPercentage: 0.69},
+    { name: 'trash', id: 'coin', class: Coin, data: assets.obstacles.trash, xPercentage: 0.33, yPercentage: 0.6},
     { name: 'mario', id: 'player', class: PlayerHills, data: assets.players.mario },
     { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.85 },
     { name: 'loading', id: 'background', class: BackgroundTransitions, data: assets.transitions.loading },
