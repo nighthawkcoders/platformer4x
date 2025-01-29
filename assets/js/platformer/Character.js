@@ -170,3 +170,4 @@ class Character extends GameObject {
 }
 
 export default Character;
+
