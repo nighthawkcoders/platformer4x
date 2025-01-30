@@ -38,6 +38,7 @@ const GameControl = {
      */
     intervalID: null, // Variable to hold the timer interval reference
     localStorageTimeKey: "localTimes",
+    lastLocalStorageTime: "lastLocalTime", // Hold last locally stored timer key
     /**
      * Updates and displays the game timer.
      * @function updateTimer
@@ -78,18 +79,23 @@ const GameControl = {
     updateTimer() {
         const time = GameEnv.time
 
+        // Subroutine to update time in local storage
+        localStorage.setItem(this.lastLocalStorageTime, time)
+        console.log("last local storage time set to: " + localStorage.getItem(this.lastLocalStorageTime))
+        
         if (GameEnv.timerActive) {
             const newTime = time + GameEnv.timerInterval
-            GameEnv.time = newTime                
+            GameEnv.time = newTime              
+
             if (document.getElementById('timeScore')) {
                 document.getElementById('timeScore').textContent = (time/1000).toFixed(2) 
             }
-                return newTime
-            }
-            if (document.getElementById('timeScore')) {
-                document.getElementById('timeScore').textContent = (time/1000).toFixed(2) 
-            }
-    },   
+            return newTime
+        }
+        if (document.getElementById('timeScore')) {
+            document.getElementById('timeScore').textContent = (time/1000).toFixed(2) 
+        }
+    },
     updateCoinDisplay() {
         const coins = GameEnv.coinScore
         const coinDisplay = document.getElementById('coinScore')
