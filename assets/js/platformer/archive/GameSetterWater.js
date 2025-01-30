@@ -1,17 +1,17 @@
-import GameSet from './GameSet.js';
+import GameSet from '../GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
-import Background from './Background.js';
-import BackgroundParallax from './BackgroundParallax.js';
-import BackgroundTransitions from './BackgroundTransitions.js';
-import Platform from './Platform.js';
-import BlockPlatform from './BlockPlatform.js';
-import JumpPlatform from './PlatformJump.js';
+import Background from '../Background.js';
+import BackgroundParallax from '../BackgroundParallax.js';
+import BackgroundTransitions from '../BackgroundTransitions.js';
+import Platform from '../Platform.js';
+import BlockPlatform from '../BlockPlatform.js';
+import JumpPlatform from '../PlatformJump.js';
 import PlayerWater from './PlayerWater.js';  // Updated import
-import Goomba from './EnemyGoomba.js';
-import FlyingGoomba from './FlyingGoomba.js';
-import Mushroom from './Mushroom.js';
-import Coin from './Coin.js';
-import FinishLine from './FinishLine.js';
+import Goomba from '../EnemyGoomba.js';
+import FlyingGoomba from '../FlyingGoomba.js';
+import Mushroom from '../Mushroom.js';
+import Coin from '../Coin.js';
+import FinishLine from '../FinishLine.js';
 
 // Define the GameSetup object literal
 const assets = {  

@@ -76,7 +76,7 @@ export class PlayerQuidditch extends PlayerBase {
                     if (Math.abs(this.y - this.bottom) <= GameEnv.gravity) {
                         // Force end of level condition
                         // this.x = GameEnv.innerWidth + 1;
-                        const indexMini = GameEnv.levels.findIndex(level => level.tag === "Hogwarts")
+                        const indexMini = GameEnv.levels.findIndex(level => level.tag === "Winter")
                         GameControl.transitionToLevel(GameEnv.levels[indexMini]);
                         return
                     }
