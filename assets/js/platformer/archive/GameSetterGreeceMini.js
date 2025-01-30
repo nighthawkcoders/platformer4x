@@ -1,13 +1,13 @@
 // GameSetterGreeceMini.js Key objective is to define objects for a GameLevel
 // To build GameLevels, each contains GameObjects from below imports
-import Background from './Background.js'
-import BackgroundTransitions from './BackgroundTransitions.js';
-import PlayerMini from './PlayerMini.js';
-import BlockPlatform from './BlockPlatform.js';
-import Platform from './Platform.js';
-import Coin from './Coin.js';
-import FinishLine from './FinishLine.js';
-import Star from './Star.js';
+import Background from '../Background.js'
+import BackgroundTransitions from '../BackgroundTransitions.js';
+import PlayerMini from '../PlayerMini.js';
+import BlockPlatform from '../BlockPlatform.js';
+import Platform from '../Platform.js';
+import Coin from '../Coin.js';
+import FinishLine from '../FinishLine.js';
+import Star from '../Star.js';
 
 // Define the GameSetup object literal
 const assets = {  

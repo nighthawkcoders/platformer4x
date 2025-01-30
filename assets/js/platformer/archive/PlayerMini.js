@@ -1,6 +1,6 @@
-import GameEnv from './GameEnv.js';
-import PlayerBase from './PlayerBase.js';
-import GameControl from './GameControl.js';
+import GameEnv from '../GameEnv.js';
+import PlayerBase from '../PlayerBase.js';
+import GameControl from '../GameControl.js';
 
 /**
  * @class PlayerHills class
@@ -12,7 +12,7 @@ import GameControl from './GameControl.js';
  * 
  * @extends PlayerBase 
  */
-export class PlayerIce extends PlayerBase {
+export class PlayerMini extends PlayerBase {
 
     /** GameObject instantiation: constructor for PlayerHills object
      * @extends Character 
@@ -26,7 +26,6 @@ export class PlayerIce extends PlayerBase {
         const finishlineX = .01 * GameEnv.innerWidth;
         this.setX(finishlineX);
         this.hillsStart = true;
-
 
         // Goomba variables, deprecate?
         this.timer = false;
@@ -47,15 +46,14 @@ export class PlayerIce extends PlayerBase {
             jumpHeightFactor = 0.30;
         }
         this.setY(this.y - (this.bottom * jumpHeightFactor));
-    }    
+    }
     update(){
             super.update();
         if (this.hillsStart) {
                 this.setY(0);
                 this.hillsStart = false;
             }
-    }
-
+        }
     /**
      * @override
      * gameLoop: Watch for Player collision events 
@@ -64,7 +62,9 @@ export class PlayerIce extends PlayerBase {
         super.handleCollisionStart(); // calls the super class method
         // adds additional collision events
         this.handleCollisionEvent("finishline");
-        this.handleCollisionEvent("penguin");
+        this.handleCollisionEvent("goomba");
+        this.handleCollisionEvent("mushroom");
+
     }
    
     /**
@@ -77,14 +77,17 @@ export class PlayerIce extends PlayerBase {
         switch (this.state.collision) {
             case "finishline":
                 // 1. Caught in finishline
-                if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom) {
+                if (this.collisionData.touchPoints.this.onTopofOther  || this.state.isFinishing ) {
                     // Position player in the center of the finishline 
                     this.x = this.collisionData.newX;
+                    this.state.movement = { up: false, down: false, left: false, right: false, falling: false};
+                    this.state.isFinishing = true;
+                    this.gravityEnabled = true;
                     // Using natural gravity wait for player to reach floor
                     if (Math.abs(this.y - this.bottom) <= GameEnv.gravity) {
                         // Force end of level condition
                         //this.x = GameEnv.innerWidth + 1;
-                        const index = GameEnv.levels.findIndex(level => level.tag === "Winter")
+                        const index = GameEnv.levels.findIndex(level => level.tag === "Greece")
                         GameControl.transitionToLevel(GameEnv.levels[index]);
                     }
                 // 2. Collision between player right and finishline   
@@ -97,7 +100,7 @@ export class PlayerIce extends PlayerBase {
                     this.state.movement.right = true;
                 }
                 break;
-            case "penguin": // Note: Goomba.js and Player.js could be refactored
+            case "goomba": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
                 if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom && this.state.isDying == false) {
                     // GoombaBounce deals with player.js and goomba.js
@@ -129,10 +132,21 @@ export class PlayerIce extends PlayerBase {
                 
                 }
                 break;
+            case "mushroom": // 
+                // Player touches mushroom   
+                if (GameEnv.destroyedMushroom === false) {
+                    GameEnv.destroyedMushroom = true;
+                    this.canvas.style.filter = 'invert(1)';
+                    // Invert state lasts for 2 seconds
+                    setTimeout(() => {
+                        this.canvas.style.filter = 'invert(0)';
+                    }, 2000); // 2000 milliseconds = 2 seconds
+                }
+                break;  
         }
 
     }
 
 }
 
-export default PlayerIce;
+export default PlayerMini;
