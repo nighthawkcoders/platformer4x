@@ -32,6 +32,16 @@ export class skibidiTitan extends Character {
         this.debounce = 0;
         this.laser = document.getElementById("Laser");
         this.laserHeight = this.laser.innerHeight;
+
+        // New property to randomize laser delay
+        this.laserFireDelay = this.getRandomLaserDelay();
+    }
+
+    // Method to get a random delay between 1 and 10 seconds (converted to frames)
+    getRandomLaserDelay() {
+        const minDelay = 60; // 1 second = 60 frames
+        const maxDelay = 600; // 10 seconds = 600 frames
+        return Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
     }
 
     killBeam(target) {
@@ -71,7 +81,9 @@ export class skibidiTitan extends Character {
 
         // Laser-related logic
         this.immune = 1;
-        if (this.debounce < 240 && this.debounce > -1) {
+
+        // Randomize the laser fire timing based on the laserFireDelay
+        if (this.debounce < this.laserFireDelay && this.debounce > -1) {
             this.laser.style.left = `-2000px`;
             this.x = GameEnv.PlayerPosition.playerX - 0.14 * GameEnv.innerWidth;
             this.debounce += 1;
@@ -99,10 +111,12 @@ export class skibidiTitan extends Character {
                 this.killBeam(GameEnv.player);
                 this.debounce = 0;
                 this.laser.style.left = `${this.x + 0.14 * GameEnv.innerWidth}px`;
+                // Attempt to randomize lazer after each shot. Does not work YET
+                this.laserFireDelay = this.getRandomLaserDelay();
             }
         }
 
-        if (this.debounce === 240) {
+        if (this.debounce === this.laserFireDelay) {
             this.debounce = -240;
         }
 

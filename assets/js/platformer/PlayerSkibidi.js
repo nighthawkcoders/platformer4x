@@ -89,7 +89,40 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         this.handleCollisionEvent("powerup"); // created a new case where it detects for collision between player and power-up
     }
    
-    
+    /**
+    * @override
+    */
+    updateAnimationState(key) {
+        switch (key) {
+            case 'a':
+            case 'd':
+                this.state.animation = 'walk';
+                GameEnv.playerAttack = false;
+                break;
+            case 'w':
+                if (this.state.movement.up == false) {
+                this.state.movement.up = true;
+                this.state.animation = 'jump';
+                }
+                GameEnv.playerAttack = false;
+                break;
+            case 's':
+                if ("a" in this.pressedKeys || "d" in this.pressedKeys) {
+                this.state.animation = 'run';
+                }
+                GameEnv.playerAttack = false;
+                break;
+            case 'Shift':
+                this.state.animation = 'attack';  // Always trigger attack when Shift is pressed
+                GameEnv.playerAttack = true;
+                break;
+            default:
+                this.state.animation = 'idle';
+                GameEnv.playerAttack = false;
+                break;
+        }
+    }
+
     /**
      * @override
      * gameloop: Handles additional Player reaction / state updates to the collision for game level 
