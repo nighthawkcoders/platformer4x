@@ -1,6 +1,7 @@
 import GameEnv from './GameEnv.js';
 import Character from './Character.js';
 import GameControl from './GameControl.js';
+import SettingsControl from './SettingsControl.js';
 /**
  * @class PlayerBase class
  * @description PlayerBase.js key objective is to handle the user-controlled player's actions and animations.
@@ -52,7 +53,7 @@ export class PlayerBase extends Character {
         this.setY(this.y - (this.bottom * 0.35));
     }
     updateMovement() {
-        const speedMultiplier = GameEnv.playerSpeedMultiplier || 1; // Default to 1 if not set
+        const speedMultiplier = SettingsControl.gameSpeed || 1; // Default to 1 if not set
         switch (this.state.animation) {
             case 'idle':
                 break;
