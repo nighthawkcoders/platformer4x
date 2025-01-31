@@ -26,6 +26,7 @@ export class skibidiTitan extends Character {
             this.maxHp, this.currentHp, // Titan's max and current health
             this.x, this.y // Titan's position
         );
+    
 
         // Laser-related properties
         this.immune = 0;
@@ -37,6 +38,11 @@ export class skibidiTitan extends Character {
         this.laserFireDelay = this.getRandomLaserDelay();
     }
 
+        hpLoss() {
+            if (GameEnv.playerAttack) {
+                this.currentHp -= 1;
+            }
+        }
     // Method to get a random delay between 1 and 10 seconds (converted to frames)
     getRandomLaserDelay() {
         const minDelay = 60; // 1 second = 60 frames
@@ -68,6 +74,9 @@ export class skibidiTitan extends Character {
 
     update() {
         super.update();
+
+        // Call hpLoss for damage check
+        this.hpLoss();
 
         // Health bar update
         this.titanHealthBar.updateTitanHealth(
@@ -137,3 +146,6 @@ export class skibidiTitan extends Character {
 }
 
 export default skibidiTitan;
+
+
+//Tommorow I have to add if statement for playerAttack to decrease titan health. Good night myself.

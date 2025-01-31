@@ -26,7 +26,7 @@ export class Laser extends GameObject {
         this.ctx.drawImage(this.image, this.x + this.width*GameEnv.innerWidth, this.y);
     }
 
-    /* Background camvas is set to screen
+    /* Background canvas is set to screen
      * the ADJUST contant elements portions of image that don't wrap well
      * the GameEnv.top is a getter used to set canvas under Menu
      * the GameEnv.bottom is setter used to establish game bottom at offsetHeight of canvas 
