@@ -37,15 +37,29 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
      */
     updateJump() {  
         let jumpHeightFactor;
-        if (GameEnv.difficulty === "easy") {
+    
+        console.log("Current Difficulty:", GameEnv.difficulty);  // Debugging output
+    
+        if (GameEnv.powerUpCollected) {  
+            jumpHeightFactor = 1.20;  // Ensure this is used when power-up is collected
+        } else if (GameEnv.difficulty === "easy") {
             jumpHeightFactor = 0.50;
+        } else if (GameEnv.difficulty === "super_easy") {
+            jumpHeightFactor = 0.90;  
         } else if (GameEnv.difficulty === "normal") {
             jumpHeightFactor = 0.40;
         } else {
             jumpHeightFactor = 0.30;
         }
+    
+        console.log("Jump Height Factor Set To:", jumpHeightFactor);  // Debugging output
+        console.log("Old Y Position:", this.y); 
+    
         this.setY(this.y - (this.bottom * jumpHeightFactor));
-    }
+    
+        console.log("New Y Position:", this.y);
+    }    
+    
 
     updateFrameX(){
         if (this.frameX < this.maxFrame) {
@@ -72,9 +86,43 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         this.handleCollisionEvent("finishline");
         this.handleCollisionEvent("SkibidiToilet");
         this.handleCollisionEvent("laser");
+        this.handleCollisionEvent("powerup"); // created a new case where it detects for collision between player and power-up
     }
    
-    
+    /**
+    * @override
+    */
+    updateAnimationState(key) {
+        switch (key) {
+            case 'a':
+            case 'd':
+                this.state.animation = 'walk';
+                GameEnv.playerAttack = false;
+                break;
+            case 'w':
+                if (this.state.movement.up == false) {
+                this.state.movement.up = true;
+                this.state.animation = 'jump';
+                }
+                GameEnv.playerAttack = false;
+                break;
+            case 's':
+                if ("a" in this.pressedKeys || "d" in this.pressedKeys) {
+                this.state.animation = 'run';
+                }
+                GameEnv.playerAttack = false;
+                break;
+            case 'Shift':
+                this.state.animation = 'attack';  // Always trigger attack when Shift is pressed
+                GameEnv.playerAttack = true;
+                break;
+            default:
+                this.state.animation = 'idle';
+                GameEnv.playerAttack = false;
+                break;
+        }
+    }
+
     /**
      * @override
      * gameloop: Handles additional Player reaction / state updates to the collision for game level 
@@ -158,6 +206,25 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                 
                 }
                 break;  
+            case "powerup": 
+            if (GameEnv.powerUpCollected) {  
+                console.log("Power-up collision detected! Changing difficulty...");
+                GameEnv.difficulty = "super_easy"; // Force change
+                jumpHeightFactor = 1.20;
+            }
+            if (this.collisionData.touchPoints.this.right && GameEnv.powerUpCollected) { 
+                this.state.movement.right = false;
+                this.state.movement.left = true;
+                jumpHeightFactor = 1.20; // Updating the jump factor to make player jump higher
+            } else if (this.collisionData.touchPoints.this.left && GameEnv.powerUpCollected) { 
+                this.state.movement.left = false;
+                this.state.movement.right = true;
+                jumpHeightFactor = 0.80; // Updating the jump factor to make player jump higher
+            }
+            
+                GameEnv.update();
+                console.log("Power Up",GameEnv.gameObjects[GameEnv.gameObjects.length - 1]);
+                break;
         }
 
     }

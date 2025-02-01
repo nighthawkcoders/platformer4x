@@ -1,15 +1,15 @@
 // GameSetterWinterIce.js Key objective is to define objects for a GameLevel
 // To build GameLevels, each contains GameObjects from below imports
-import BackgroundParallax from './BackgroundParallax.js';
-import BackgroundTransitions from './BackgroundTransitions.js';
-import Platform from './Platform.js';
-import BlockPlatform from './BlockPlatform.js';
-import Coin from './Coin.js';
-import FinishLine from './FinishLine.js';
-import Jellyfish from './FlyingJellyfish.js';
-import Penguin from './EnemyPenguin.js';
+import BackgroundParallax from '../BackgroundParallax.js';
+import BackgroundTransitions from '../BackgroundTransitions.js';
+import Platform from '../Platform.js';
+import BlockPlatform from '../BlockPlatform.js';
+import Coin from '../Coin.js';
+import FinishLine from '../FinishLine.js';
+import Jellyfish from '../FlyingJellyfish.js';
+import Penguin from '../EnemyPenguin.js';
 import PlayerIce from './PlayerIce.js';
-import NarwhalBoss from './NarwhalBoss.js';
+import NarwhalBoss from '../NarwhalBoss.js';
 
 // Define the GameSetup object literal
 const assets = {  

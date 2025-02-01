@@ -1,6 +1,7 @@
 import Background from './Background.js'
 import BackgroundTransitions from './BackgroundTransitions.js';
 import Platform from './Platform.js';
+import JumpPlatform2 from './PlatformJump2.js';
 import BlockPlatform from './BlockPlatform.js';
 import Coin from './Coin.js';
 import skibidiTitan from './SkibidiTitan.js';
@@ -44,7 +45,7 @@ const assets = {
         hitbox: { widthPercentage: 0.06, heightPercentage: 0.5},
         width: 60,
         height: 500,
-        scaleSize: 100
+        scaleSize: 90
       },
       cabin: {
         src: "/images/platformer/obstacles/cabin.png",
@@ -103,17 +104,17 @@ const assets = {
       island: { src: "/images/platformer/platforms/island.png" },
       island: { src: "/images/platformer/platforms/island.png" },
       block: { src: "/images/platformer/platforms/brick_block.png" }, //MAY need 3 new variables: sizeRatio, widthRatio, and heightRatio
-      itemBlock: {
-        src: "/images/platformer/platforms/mario_block_spritesheet_v2.png",
-        sizeRatio: 83.2,
-        widthRatio: 0.5,
+      itemBlock2: { //power-up
+        src: "/images/platformer/sprites/jumppowerup.png", //spritesheet
+        sizeRatio: 2.0, 
+        widthRatio: 1.0,
         heightRatio: 1.0,
-        width: 204,
-        height: 204,
-        scaleSize: 80,
-        speedRatio: 0.7,
+        width: 205, // 205
+        height: 246, // 246
+        scaleSize: 1, // 1
+        speedRatio: 0.7, // framerate, how fast it goes through between displaying each frame or animation
         hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
-      }
+      },
     },
     backgrounds: {
       boss: { src: "/images/platformer/backgrounds/BossBackground.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
@@ -177,15 +178,16 @@ const assets = {
         src: "/images/platformer/sprites/merged_sprite_sheet.png",
         width: 81,   
         height: 83,
-        scaleSize: 85,
+        scaleSize: 85,   
         speedRatio: 0.7,
-        animationSpeed: 6,
-        ///animationspeed:6
-        idle: {row: 0, frames: 4 },
-        walk: {  row: 1, frames: 6 },
-        run: {  row: 2, frames: 6 },
-        jump: {row: 4, frames: 6 },
+        animationSpeed: 6, // How fast it goes through displaying each frame in specified row below:
+        idle: {row: 0, frames: 4 }, // idle animation
+        walk: {  row: 1, frames: 6 }, // walking animation
+        run: {  row: 2, frames: 6 },  // running animation
+        jump: {row: 4, frames: 6 }, // jumping animation
+        attack: {row: 4, frames: 6 },
         hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
+        
       },
       whitemario: {
         src: "/images/platformer/sprites/white_mario.png",
@@ -491,21 +493,26 @@ const assets = {
     { name: 'laser', id: 'Laser', class: Laser, data: assets.obstacles.laser, xPercentage:  0.75, yPercentage: 0.5 },
     { name: 'skibidiTitan', id: 'skibidiTitan', class: skibidiTitan, data: assets.enemies.skibidiTitan, xPercentage:  0.35, yPercentage: 0.5, minPosition: 0.5 }, 
     { name: 'sand', id: 'platform', class: Platform, data: assets.platforms.sand },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.1, yPercentage: 0.9 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.3, yPercentage: 0.7 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.5, yPercentage: 0.8 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.7, yPercentage: 0.6 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.4, yPercentage: 0.4 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.2, yPercentage: 0.3 } ,
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.6, yPercentage: 0.2 },
-    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.8, yPercentage: 0.5 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.3, yPercentage: 0.75 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.34, yPercentage: 0.8},
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.38, yPercentage: 0.8 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.42, yPercentage: 0.8 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.36, yPercentage: 0.8},
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.4, yPercentage: 0.8 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.32, yPercentage: 0.8 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.45, yPercentage: 0.75 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.6, yPercentage: 0.71 } ,
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.14, yPercentage: 0.84 },
+    { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.7, yPercentage: 0.84 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.3, yPercentage: 0.4 },
     ///{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.475, yPercentage: 0.5 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.325, yPercentage: 0.7 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: -0.0125, yPercentage: 0.4 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0125, yPercentage: 0.4 },
-    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0325, yPercentage: 0.4 },
-    { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.3, minPosition: 0.07 },
+    { name: 'itemBlock2', id: 'jumpPlatform', class: JumpPlatform2, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
+    //{ name: 'itemBlock2', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.35, yPercentage: 0.85 },
+    { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.3, yPercentage: 0.34 },
+    //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0125, yPercentage: 0.4 },
+    //{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.0325, yPercentage: 0.4 },
+    { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.3,  minPosition: 0.07 },
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.5, minPosition: 0.3 },
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.75, minPosition: 0.5 },
     { name: 'escaper', id: 'player', class: PlayerSkibidi, data: assets.players.escaper  },

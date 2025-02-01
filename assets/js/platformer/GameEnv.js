@@ -54,6 +54,7 @@ export class GameEnv {
      * @property {number} time - Initialize time variable, used by timer objects
      * @property {number} timerInterval - Variable to hold the interval reference, used by timer objects
      * @property {boolean} keyCollected - Checks whether the key has been collected my Mario or not
+     * @property {boolean} powerUpCollected - Checks whether the powerup has been collected by the escaper sprite
      */
     static userID = "Guest";
     static player = null;
@@ -81,6 +82,7 @@ export class GameEnv {
     static goombaBounce = false;
     static goombaBounce1 = false;
     static keyCollected = false;
+    static powerUpCollected = false;
 
     static timerActive = false;
     static timerInterval = 10;

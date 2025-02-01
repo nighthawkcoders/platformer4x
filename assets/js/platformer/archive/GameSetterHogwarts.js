@@ -1,14 +1,14 @@
 // GameHogwarts.js Key objective is to define objects for a GameLevel
-import GameSet from './GameSet.js';
+import GameSet from '../GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
-import BackgroundParallax from './BackgroundParallax.js';
+import BackgroundParallax from '../BackgroundParallax.js';
 import PlayerMiniHogwarts from './PlayerMiniHogwarts.js'; 
-import BlockPlatform from './BlockPlatform.js';
-import MovingPlatform from './PlatformMoving.js'
-import MagicBeam from './MagicBeam.js';
-import Coin from './Coin.js';
-import FinishLine from './FinishLine.js';
-import PlatformFilter from './PlatformFilter.js';
+import BlockPlatform from '../BlockPlatform.js';
+import MovingPlatform from '../PlatformMoving.js'
+import MagicBeam from '../MagicBeam.js';
+import Coin from '../Coin.js';
+import FinishLine from '../FinishLine.js';
+import PlatformFilter from '../PlatformFilter.js';
 // Define the GameSetup object literal
 const assets = {  
   obstacles: {
