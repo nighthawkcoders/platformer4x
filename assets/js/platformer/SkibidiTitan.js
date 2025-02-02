@@ -1,4 +1,4 @@
-import Character from './Character.js'; 
+import Character from './Character.js';
 import GameEnv from './GameEnv.js';
 import GameControl from './GameControl.js';
 import Laser from './Laser.js';
@@ -26,7 +26,11 @@ export class skibidiTitan extends Character {
             this.maxHp, this.currentHp, // Titan's max and current health
             this.x, this.y // Titan's position
         );
-    
+
+        // State properties
+        this.state = {
+            isDead: false // New state for checking if Titan is dead
+        };
 
         // Laser-related properties
         this.immune = 0;
@@ -38,11 +42,22 @@ export class skibidiTitan extends Character {
         this.laserFireDelay = this.getRandomLaserDelay();
     }
 
-        hpLoss() {
-            if (GameEnv.playerAttack) {
-                this.currentHp -= 1;
-            }
+    hpLoss() {
+        if (GameEnv.playerAttack && !this.state.isDead) {
+            this.currentHp -= 1;
         }
+    }
+
+    // Method to handle Titan's death state (makes the Titan disappear)
+    handleDeath() {
+        if (this.currentHp <= 0 && !this.state.isDead) {
+            this.state.isDead = true; // Set the Titan as dead
+            GameEnv.invincible = true; // Make invincible 
+            this.canvas.style.display = "none"; // Hide the Titan's canvas (makes it disappear)
+            GameEnv.playSound("goombaDeath"); // Play the death sound
+        }
+    }
+
     // Method to get a random delay between 1 and 10 seconds (converted to frames)
     getRandomLaserDelay() {
         const minDelay = 60; // 1 second = 60 frames
@@ -64,7 +79,7 @@ export class skibidiTitan extends Character {
                         await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
                         console.log("level restart");
                         target.state.isDying = false;
-                    }, 900); 
+                    }, 900);
                 }
             } else if (GameEnv.difficulty === "easy") {
                 this.x += 10;
@@ -75,77 +90,80 @@ export class skibidiTitan extends Character {
     update() {
         super.update();
 
-        // Call hpLoss for damage check
+        // Check if the Titan should take damage
         this.hpLoss();
 
-        // Health bar update
-        this.titanHealthBar.updateTitanHealth(
-            this.currentHp, 
-            this.x, 
-            this.y, 
-            this.canvas.width, 
-            this.canvas.height
-        );
-        this.titanHealthBar.update();
+        // Check if the Titan should die and disappear
+        this.handleDeath();
 
-        // Laser-related logic
-        this.immune = 1;
+        // Only continue if Titan is not dead
+        if (!this.state.isDead) {
+            // Health bar update
+            this.titanHealthBar.updateTitanHealth(
+                this.currentHp, 
+                this.x, 
+                this.y, 
+                this.canvas.width, 
+                this.canvas.height
+            );
+            this.titanHealthBar.update();
 
-        // Randomize the laser fire timing based on the laserFireDelay
-        if (this.debounce < this.laserFireDelay && this.debounce > -1) {
-            this.laser.style.left = `-2000px`;
-            this.x = GameEnv.PlayerPosition.playerX - 0.14 * GameEnv.innerWidth;
-            this.debounce += 1;
-        }
-        if (this.debounce < -120) {
-            this.debounce += 1;
-            if (this.debounce === -235) {
-                GameEnv.playSound("laserCharge");
-                this.laser.style.transform = `scaleY(${0})`;
+            // Laser-related logic
+            this.immune = 1;
+
+            // Randomize the laser fire timing based on the laserFireDelay
+            if (this.debounce < this.laserFireDelay && this.debounce > -1) {
+                this.laser.style.left = `-2000px`;
+                this.x = GameEnv.PlayerPosition.playerX - 0.14 * GameEnv.innerWidth;
+                this.debounce += 1;
             }
-            this.canvas.style.filter = `invert(${this.debounce + 240}%)`;
-        } else if (this.debounce < 0 && this.debounce >= -120) {
-            this.debounce += 1;
-            this.canvas.style.filter = `invert(0%)`;
-            this.laser.style.left = `${this.x + 0.14 * GameEnv.innerWidth}px`;
-            this.laser.style.transform = `scaleY(${(this.debounce + 120) / 40})`;
-            this.laser.style.top = `${(this.debounce + 120) * 6}px`;
-            if (this.debounce === -115) {
-                GameEnv.playSound("laserSound");
-            }
-
-            const plrPos = GameEnv.PlayerPosition.playerX;
-
-            if (this.x >= plrPos - 250 && this.x <= plrPos - 150) {
-                this.killBeam(GameEnv.player);
-                this.debounce = 0;
+            if (this.debounce < -120) {
+                this.debounce += 1;
+                if (this.debounce === -235) {
+                    GameEnv.playSound("laserCharge");
+                    this.laser.style.transform = `scaleY(${0})`;
+                }
+                this.canvas.style.filter = `invert(${this.debounce + 240}%)`;
+            } else if (this.debounce < 0 && this.debounce >= -120) {
+                this.debounce += 1;
+                this.canvas.style.filter = `invert(0%)`;
                 this.laser.style.left = `${this.x + 0.14 * GameEnv.innerWidth}px`;
-                // Attempt to randomize lazer after each shot. Does not work YET
-                this.laserFireDelay = this.getRandomLaserDelay();
+                this.laser.style.transform = `scaleY(${(this.debounce + 120) / 40})`;
+                this.laser.style.top = `${(this.debounce + 120) * 6}px`;
+                if (this.debounce === -115) {
+                    GameEnv.playSound("laserSound");
+                }
+
+                const plrPos = GameEnv.PlayerPosition.playerX;
+
+                if (this.x >= plrPos - 250 && this.x <= plrPos - 150) {
+                    this.killBeam(GameEnv.player);
+                    this.debounce = 0;
+                    this.laser.style.left = `${this.x + 0.14 * GameEnv.innerWidth}px`;
+                    // Attempt to randomize laser after each shot
+                    this.laserFireDelay = this.getRandomLaserDelay();
+                }
             }
-        }
 
-        if (this.debounce === this.laserFireDelay) {
-            this.debounce = -240;
-        }
+            if (this.debounce === this.laserFireDelay) {
+                this.debounce = -240;
+            }
 
-        // Additional difficulty-specific adjustments
-        if (GameEnv.difficulty === "hard") {
-            this.canvas.style.filter = "invert(100%)";
-            this.canvas.style.scale = 1.25;
-            this.immune = 1;
-        } else if (GameEnv.difficulty === "impossible") {
-            this.canvas.style.filter = 'brightness(1000%)';
-            this.immune = 1;
-        }
+            // Additional difficulty-specific adjustments
+            if (GameEnv.difficulty === "hard") {
+                this.canvas.style.filter = "invert(100%)";
+                this.canvas.style.scale = 1.25;
+                this.immune = 1;
+            } else if (GameEnv.difficulty === "impossible") {
+                this.canvas.style.filter = 'brightness(1000%)';
+                this.immune = 1;
+            }
 
-        // Positioning and movement adjustments
-        this.y = 0.25 * GameEnv.innerHeight;
-        this.playerBottomCollision = false;
+            // Positioning and movement adjustments
+            this.y = 0.25 * GameEnv.innerHeight;
+            this.playerBottomCollision = false;
+        }
     }
 }
 
 export default skibidiTitan;
-
-
-//Tommorow I have to add if statement for playerAttack to decrease titan health. Good night myself.

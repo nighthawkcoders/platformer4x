@@ -428,6 +428,7 @@ const assets = {
         height: 884,
         scaleSize: 1500,
         speedRatio: 0.85,
+        death: { row: 0, frames: 0 },
       },
       dragon: {
         src: "/images/platformer/sprites/dragon.png",
