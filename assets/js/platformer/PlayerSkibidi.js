@@ -1,5 +1,4 @@
 import GameEnv from './GameEnv.js';
-import PlayerBase from './PlayerBase.js';
 import GameControl from './GameControl.js';
 import PlayerBaseOneD from './PlayerBaseOneD.js'; ///With this you can change the direction of the sprite sheet with just the sprite rows.
 
@@ -23,6 +22,10 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
      */
     constructor(canvas, image, data) {
         super(canvas, image, data);
+        this.invincible = true;
+        this.timer = false;
+        GameEnv.invincible = false; // Player is NOT invincible
+
 
         this.animationSpeed = data?.animationSpeed;
         this.counter = this.animationSpeed;
@@ -88,6 +91,24 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         this.handleCollisionEvent("laser");
         this.handleCollisionEvent("powerup"); // created a new case where it detects for collision between player and power-up
     }
+
+        handleKeyUp(event) {
+        const key = event.key;
+        if (key in this.pressedKeys) {
+            delete this.pressedKeys[key];
+            if (Object.keys(this.pressedKeys).length > 0) {
+                // If there are still keys in pressedKeys, update the state to the last one
+                const lastKey = Object.keys(this.pressedKeys)[Object.keys(this.pressedKeys).length - 1];
+                this.updateAnimationState(lastKey);
+                //GameEnv.updateParallaxDirection(lastKey)
+            } else {
+                // If there are no more keys in pressedKeys, update the state to null
+                GameEnv.playerAttack = false;
+                this.updateAnimationState(null);
+              //  GameEnv.updateParallaxDirection(null)
+            }
+        }
+    }
    
     /**
     * @override
@@ -112,8 +133,8 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                 }
                 GameEnv.playerAttack = false;
                 break;
-            case 'Shift':
-                this.state.animation = 'attack';  // Always trigger attack when Shift is pressed
+            case 'b':
+                this.state.animation = 'attack';  // Always trigger attack when b is pressed
                 GameEnv.playerAttack = true;
                 break;
             default:
