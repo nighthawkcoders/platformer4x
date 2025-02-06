@@ -1,18 +1,17 @@
 // GameSetterGreece.js Key objective is to define objects for a GameLevel
-import GameSet from '../GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
-import Background from '../Background.js'
-import BackgroundTransitions from '../BackgroundTransitions.js';
-import Platform from '../Platform.js';
-import BlockPlatform from '../BlockPlatform.js';
-import Cerberus from '../EnemyCerberus.js';
+import Background from './Background.js'
+import BackgroundTransitions from './BackgroundTransitions.js';
+import Platform from './Platform.js';
+import BlockPlatform from './BlockPlatform.js';
+import Cerberus from './EnemyCerberus.js';
 import PlayerGreece from './PlayerGreece.js';
-import FinishLine from '../FinishLine.js';
-import Lava from '../Lava.js';
-import Dragon from '../FlyingDragon.js';
-import FlyingIsland from '../PlatformFlyingIsland.js';
-import Coin from '../Coin.js';
-import gameControl from '../GameControl.js'
+import FinishLine from './FinishLine.js';
+import Lava from './Lava.js';
+import Dragon from './FlyingDragon.js';
+import FlyingIsland from './PlatformFlyingIsland.js';
+import Coin from './Coin.js';
+
 
 // Define the GameSetup object literal
 const assets = {  

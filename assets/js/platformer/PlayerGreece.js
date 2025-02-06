@@ -1,8 +1,8 @@
-import GameEnv from '../GameEnv.js';
-import PlayerBase from '../PlayerBase.js';
-import GameControl from '../GameControl.js';
-import hpBar from '../hpBar.js';
-import GameLevel from '../GameLevel.js';
+import GameEnv from './GameEnv.js';
+import PlayerBase from './PlayerBase.js';
+import GameControl from './GameControl.js';
+import hpBar from './hpBar.js';
+import GameLevel from './GameLevel.js';
 
 
 /**

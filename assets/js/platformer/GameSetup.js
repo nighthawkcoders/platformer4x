@@ -7,6 +7,7 @@ import GameControl from './GameControl.js';
 import GameSet from './GameSet.js';
 import GameSetterStart from './GameSetterStart.js';
 import GameSetterHills from './GameSetterHills.js';
+import GameSetterGreece from './GameSetterGreece.js';
 import GameSetterQuidditch from './GameSetterQuidditch.js';
 import GameSetterWinter from './GameSetterWinter.js';
 import GameSetterBoss from './GameSetterBoss.js';
@@ -225,6 +226,7 @@ const GameSetup = {
     GameLevelSetup(GameSetterStart, this.path, this.homeScreenCallback, true);
     // Game Levels added to the Game ...
     GameLevelSetup(GameSetterHills, this.path, this.playerOffScreenCallBack);
+    GameLevelSetup(GameSetterGreece, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterQuidditch, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterWinter, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterSkibidi, this.path, this.playerOffScreenCallBack);
