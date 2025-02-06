@@ -491,11 +491,12 @@ const assets = {
   const skibidiGameObjects = [
     // GameObject(s), the order is important to z-index...
     { name: 'bossbackground', id: 'bossbackground', class: Background, data: assets.backgrounds.boss },
+    { name: 'sand', id: 'platform', class: Platform, data: assets.platforms.sand },
     //{ name: 'clouds', id: 'background', class: BackgroundClouds, data: assets.backgrounds.clouds },
+    // Level breaks when not loading laser even though it's not even used???
     { name: 'laser', id: 'Laser', class: Laser, data: assets.obstacles.laser, xPercentage:  0.75, yPercentage: 0.5 },
     { name: 'skibidiTitan', id: 'skibidiTitan', class: BossFight, data: assets.enemies.skibidiTitan, xPercentage:  0.35, yPercentage: 0.5, minPosition: 0.5 }, 
     { name: 'escaper', id: 'player', class: PlayerSkibidi, data: assets.players.escaper  },
-    { name: 'laser', id: 'Laser', class: Laser, data: assets.obstacles.laser, xPercentage:  0.75, yPercentage: 0.5 },
     { name: 'tolietfinish', id: 'finishline', class: FinishLine, data: assets.obstacles.toiletfinish, xPercentage: 0.85, yPercentage: 0.77 },
     { name: 'complete3', id: 'background', class: BackgroundTransitions,  data: assets.backgrounds.complete3 },
   ];
