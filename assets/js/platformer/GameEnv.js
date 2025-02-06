@@ -95,6 +95,8 @@ export class GameEnv {
 
     static claimedCoinIds = []
 
+    static trashCount = []
+
     
     // Make the constructor throws an error, or effectively make it a private constructor.
     constructor() {

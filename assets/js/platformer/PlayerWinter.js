@@ -93,6 +93,14 @@ export class PlayerWinter extends PlayerBase {
                 }
                 break;
             case "finishline":
+                // Check if the player has collected all of the trash
+                if(GameEnv.trashCount.length < 4) {
+                    alert("Hey! If you don't clean up after yourself, you will never be able to leave! HAHAHA!")
+                    this.setX(0)
+                    this.setY(500)
+                    this.state.animation = 'idle'
+                    break
+                } 
                 // Check if the player has collected all the coins
                 var collectedAllCoins = true;
                 for (let obj of GameEnv.gameObjects) {
@@ -103,6 +111,7 @@ export class PlayerWinter extends PlayerBase {
                         return;
                     }
                 }
+
                 // Continue with finishline collisions checks
 
                 // 1. Caught in finishline
@@ -124,8 +133,6 @@ export class PlayerWinter extends PlayerBase {
                     this.state.movement.left = false;
                     this.state.movement.right = true;
                 }
-                break;
-            case "finishline":
                 this.x = GameEnv.innerWidth + 1;
                 break;
             case "snowman": // Note: Goomba.js and Player.js could be refactored

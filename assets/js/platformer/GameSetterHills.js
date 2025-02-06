@@ -20,8 +20,6 @@ const assets = {
       height: 81, //125
       scaleSize: 100,
       },
-      trash: { src: "/images/platformer/trash.png" },
-      trashCan: { src: "/images/platformer/trashbin.png" },
       coin: { src: "/images/platformer/obstacles/coin.png" },
     },
     platforms: {
