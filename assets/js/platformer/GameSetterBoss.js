@@ -6,6 +6,7 @@ import Boss from './Boss.js';
 import PlayerZombie from './PlayerZombie.js';
 import BossItem from './BossItem.js';
 import PlayerBoss from './PlayerBoss.js';
+import BossFight from './BossFight.js';
 
 // Define the GameSetup object literal
 const assets = {  
@@ -99,7 +100,7 @@ const assets = {
       src: "/images/platformer/sprites/boss.png",
       width: 64,
       height: 64,
-      scaleSize: 320,
+      scaleSize: 80,
       speedRatio: 0.6,
       animationSpeed: 6,
       idleL: { row: 9, frames: 0, idleFrame: { column: 1, frames: 0 } },
@@ -109,7 +110,7 @@ const assets = {
       attackL: { row: 13, frames: 5 },
       attackR: { row: 15, frames: 5 },
       death: { row: 20, frames: 5 },
-      hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
+      hitbox: { widthPercentage: 0.05, heightPercentage: 0.8 }
     },
   }
   };
@@ -119,8 +120,7 @@ const assets = {
     // GameObject(s), the order is important to z-index...
     { name: 'bossbackground', id: 'background', class: BackgroundParallax, data: assets.backgrounds.boss },
     { name: 'devil', id: 'devil', class:BackgroundParallax, data: assets.backgrounds.devil},
-    { name: 'boss', id: 'boss', class: Boss, data: assets.enemies.boss, xPercentage: 0.5, minPosition: 0.3 },
-    { name: 'boss1', id: 'boss', class: Boss, data: assets.enemies.boss, xPercentage: 0.3, minPosition: 0.07 },
+    { name: 'boss', id: 'boss', class: BossFight, data: assets.enemies.boss, xPercentage: 0.5, minPosition: 0.3 },
     { name: 'itemBlock', id: 'jumpPlatform', class: BossItem, data: assets.platforms.itemBlock, xPercentage: 0.2, yPercentage: 0.65 }, //item block is a platform
     { name: 'mario', id: 'player', class: PlayerBoss, data: assets.players.mario },
     { name: 'zombie', id: 'player', class: PlayerZombie, data: assets.players.zombie },
