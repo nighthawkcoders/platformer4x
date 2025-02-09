@@ -3,6 +3,7 @@
 import Background from './Background.js'
 import BackgroundTransitions from './BackgroundTransitions.js';
 import Platform from './Platform.js';
+import JumpPlatform from './PlatformJump.js';
 import PlayerQuidditch from './PlayerQuidditch.js';
 import BlockPlatform from './BlockPlatform.js';
 import SpawnPlatform from './PlatformSpawn.js';
@@ -48,7 +49,17 @@ const assets = {
     yellowredpattern: { src: "/images/platformer/platforms/yellowredpattern.jpg" },
     lionpattern: { src: "/images/platformer/platforms/lionpattern.jpg" },
     turf: { src: "/images/platformer/platforms/turf.png" },
-    
+    itemBlock: {
+      src: "/images/platformer/wand.png",
+      sizeRatio: 83.2,
+      widthRatio: 1.0,
+      heightRatio: 1.0,
+      width: 5952, // 204
+      height: 6000, // 204
+      scaleSize: 10, // 80
+      speedRatio: 0.7,
+      hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
+    },
   },
   backgrounds: {
     quidditch: { src: "/images/platformer/backgrounds/quidditch2.jpg" },
@@ -114,6 +125,7 @@ const assets = {
       right: { row: 0, frames: 0, idleFrame: { column: 0, frames: 0 } }, // Right Movement 
     },
   }
+  
   };
 
   // Quidditch Game Level defintion...
@@ -166,7 +178,7 @@ const assets = {
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.snitch, xPercentage: 0.375, yPercentage: 0.7 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.snitch, xPercentage: 0.409, yPercentage: 0.7 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.snitch, xPercentage: 0.295, yPercentage: 0.46 },
-
+    { name: 'itemBlock', id: 'JumpPlatform', class: JumpPlatform, data: assets.platforms.itemBlock, xPercentage: 0.5999, yPercentage: 0.6}, //item block is a platform
     { name: 'chocoFrog', id: 'chocoFrog', class: ChocoFrog, data: assets.enemies.chocoFrog, xPercentage: 0.30, yPercentage: 0.45},
 
     { name: 'magicBeam', id: 'magicBeam', class: MagicBeam, data: assets.enemies.magicBeam, xPercentage: 0.623, yPercentage: 0.72 },
@@ -181,6 +193,8 @@ const assets = {
     { name: 'waterEnd', id: 'background', class: BackgroundTransitions,  data: assets.transitions.waterEnd },
   ];
 
+
+  
   const GameQuidditch = {
     tag: 'Quidditch',
     assets: assets,
