@@ -58,6 +58,7 @@ const assets = {
       height: 6000, // 204
       scaleSize: 10, // 80
       speedRatio: 0.7,
+      opacity: 0,
       hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
     },
   },
@@ -127,6 +128,10 @@ const assets = {
   }
   
   };
+
+  setTimeout(() => {
+    alert("Collect wand to progress to next level!");
+}, 2000);
 
   // Quidditch Game Level defintion...
   const objects = [
