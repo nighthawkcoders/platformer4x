@@ -258,6 +258,21 @@ export class GameEnv {
                 break;
         }
     }
+
+    static customTimeout(callback, delay) {
+        const start = Date.now();
+        
+        function loop() {
+          if (Date.now() - start >= delay) {
+            callback();
+          } else {
+            requestAnimationFrame(loop);
+          }
+        }
+      
+        requestAnimationFrame(loop);
+      }
+      
   }
   
   export default GameEnv;

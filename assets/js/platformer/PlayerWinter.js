@@ -101,6 +101,8 @@ export class PlayerWinter extends PlayerBase {
                     this.state.animation = 'idle'
                     break
                 } 
+                
+                
                 // Check if the player has collected all the coins
                 var collectedAllCoins = true;
                 for (let obj of GameEnv.gameObjects) {
@@ -117,13 +119,13 @@ export class PlayerWinter extends PlayerBase {
                 // 1. Caught in finishline
                 if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom) {
                     // Position player in the center of the finishline 
-                    this.x = this.collisionData.newX;
+                    // this.x = this.collisionData.newX;
                     // Using natural gravity wait for player to reach floor
-                    if (Math.abs(this.y - this.bottom) <= GameEnv.gravity) {
+                    // if (Math.abs(this.y - this.bottom) <= GameEnv.gravity) {
                         // Force end of level condition
-                        const index = GameEnv.levels.findIndex(level => level.tag === "Skibidi")
-                        GameControl.transitionToLevel(GameEnv.levels[index]);
-                    }
+                        // const index = GameEnv.levels.findIndex(level => level.tag === "Skibidi")
+                        // GameControl.transitionToLevel(GameEnv.levels[index]);
+                    // }
                 // 2. Collision between player right and finishline   
                 } else if (this.collisionData.touchPoints.this.right) {
                     this.state.movement.right = false;
@@ -133,7 +135,11 @@ export class PlayerWinter extends PlayerBase {
                     this.state.movement.left = false;
                     this.state.movement.right = true;
                 }
-                this.x = GameEnv.innerWidth + 1;
+                this.canvasHeight = this.canvasHeight * 0.8
+                this.canvasWidth = this.canvasWidth * 0.8
+                GameEnv.customTimeout(() => {
+                    this.x = GameEnv.innerWidth + 1; // handles alert to next level
+                }, 2000);
                 break;
             case "snowman": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
