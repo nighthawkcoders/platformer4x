@@ -10,6 +10,7 @@ import SkibidiToilet from './SkibidiToilet.js';
 import PlayerSkibidi from './PlayerSkibidi.js';
 import FinishLine from './FinishLine.js';
 import BossFight from './BossFight.js'
+import Shard from './Shard.js';
 
 const assets = {
     obstacles: {
@@ -494,6 +495,11 @@ const assets = {
     { name: 'sand', id: 'platform', class: Platform, data: assets.platforms.sand },
     //{ name: 'clouds', id: 'background', class: BackgroundClouds, data: assets.backgrounds.clouds },
     // Level breaks when not loading laser even though it's not even used???
+    { name: 'shard', id: 'coin', class: Shard, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.5 },
+    { name: 'shard', id: 'coin', class: Shard, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.5 },
+    { name: 'shard', id: 'coin', class: Shard, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.5 },
+    { name: 'shard', id: 'coin', class: Shard, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.5 },
+    { name: 'shard', id: 'coin', class: Shard, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.5 },
     { name: 'laser', id: 'Laser', class: Laser, data: assets.obstacles.laser, xPercentage:  0.75, yPercentage: 0.5 },
     { name: 'skibidiTitan', id: 'skibidiTitan', class: BossFight, data: assets.enemies.skibidiTitan, xPercentage:  0.35, yPercentage: 0.5, minPosition: 0.5 }, 
     { name: 'escaper', id: 'player', class: PlayerSkibidi, data: assets.players.escaper  },

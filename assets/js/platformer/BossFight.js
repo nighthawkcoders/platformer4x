@@ -81,6 +81,12 @@ export class BossFight extends Character {
             setTimeout(async () => {
                 await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
                 console.log("level restart");
+
+                GameEnv.gameObjects.forEach(obj => {
+                    if (obj instanceof Shard) {
+                        obj.reset();
+                    }
+                });
                 target.state.isDying = false;
             }, 900);
         }
