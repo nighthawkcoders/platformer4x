@@ -104,16 +104,19 @@ const assets = {
       island: { src: "/images/platformer/platforms/island.png" },
       island: { src: "/images/platformer/platforms/island.png" },
       block: { src: "/images/platformer/platforms/brick_block.png" }, //MAY need 3 new variables: sizeRatio, widthRatio, and heightRatio
+      
+  
       itemBlock2: { //power-up
         src: "/images/platformer/sprites/jumppowerup.png", //spritesheet
-        sizeRatio: 2.0, 
+        sizeRatio: 0.000000001, 
         widthRatio: 1.0,
         heightRatio: 1.0,
-        width: 205, // 205
-        height: 246, // 246
-        scaleSize: 1, // 1
+        width: 0, // 205
+        height: 0, // 246
+        scaleSize: 0, // 1
         speedRatio: 0.7, // framerate, how fast it goes through between displaying each frame or animation
-        hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
+        hitbox: { widthPercentage: 0, heightPercentage: 0 }
+
       },
     },
     backgrounds: {
@@ -518,7 +521,7 @@ const assets = {
     { name: 'SkibidiToilet', id: 'SkibidiToilet', class: SkibidiToilet, data: assets.enemies.skibidiToilet, xPercentage:  0.75, minPosition: 0.5 },
     { name: 'escaper', id: 'player', class: PlayerSkibidi, data: assets.players.escaper  },
     { name: 'laser', id: 'Laser', class: Laser, data: assets.obstacles.laser, xPercentage:  0.75, yPercentage: 0.5 },
-    { name: 'tolietfinish', id: 'finishline', class: FinishLine, data: assets.obstacles.toiletfinish, xPercentage: 0.85, yPercentage: 0.77 },
+    { name: 'tolietfinish', id: 'finishline', class: FinishLine, data: assets.obstacles.toiletfinish, xPercentage: 0.85, yPercentage: 0.77, isVisible: false },
     { name: 'complete3', id: 'background', class: BackgroundTransitions,  data: assets.backgrounds.complete3 },
   ];
 

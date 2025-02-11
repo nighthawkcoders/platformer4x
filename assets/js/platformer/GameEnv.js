@@ -55,7 +55,9 @@ export class GameEnv {
      * @property {number} timerInterval - Variable to hold the interval reference, used by timer objects
      * @property {boolean} keyCollected - Checks whether the key has been collected my Mario or not
      * @property {boolean} powerUpCollected - Checks whether the powerup has been collected by the escaper sprite
-     */
+     * @property {boolean} wandColleted - Chekcs whether the wand has been collected by the player
+     * @property {boolean} spellUsed - Chekcs whether the wand has been used by the player
+    */
     static userID = "Guest";
     static player = null;
     static levels = [];
@@ -78,6 +80,7 @@ export class GameEnv {
     static bottom;
     static prevBottom;
     static invincible = false;
+    static visible = false;
     static goombaInvincible = false;
     static goombaBounce = false;
     static goombaBounce1 = false;
@@ -96,6 +99,9 @@ export class GameEnv {
     static claimedCoinIds = []
 
     static trashCount = []
+
+    static wandCollected = false;
+    static spellUsed = false; 
 
     
     // Make the constructor throws an error, or effectively make it a private constructor.

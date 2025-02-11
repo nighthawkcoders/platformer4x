@@ -1,31 +1,14 @@
 import GameEnv from './GameEnv.js';
 import GameControl from './GameControl.js';
-import PlayerBaseOneD from './PlayerBaseOneD.js'; ///With this you can change the direction of the sprite sheet with just the sprite rows.
+import PlayerBaseOneD from './PlayerBaseOneD.js';
+import SkibidiTitan from './SkibidiTitan.js'; // Import SkibidiTitan
 
-/**
- * @class PlayerSkibidi class
- * @description PlayerSkibidi.js key objective is to eent the user-controlled character in the game.   
- * 
- * The Player class extends the Character class, which in turn extends the GameObject class.
- * Animations and events are activated by key presses, collisions, and gravity.
- * WASD keys are used by user to control The Player object.  
- * 
- * @extends PlayerBase 
- */
-export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD added the sprite mirror but deleted the sprite not showing the animations
-
-    /** GameObject instantiation: constructor for PlayerSkibidi object
-     * @extends Character 
-     * @param {HTMLCanvasElement} canvas - The canvas element to draw the player on.
-     * @param {HTMLImageElement} image - The image to draw the player with.
-     * @param {Object} data - The data object containing the player's properties.
-     */
+export class PlayerSkibidi extends PlayerBaseOneD {
     constructor(canvas, image, data) {
         super(canvas, image, data);
         this.invincible = true;
         this.timer = false;
         GameEnv.invincible = false; // Player is NOT invincible
-
 
         this.animationSpeed = data?.animationSpeed;
         this.counter = this.animationSpeed;
@@ -62,7 +45,6 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
     
         console.log("New Y Position:", this.y);
     }    
-    
 
     updateFrameX(){
         if (this.frameX < this.maxFrame) {
@@ -90,9 +72,20 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         this.handleCollisionEvent("SkibidiToilet");
         this.handleCollisionEvent("laser");
         this.handleCollisionEvent("powerup"); // created a new case where it detects for collision between player and power-up
+    } 
+    
+    handleDeath() {
+        if (this.state.isDying) {
+            this.canvas.style.transition = "transform 0.5s";
+            this.canvas.style.transform = "rotate(-90deg) translate(-26px, 0%)";
+            GameEnv.playSound("PlayerDeath");
+            setTimeout(async () => {
+                await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
+            }, 900);
+        }
     }
 
-        handleKeyUp(event) {
+    handleKeyUp(event) {
         const key = event.key;
         if (key in this.pressedKeys) {
             delete this.pressedKeys[key];
@@ -153,6 +146,15 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
         // handles additional player reactions
         switch (this.state.collision) {
             case "finishline":
+                const skibidiTitan = GameEnv.gameObjects.find(obj => obj.name === 'skibidiTitan');
+                if (skibidiTitan.currentHp > 0) {
+                    alert("Kill the titan with B buddy, why do you think theres a health bar");
+                    this.setX(0)
+                    this.setY(700)
+                    this.state.animation = 'idle';
+                    break;
+                }   
+
                 // 1. Caught in finishline
                 if (this.collisionData.touchPoints.this.onTopofOther  || this.state.isFinishing ) {
                     // Position player in the center of the finishline 
@@ -175,6 +177,8 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                     this.state.movement.right = true;
                 }
                 break;
+
+    
             case "SkibidiToilet": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
                 if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom && this.state.isDying == false) {
@@ -227,6 +231,7 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                 
                 }
                 break;  
+            /*
             case "powerup": 
             if (GameEnv.powerUpCollected) {  
                 console.log("Power-up collision detected! Changing difficulty...");
@@ -246,6 +251,7 @@ export class PlayerSkibidi extends PlayerBaseOneD { /// Using PlayerBaseOneD add
                 GameEnv.update();
                 console.log("Power Up",GameEnv.gameObjects[GameEnv.gameObjects.length - 1]);
                 break;
+            */
         }
 
     }
