@@ -58,7 +58,6 @@ const assets = {
       height: 6000, // 204
       scaleSize: 10, // 80
       speedRatio: 0.7,
-      opacity: 0,
       hitbox: { widthPercentage: 0.4, heightPercentage: -0.2 }
     },
   },
@@ -129,10 +128,6 @@ const assets = {
   
   };
 
-  setTimeout(() => {
-    alert("Collect wand to progress to next level!");
-}, 2000);
-
   // Quidditch Game Level defintion...
   const objects = [
     // GameObject(s), the order is important to z-index...
@@ -183,7 +178,7 @@ const assets = {
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.snitch, xPercentage: 0.375, yPercentage: 0.7 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.snitch, xPercentage: 0.409, yPercentage: 0.7 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.snitch, xPercentage: 0.295, yPercentage: 0.46 },
-    { name: 'itemBlock', id: 'JumpPlatform', class: JumpPlatform, data: assets.platforms.itemBlock, xPercentage: 0.5999, yPercentage: 0.6}, //item block is a platform
+    { name: 'wand', id: 'JumpPlatform', class: JumpPlatform, data: assets.platforms.itemBlock, xPercentage: 0.5999, yPercentage: 0.6}, //item block is a platform
     { name: 'chocoFrog', id: 'chocoFrog', class: ChocoFrog, data: assets.enemies.chocoFrog, xPercentage: 0.30, yPercentage: 0.45},
 
     { name: 'magicBeam', id: 'magicBeam', class: MagicBeam, data: assets.enemies.magicBeam, xPercentage: 0.623, yPercentage: 0.72 },
@@ -196,8 +191,8 @@ const assets = {
     { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.855 },
     { name: 'tubeU', id: 'minifinishline', class: FinishLine, data: assets.obstacles.tubeU, xPercentage: 0.69, yPercentage: 0.9 },
     { name: 'waterEnd', id: 'background', class: BackgroundTransitions,  data: assets.transitions.waterEnd },
+  
   ];
-
 
   
   const GameQuidditch = {
