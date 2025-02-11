@@ -78,6 +78,7 @@ export class GameEnv {
     static bottom;
     static prevBottom;
     static invincible = false;
+    static visible = false;
     static goombaInvincible = false;
     static goombaBounce = false;
     static goombaBounce1 = false;

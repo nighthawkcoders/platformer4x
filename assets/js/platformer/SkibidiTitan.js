@@ -4,6 +4,8 @@ import GameControl from './GameControl.js';
 import Laser from './Laser.js';
 import Enemy from './Enemy.js';
 import TitanHealth from './TitanHealth.js';
+import GameSetterSkibidi from './GameSetterSkibidi.js';
+import BackgroundTransitions from './BackgroundTransitions.js';
 
 export class skibidiTitan extends Character {
     // Constructor sets up Character object 
@@ -18,10 +20,10 @@ export class skibidiTitan extends Character {
         this.maxPosition = this.x + xPercentage * GameEnv.innerWidth;
 
         // Health properties
-        this.maxHp = 100; // Maximum health points
-        this.currentHp = 100; // Current health points
+        this.maxHp = 200; // Maximum health points
+        this.currentHp = 200; // Current health points
         this.titanHealthBar = new TitanHealth(
-            150, 10, // Width and height of the health bar
+            160, 10, // Width and height of the health bar
             this.canvas.width, this.canvas.height, // Titan dimensions
             this.maxHp, this.currentHp, // Titan's max and current health
             this.x, this.y // Titan's position
@@ -51,10 +53,17 @@ export class skibidiTitan extends Character {
     // Method to handle Titan's death state (makes the Titan disappear)
     handleDeath() {
         if (this.currentHp <= 0 && !this.state.isDead) {
+            this.titanHealthBar = null; // Remove the health bar
             this.state.isDead = true; // Set the Titan as dead
             GameEnv.invincible = true; // Make invincible 
             this.canvas.style.display = "none"; // Hide the Titan's canvas (makes it disappear)
             GameEnv.playSound("goombaDeath"); // Play the death sound
+            //tolietfinish.hitbox.widthPercentage = 0;
+            //tolietfinish.hitbox.heightPercentage = 0;
+        //} else {
+            //tolietfinish.hitbox.widthPercentage = 0.5;
+            //tolietfinish.hitbox.heightPercentage = 0.5;
+        
         }
     }
 
@@ -108,6 +117,8 @@ export class skibidiTitan extends Character {
             );
             this.titanHealthBar.update();
 
+    
+            
             // Laser-related logic
             this.immune = 1;
 
