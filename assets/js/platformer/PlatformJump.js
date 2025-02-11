@@ -35,6 +35,8 @@ export class JumpPlatform extends GameObject {
         this.isVisible = false;
         // Update status of key
         GameEnv.keyCollected = true
+        //Update status of the wand
+        GameEnv.wandCollected = true
         // Remove the block from the display
         this.canvas.style.display = 'none';
     }

@@ -92,7 +92,7 @@ export class PlayerQuidditch extends PlayerBase {
                 break;
             case "finishline":
                     // 1. Caught in finishline
-                    if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom) {
+                    if (this.collisionData.touchPoints.this.top && this.collisionData.touchPoints.other.bottom && GameEnv.wandCollected && GameEnv.spellUsed) {
                         // Position player in the center of the finishline 
                         this.x = this.collisionData.newX;
                         // Using natural gravity wait for player to reach floor

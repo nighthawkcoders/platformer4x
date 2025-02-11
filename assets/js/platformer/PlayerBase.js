@@ -127,6 +127,9 @@ export class PlayerBase extends Character {
             } else if (key === 'd') {
                 this.state.direction = 'right';
             }
+            if (key === 'b' && GameEnv.wandCollected) {
+                GameEnv.spellUsed = true
+            }
             this.pressedKeys[event.key] = true;
             this.updateAnimationState(key);
             GameEnv.transitionHide = true;
