@@ -1,18 +1,17 @@
 // GameSetterGreece.js Key objective is to define objects for a GameLevel
-import GameSet from '../GameSet.js';
 // To build GameLevels, each contains GameObjects from below imports
-import Background from '../Background.js'
-import BackgroundTransitions from '../BackgroundTransitions.js';
-import Platform from '../Platform.js';
-import BlockPlatform from '../BlockPlatform.js';
-import Cerberus from '../EnemyCerberus.js';
+import Background from './Background.js'
+import BackgroundTransitions from './BackgroundTransitions.js';
+import Platform from './Platform.js';
+import BlockPlatform from './BlockPlatform.js';
+import Cerberus from './EnemyCerberus.js';
 import PlayerGreece from './PlayerGreece.js';
-import FinishLine from '../FinishLine.js';
-import Lava from '../Lava.js';
-import Dragon from '../FlyingDragon.js';
-import FlyingIsland from '../PlatformFlyingIsland.js';
-import Coin from '../Coin.js';
-import gameControl from '../GameControl.js'
+import FinishLine from './FinishLine.js';
+import Lava from './Lava.js';
+import Dragon from './FlyingDragon.js';
+import FlyingIsland from './PlatformFlyingIsland.js';
+import Coin from './Coin.js';
+
 
 // Define the GameSetup object literal
 const assets = {  
@@ -45,7 +44,7 @@ const assets = {
     island: { src: "/images/platformer/platforms/island.png" },
   },
   backgrounds: {
-    greece: { src: "/images/platformer/backgrounds/fort_platformer.png" },
+    greece: { src: "/images/platformer/backgrounds/greece-3.png" },
   },
   transitions: {
     loading: { src: "/images/platformer/transitions/greenscreen.png" },
@@ -161,7 +160,6 @@ const assets = {
     { name: 'dragon', id: 'dragon', class: Dragon, data: assets.enemies.dragon, xPercentage: 0.5, minPosition: 0.05 },
     { name: 'knight', id: 'player', class: PlayerGreece, data: assets.players.knight },
     { name: 'flyingIsland', id: 'flyingIsland', class: FlyingIsland, data: assets.platforms.island, xPercentage: 0.82, yPercentage: 0.55 },
-    { name: 'tubeU', id: 'minifinishline', class: FinishLine, data: assets.obstacles.tubeU, xPercentage: 0.66, yPercentage: 0.9 },
     { name: 'flag', id: 'finishline', class: FinishLine, data: assets.obstacles.flag, xPercentage: 0.875, yPercentage: 0.275 },
     { name: 'hillsEnd', id: 'background', class: BackgroundTransitions, data: assets.transitions.hillsEnd },
     { name: 'lava', id: 'lava', class: Lava, data: assets.platforms.lava, xPercentage: 0, yPercentage: 1 },
