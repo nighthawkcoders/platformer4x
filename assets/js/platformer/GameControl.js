@@ -81,7 +81,7 @@ const GameControl = {
 
         // Subroutine to update time in local storage
         localStorage.setItem(this.lastLocalStorageTime, time)
-        // console.log("last local storage time set to: " + localStorage.getItem(this.lastLocalStorageTime))
+        console.log("last local storage time set to: " + localStorage.getItem(this.lastLocalStorageTime))
         
         if (GameEnv.timerActive) {
             const newTime = time + GameEnv.timerInterval
