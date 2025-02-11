@@ -459,7 +459,6 @@ const assets = {
     { name: 'winter', id: 'background', class: BackgroundSnow, data: assets.backgrounds.winter },
     { name: 'snowfall', id: 'background', class: BackgroundSnowfall, data: assets.backgrounds.snow },
     { name: 'snowyfloor', id: 'platform', class: Platform, data: assets.platforms.snowyfloor },
-<<<<<<< VeErA
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxendleft, xPercentage: 0.25, yPercentage: 0.78 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxmiddle, xPercentage: 0.2868, yPercentage: 0.78 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxmiddle, xPercentage: 0.3236, yPercentage: 0.78 },
@@ -480,7 +479,6 @@ const assets = {
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.36, yPercentage: 0.63},
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.565, yPercentage: 0.42},
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.72, yPercentage: 0.58},
-=======
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxmiddle, xPercentage: 0.2, yPercentage: 0.82 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxmiddle, xPercentage: 0.2368, yPercentage: 0.82 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxmiddle, xPercentage: 0.2736, yPercentage: 0.82 },
@@ -505,7 +503,6 @@ const assets = {
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.63, yPercentage: 0.58},
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.21, yPercentage: 0.6},
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.32, yPercentage: 0.6},
->>>>>>> main
     { name: 'owl', id: 'owl', class: Owl, data: assets.enemies.Owl, xPercentage: 0.3, minPosition: 0.05 },
     { name: 'owl', id: 'owl', class: Owl, data: assets.enemies.Owl, xPercentage: 0.8, minPosition: 0.05 },
     { name: 'caveman', id: 'snowman', class: Snowman, data: assets.enemies.Snowman, xPercentage: 0.2, minPosition: 0.1, difficulties: ["normal", "hard", "impossible"] },
