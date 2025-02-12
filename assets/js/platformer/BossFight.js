@@ -60,6 +60,7 @@ export class BossFight extends Character {
             GameEnv.invincible = true; // Make invincible 
             this.canvas.style.display = "none"; // Hide the Titan's canvas (makes it disappear)
             GameEnv.playSound("goombaDeath"); // Play the death sound
+            this.titanHealthBar.destroy();
         }
     }
 
