@@ -60,6 +60,7 @@ export class BossFight extends Character {
             GameEnv.invincible = true; // Make invincible 
             this.canvas.style.display = "none"; // Hide the Titan's canvas (makes it disappear)
             GameEnv.playSound("goombaDeath"); // Play the death sound
+            this.titanHealthBar.destroy();
         }
     }
 
@@ -81,6 +82,12 @@ export class BossFight extends Character {
             setTimeout(async () => {
                 await GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel)]);
                 console.log("level restart");
+
+                GameEnv.gameObjects.forEach(obj => {
+                    if (obj instanceof Shard) {
+                        obj.reset();
+                    }
+                });
                 target.state.isDying = false;
             }, 900);
         }
