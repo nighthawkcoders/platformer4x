@@ -11,6 +11,7 @@ import PlayerSkibidi from './PlayerSkibidi.js';
 import FinishLine from './FinishLine.js';
 import BossFight from './BossFight.js'
 import Shard from './Shard.js';
+import { PlayerBossFight } from './PlayerBossFight.js';
 
 const assets = {
     obstacles: {
@@ -502,7 +503,7 @@ const assets = {
     { name: 'shard', id: 'coin', class: Shard, data: assets.obstacles.coin, xPercentage: 0.5, yPercentage: 0.5 },
     { name: 'laser', id: 'Laser', class: Laser, data: assets.obstacles.laser, xPercentage:  0.75, yPercentage: 0.5 },
     { name: 'skibidiTitan', id: 'skibidiTitan', class: BossFight, data: assets.enemies.skibidiTitan, xPercentage:  0.35, yPercentage: 0.5, minPosition: 0.5 }, 
-    { name: 'escaper', id: 'player', class: PlayerSkibidi, data: assets.players.escaper  },
+    { name: 'escaper', id: 'player', class: PlayerBossFight, data: assets.players.escaper  },
     { name: 'tolietfinish', id: 'finishline', class: FinishLine, data: assets.obstacles.toiletfinish, xPercentage: 0.85, yPercentage: 0.77 },
     { name: 'complete3', id: 'background', class: BackgroundTransitions,  data: assets.backgrounds.complete3 },
   ];
