@@ -1,6 +1,7 @@
 import GameEnv from './GameEnv.js';
 import GameControl from './GameControl.js';
 import PlayerBaseOneD from './PlayerBaseOneD.js'; ///With this you can change the direction of the sprite sheet with just the sprite rows.
+import BossFight from './BossFight.js';
 
 /**
  * @class PlayerBossFight class
@@ -155,7 +156,8 @@ export class PlayerBossFight extends PlayerBaseOneD { /// Using PlayerBaseOneD a
             case "finishline":
                 // 1. Caught in finishline
                 if (this.collisionData.touchPoints.this.onTopofOther  || this.state.isFinishing ) {
-                    if (GameEnv.titan && GameEnv.titan.state.isDead) {
+                    const titan = GameEnv.gameObjects.find(obj => obj.name === 'titan');
+                    if (titan.currentHp <= 0) {
                         // Position player in the center of the finishline 
                         this.x = this.collisionData.newX;
                         this.state.movement = { up: false, down: false, left: false, right: false, falling: false};
@@ -168,6 +170,8 @@ export class PlayerBossFight extends PlayerBaseOneD { /// Using PlayerBaseOneD a
                         }
                     } else {
                         alert("Titan is not dead. You may not proceed");
+                        this.setX(0);
+                        this.state.animation = 'idle';
                         break;
                     }
                     
