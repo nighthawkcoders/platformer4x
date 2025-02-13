@@ -25,7 +25,7 @@ export class JumpPlatform extends GameObject {
 
     collisionAction() {
         // Collision only applies to the item block when Mario collides with it
-        if (this.collisionData.touchPoints.other.id === "player" && this.name === "itemBlock") {
+        if (this.collisionData.touchPoints.other.id === "player" && (this.name === "itemBlock" || this.name === "wand")) {
             this.handleItemBlockCollision();
         }
     }
@@ -40,7 +40,7 @@ export class JumpPlatform extends GameObject {
         // Remove the block from the display
         this.canvas.style.display = 'none';
     }
-    
+
     // Set platform position
     size() {
         // Formula for Height should be on constant ratio, using a proportion of 832

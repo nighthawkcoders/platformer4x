@@ -83,22 +83,22 @@ export class PlayerHills extends PlayerBase {
                 if (this.collisionData.touchPoints.this.right && GameEnv.keyCollected) {
                     this.state.movement.right = false;
                     this.state.movement.left = true;
-                    // GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
+                    GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
                     // setTimeout(() => {
                     //     this.x = GameEnv.innerWidth + 1;
                     // }, 1250);
-                    setTimeout(() => {
+                    GameEnv.customTimeout(() => {
                         GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel) + 1]);
                     }, 1000);
                 // 3. Collision between player left and finishline
                 } else if (this.collisionData.touchPoints.this.left && GameEnv.keyCollected) {
                     this.state.movement.left = false;
                     this.state.movement.right = true;
-                    // GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
+                    GameEnv.gameObjects[GameEnv.gameObjects.length - 1].updateImg()
                     // setTimeout(() => {
                     //     this.x = GameEnv.innerWidth + 1;
                     // }, 1250);
-                    setTimeout(() => {
+                    GameEnv.customTimeout(() => {
                         GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel) + 1]);
                     }, 1000);
                 }
