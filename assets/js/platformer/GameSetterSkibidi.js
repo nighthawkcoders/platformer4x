@@ -178,18 +178,18 @@ const assets = {
         hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
       },
       escaper: {
-        src: "/images/platformer/sprites/merged_sprite_sheet.png",
-        width: 81,   
-        height: 83,
-        scaleSize: 85,   
-        speedRatio: 0.7,
-        animationSpeed: 6, // How fast it goes through displaying each frame in specified row below:
+        src: "/images/platformer/sprites/skibidiMan.png",
+        width: 54,   
+        height: 60,
+        scaleSize: 110,   
+        speedRatio: 0.9,
+        animationSpeed: 5.5, // How fast it goes through displaying each frame in specified row below:
         idle: {row: 0, frames: 4 }, // idle animation
         walk: {  row: 1, frames: 6 }, // walking animation
-        run: {  row: 2, frames: 6 },  // running animation
+        run: {  row: 2, frames: 6},  // running animation
         jump: {row: 4, frames: 6 }, // jumping animation
-        attack: {row: 4, frames: 6 },
-        hitbox: { widthPercentage: 0.3, heightPercentage: 0.8 }
+        attack: {row: 3, frames: 5 },
+        hitbox: { widthPercentage: 0.3, heightPercentage: 0.9, offsetx: 0, offsety: 10 } 
         
       },
       whitemario: {
