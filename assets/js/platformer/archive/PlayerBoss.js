@@ -1,6 +1,6 @@
-import GameEnv from './GameEnv.js';
-import PlayerBase from './PlayerBase.js';
-import GameControl from './GameControl.js';
+import GameEnv from '../GameEnv.js';
+import PlayerBase from '../PlayerBase.js';
+import GameControl from '../GameControl.js';
 /**
  * @class PlayerHills class
  * @description PlayerHills.js key objective is to eent the user-controlled character in the game.
