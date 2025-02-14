@@ -105,6 +105,7 @@ export class GameEnv {
 
     static spellUsed = false
 
+    static hasFlag = []
     
     // Make the constructor throws an error, or effectively make it a private constructor.
     constructor() {

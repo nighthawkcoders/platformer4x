@@ -11,6 +11,7 @@ import Lava from './Lava.js';
 import Dragon from './FlyingDragon.js';
 import FlyingIsland from './PlatformFlyingIsland.js';
 import Coin from './Coin.js';
+import Flag from './Flag.js';
 
 
 // Define the GameSetup object literal
@@ -58,22 +59,22 @@ const assets = {
   },
   players: {
     knight: {
-      src: "/images/platformer/sprites/scout_sprite.png",
-      width: 63.25,
-      height: 66.66,
-      scaleSize: 80,
-      speedRatio: 1,
+      src: "/images/platformer/sprites/knightGreece.png",
+      width: 133,
+      height: 136,
+      scaleSize: 70,
+      speedRatio: 0.70,
       idle: {
-        left: { row: 1, frames: 2 },
-        right: { row: 2, frames: 2 },
+        left: { row: 1, frames: 0 },
+        right: { row: 3, frames: 0 },
       },
       walk: {
-        left: { row: 1, frames: 2 },
-        right: { row: 2, frames: 2 },
+        left: { row: 1, frames: 8 },
+        right: { row: 3, frames: 8 },
       },
       run: {
-        left: { row: 1, frames: 2 },
-        right: { row: 2, frames: 2},
+        left: { row: 1, frames: 8 },
+        right: { row: 3, frames: 8},
       },
       jump: {
         left: { row: 1, frames: 2 },
@@ -160,7 +161,6 @@ const assets = {
     { name: 'dragon', id: 'dragon', class: Dragon, data: assets.enemies.dragon, xPercentage: 0.5, minPosition: 0.05 },
     { name: 'knight', id: 'player', class: PlayerGreece, data: assets.players.knight },
     { name: 'flyingIsland', id: 'flyingIsland', class: FlyingIsland, data: assets.platforms.island, xPercentage: 0.82, yPercentage: 0.55 },
-    { name: 'flag', id: 'finishline', class: FinishLine, data: assets.obstacles.flag, xPercentage: 0.875, yPercentage: 0.275 },
     { name: 'hillsEnd', id: 'background', class: BackgroundTransitions, data: assets.transitions.hillsEnd },
     { name: 'lava', id: 'lava', class: Lava, data: assets.platforms.lava, xPercentage: 0, yPercentage: 1 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.1, yPercentage: 0.9 },//0.4, 0.9 might be a lower value for testing
@@ -169,8 +169,7 @@ const assets = {
     { name: 'sandstone', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sandstone, xPercentage: 0.25, yPercentage: 0.65 },
     { name: 'sandstone', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sandstone, xPercentage: 0.15, yPercentage: 0.5 },
     { name: 'sandstone', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sandstone, xPercentage: 0.09, yPercentage: 0.4 },
-    { name: 'flyingIsland', id: 'flyingIsland', class: FlyingIsland, data: assets.platforms.island, xPercentage: 0.001, yPercentage: 0.3 },
-    { name: 'flag', id: 'finishline', class: FinishLine, data: assets.obstacles.flag, xPercentage: 0.09, yPercentage: 0.08 },
+    { name: 'flag', id: 'flag', class: Flag, data: assets.obstacles.flag, xPercentage: 0.09, yPercentage: 0.23 },
 
 
 
