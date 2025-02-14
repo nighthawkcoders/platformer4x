@@ -59,7 +59,7 @@ export class GameEnv {
      * @property {boolean} spellUsed - Checks whether the wand has been used by the player
 
      */
-    static userID = "Guest";
+    static userID = "guest";
     static player = null;
     static levels = [];
     static currentLevel = null;
