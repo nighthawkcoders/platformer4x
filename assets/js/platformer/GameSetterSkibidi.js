@@ -1,7 +1,7 @@
 import Background from './Background.js'
 import BackgroundTransitions from './BackgroundTransitions.js';
 import Platform from './Platform.js';
-import JumpPlatform2 from './PlatformJump2.js';
+//import JumpPlatform2 from './PlatformJump2.js';
 import BlockPlatform from './BlockPlatform.js';
 import Coin from './Coin.js';
 import skibidiTitan from './SkibidiTitan.js';
@@ -105,7 +105,7 @@ const assets = {
       island: { src: "/images/platformer/platforms/island.png" },
       block: { src: "/images/platformer/platforms/brick_block.png" }, //MAY need 3 new variables: sizeRatio, widthRatio, and heightRatio
       
-  
+  /*
       itemBlock2: { //power-up
         src: "/images/platformer/sprites/jumppowerup.png", //spritesheet
         sizeRatio: 0.000000001, 
@@ -118,6 +118,7 @@ const assets = {
         hitbox: { widthPercentage: 0, heightPercentage: 0 }
 
       },
+      */
     },
     backgrounds: {
       boss: { src: "/images/platformer/backgrounds/BossBackground.png", parallaxSpeed: 0.4, moveOnKeyAction: true },
@@ -510,7 +511,7 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.7, yPercentage: 0.84 },
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.sand, xPercentage: 0.3, yPercentage: 0.4 },
     ///{ name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.vbucks, xPercentage: 0.475, yPercentage: 0.5 },
-    { name: 'itemBlock2', id: 'jumpPlatform', class: JumpPlatform2, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
+   // { name: 'itemBlock2', id: 'jumpPlatform', class: JumpPlatform2, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
     //{ name: 'itemBlock2', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.itemBlock2, xPercentage: 0.56, yPercentage: 0.8 }, //item block is a platform
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.35, yPercentage: 0.85 },
     { name: 'coin', id: 'coin', class: Coin, data: assets.obstacles.coin, xPercentage: 0.3, yPercentage: 0.34 },
