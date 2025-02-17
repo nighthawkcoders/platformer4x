@@ -1,12 +1,12 @@
-import BackgroundParallax from './BackgroundParallax.js';
-import BackgroundTransitions from './BackgroundTransitions.js';
-import Platform from './Platform.js';
-import FinishLine from './FinishLine.js';
-import Boss from './Boss.js';
-import PlayerZombie from './PlayerZombie.js';
-import BossItem from './BossItem.js';
-import PlayerBoss from './PlayerBoss.js';
-import BossFight from './BossFight.js';
+import BackgroundParallax from '../BackgroundParallax.js';
+import BackgroundTransitions from '../BackgroundTransitions.js';
+import Platform from '../Platform.js';
+import FinishLine from '../FinishLine.js';
+import PlayerHills from '../PlayerHills.js';
+import Boss from '../Boss.js';
+import PlayerZombie from '../PlayerZombie.js';
+import BossItem from '../BossItem.js';
+import BossFight from '../BossFight.js';
 
 // Define the GameSetup object literal
 const assets = {  
@@ -122,7 +122,7 @@ const assets = {
     { name: 'devil', id: 'devil', class:BackgroundParallax, data: assets.backgrounds.devil},
     { name: 'boss', id: 'boss', class: BossFight, data: assets.enemies.boss, xPercentage: 0.5, minPosition: 0.3 },
     { name: 'itemBlock', id: 'jumpPlatform', class: BossItem, data: assets.platforms.itemBlock, xPercentage: 0.2, yPercentage: 0.65 }, //item block is a platform
-    { name: 'mario', id: 'player', class: PlayerBoss, data: assets.players.mario },
+    { name: 'mario', id: 'player', class: PlayerHills, data: assets.players.mario },
     { name: 'zombie', id: 'player', class: PlayerZombie, data: assets.players.zombie },
     { name: 'grass', id: 'platform', class: Platform, data: assets.platforms.grass },
     { name: 'tube', id: 'finishline', class: FinishLine, data: assets.obstacles.tube, xPercentage: 0.85, yPercentage: 0.855 },

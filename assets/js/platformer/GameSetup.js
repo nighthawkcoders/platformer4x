@@ -10,7 +10,6 @@ import GameSetterHills from './GameSetterHills.js';
 import GameSetterGreece from './GameSetterGreece.js';
 import GameSetterQuidditch from './GameSetterQuidditch.js';
 import GameSetterWinter from './GameSetterWinter.js';
-import GameSetterBoss from './GameSetterBoss.js';
 import GameSetterSkibidi from './GameSetterSkibidi.js';
 import GameSetterBossFight from './GameSetterBossFight.js'
 import GameSetterEnd from './GameSetterEnd.js';
@@ -231,7 +230,6 @@ const GameSetup = {
     GameLevelSetup(GameSetterQuidditch, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterWinter, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterSkibidi, this.path, this.playerOffScreenCallBack);
-    GameLevelSetup(GameSetterBoss, this.path, this.playerOffScreenCallBack);
     GameLevelSetup(GameSetterBossFight, this.path, this.playerOffScreenCallBack);
     // End Game
     GameLevelSetup(GameSetterEnd, this.path, this.gameOverCallBack, true);

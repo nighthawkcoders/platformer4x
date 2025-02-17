@@ -71,7 +71,7 @@ export class PlayerSkibidi extends PlayerBaseOneD {
         this.handleCollisionEvent("finishline");
         this.handleCollisionEvent("SkibidiToilet");
         this.handleCollisionEvent("laser");
-        this.handleCollisionEvent("powerup"); // created a new case where it detects for collision between player and power-up
+        //this.handleCollisionEvent("powerup"); // created a new case where it detects for collision between player and power-up
     } 
     
     handleDeath() {

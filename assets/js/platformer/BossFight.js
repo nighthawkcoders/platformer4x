@@ -32,6 +32,8 @@ export class BossFight extends Character {
             isDead: false // New state for checking if Titan is dead
         };
 
+        this.dead = false;
+
         // Laser-related properties
         this.immune = 0;
         this.debounce = 0;
@@ -56,6 +58,8 @@ export class BossFight extends Character {
     // Method to handle Titan's death state (makes the Titan disappear)
     handleDeath() {
         if (this.currentHp <= 0 && !this.state.isDead) {
+            this.dead = true;
+            console.log("this.dead set to" + this.dead);
             this.state.isDead = true; // Set the Titan as dead
             GameEnv.invincible = true; // Make invincible 
             this.canvas.style.display = "none"; // Hide the Titan's canvas (makes it disappear)

@@ -105,6 +105,10 @@ export class PlayerGreece extends PlayerBase {
                 }
                 break;
             case "finishline":
+                if(this.collisionData.touchPoints.this.other.id && GameEnv.hasFlag.length == 1){
+                    const index = GameEnv.levels.findIndex(level => level.tag === "Quidditch");
+                    GameControl.transitionToLevel(GameEnv.levels[index]);
+                }
                 console.log("finish line checks")
                 console.log(GameEnv.gameObjects)
                 var collectedCoin

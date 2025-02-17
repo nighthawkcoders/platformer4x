@@ -59,7 +59,7 @@ export class GameEnv {
      * @property {boolean} spellUsed - Checks whether the wand has been used by the player
 
      */
-    static userID = "Guest";
+    static userID = "guest";
     static player = null;
     static levels = [];
     static currentLevel = null;
@@ -105,6 +105,7 @@ export class GameEnv {
 
     static spellUsed = false
 
+    static hasFlag = []
     
     // Make the constructor throws an error, or effectively make it a private constructor.
     constructor() {
