@@ -248,12 +248,12 @@ export class GameEnv {
                 }
                 break;
             case "s":
-                if (keys.includes("a") && keys.includes("s")) {
+                if (key.includes("a") && key.includes("s")) {
                 // If both "a" and "s" are clicked
                     if (GameEnv.player?.x > 2) {
                     GameEnv.backgroundDirection = -5;
                     }
-                } else if  (keys.includes("d") && keys.includes("s")) {
+                } else if  (key.includes("d") && key.includes("s")) {
                 // If both " d" and "s" are clicked
                     if (GameEnv.player?.x < (GameEnv.innerWidth - 2)) {
                         GameEnv.backgroundDirection = 5;
