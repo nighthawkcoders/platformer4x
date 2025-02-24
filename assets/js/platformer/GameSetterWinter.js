@@ -310,9 +310,9 @@ const assets = {
       hitbox: { widthPercentage: 0.0, heightPercentage: 0.2 }
     },
     Snowman: {
-      src: "/images/platformer/caveman.png",
-      width: 308,
-      height: 327,
+      src: "/images/platformer/gunman-removebg-preview.png",
+      width: 228,
+      height: 177,
       scaleSize: 60,
       speedRatio: 0.7,
       xPercentage: 0.6,
