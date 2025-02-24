@@ -104,10 +104,11 @@ export class PlayerGreece extends PlayerBase {
                     this.state.movement.right = true;
                 }
                 break;
-            case "finishline":
-                if(this.collisionData.touchPoints.this.other.id && GameEnv.hasFlag.length == 1){
+            case "flyingIsland":
+                if(this.collisionData.touchPoints.this.top && GameEnv.hasFlag.length === 1){
                     const index = GameEnv.levels.findIndex(level => level.tag === "Quidditch");
                     GameControl.transitionToLevel(GameEnv.levels[index]);
+                    break
                 }
                 console.log("finish line checks")
                 console.log(GameEnv.gameObjects)
@@ -125,7 +126,7 @@ export class PlayerGreece extends PlayerBase {
                   collectedCoin = true
                   console.log("player has item to exit lvl")
                 // Transition to the next level when touching the flag
-                const index = GameEnv.levels.findIndex(level => level.tag === "Water")
+                const index = GameEnv.levels.findIndex(level => level.tag === "Quidditch")
                 GameControl.transitionToLevel(GameEnv.levels[index]);
               //above code were you transition levels is broken and crashes the game when ran
                 break;
