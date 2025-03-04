@@ -310,7 +310,7 @@ const assets = {
       hitbox: { widthPercentage: 0.0, heightPercentage: 0.2 }
     },
     Snowman: {
-      src: "/images/platformer/gunman-removebg-preview.png",
+      src: "/images/platformer/sprites/goomba.png",
       width: 228,
       height: 177,
       scaleSize: 60,
@@ -477,7 +477,7 @@ const assets = {
     { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: assets.platforms.boxendright, xPercentage: 0.789, yPercentage: 0.73 },
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.0632, yPercentage: 0.31},
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.36, yPercentage: 0.63},
-    { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.565, yPercentage: 0.42},
+    { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.565, yPercentage: 0.4},
     { name: 'trash', id: 'trash', class: Trash, data: assets.obstacles.trash, xPercentage: 0.72, yPercentage: 0.58},
     { name: 'owl', id: 'owl', class: Owl, data: assets.enemies.Owl, xPercentage: 0.3, minPosition: 0.05 },
     { name: 'owl', id: 'owl', class: Owl, data: assets.enemies.Owl, xPercentage: 0.8, minPosition: 0.05 },
