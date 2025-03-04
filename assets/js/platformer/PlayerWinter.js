@@ -135,11 +135,13 @@ export class PlayerWinter extends PlayerBase {
                     this.state.movement.left = false;
                     this.state.movement.right = true;
                 }
-                this.canvasHeight = this.canvasHeight * 0.8
-                this.canvasWidth = this.canvasWidth * 0.8
-                GameEnv.customTimeout(() => {
-                    this.x = GameEnv.innerWidth + 1; // handles alert to next level
-                }, 2000);
+                this.x = this.collisionData.newX;
+                this.canvas.style.zIndex = '20'
+                this.canvasHeight = this.canvasHeight * 0.9
+                this.canvasWidth = this.canvasWidth * 0.9
+                setTimeout(() => {
+                    GameControl.transitionToLevel(GameEnv.levels[GameEnv.levels.indexOf(GameEnv.currentLevel) + 1]);
+                }, 1000);
                 break;
             case "snowman": // Note: Goomba.js and Player.js could be refactored
                 // 1. Player jumps on goomba, interaction with Goomba.js
